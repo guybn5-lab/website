@@ -10,7 +10,10 @@ duration: "45 episodes"
 summary:
   en: Following Check Point’s Threat Intelligence analysts and researchers as they hunt for new cyber threats and vulnerabilities.
   he: מלווים את חוקרי ואנליסטי המודיעין של צ׳ק פוינט בזמן שהם סורקים את הרשת בחיפוש אחר איומי סייבר ופרצות חדשות.
+spotify: { type: show, id: 2kDAb6aT5TyvZ9wwEjgRUG }
 links:
+  - label: Spotify
+    url: https://open.spotify.com/show/2kDAb6aT5TyvZ9wwEjgRUG
   - label: Apple Podcasts
     url: https://podcasts.apple.com/il/podcast/id1491720376
 ---

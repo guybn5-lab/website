@@ -15,7 +15,10 @@ description:
     Stories and insights from Wix engineers alongside prominent voices from the tech community — including Wix CEO and co-founder Avishai Abrahami on his hands-on coding sessions, and Kent C. Dodds on learning and developer communities.
   he: |
     סיפורים ותובנות של מהנדסי וויקס לצד קולות בולטים מקהילת הטכנולוגיה — ביניהם מנכ״ל ומייסד וויקס אבישי אברהמי על סשנים של כתיבת קוד בעצמו, וקנט סי. דודס על למידה וקהילות מפתחים.
+spotify: { type: show, id: 5CmjtjpdcKkHDnr0601uYS }
 links:
+  - label: Spotify
+    url: https://open.spotify.com/show/5CmjtjpdcKkHDnr0601uYS
   - label: Apple Podcasts
     url: https://podcasts.apple.com/il/podcast/id1503976848
 ---

@@ -3,19 +3,26 @@ category: commercial
 format: podcast
 order: 22
 cover: /images/projects/shufersal.webp
-title: { en: "AT YOUR SERVICE IL", he: "AT YOUR SERVICE IL" }
+title: { en: "Consuming Innovation", he: "צורכים חדשנות" }
 client: { en: "Shufersal", he: "שופרסל" }
 year: 2021
-duration: "10 episodes"
+duration: "8 episodes"
 summary:
-  en: Shufersal’s podcast on service, customer experience and consumerism, hosted by the group’s Chief Customer Officer, Zvika Baida.
-  he: הפודקאסט של שופרסל על שירות, חוויית לקוח וצרכנות, בהגשת סמנכ״ל חוויית הלקוח של הקבוצה, צביקה ביידה.
+  en: Shufersal Group’s innovation podcast, on the changes reshaping retail and how they’ll affect the way we shop.
+  he: פודקאסט החדשנות של קבוצת שופרסל, על השינויים שעוברת הקמעונאות ואיך הם ישפיעו על הדרך שבה נצרוך.
 description:
   en: |
-    Conversations with interesting people from fields close to Shufersal’s business — among them SAP’s head of customer experience and former Finance Minister Eitan Cabel on consumer fairness in Israel.
+    Retail is part of everyday life, and it is going through fundamental changes that will shape how we buy not only food, but electronics, furniture and everything else.
+
+    Consuming Innovation looks at those changes, tries to understand what’s driving them, and asks how they will affect us — from the pocket supermarket to building a customer club.
   he: |
-    שיחות עם אנשים מעניינים מתחומים שקשורים לפעילות של שופרסל — ביניהם ראש חוויית הלקוח של SAP ושר האוצר לשעבר איתן כבל על הוגנות צרכנית בישראל.
+    עולם הקמעונאות הוא חלק בלתי נפרד מחיינו, והוא עובר שינויים מהותיים שישפיעו על הדרך שבה נצרוך בעתיד — לא רק מזון, אלא גם מוצרי חשמל, רהיטים ומה לא.
+
+    ב"צורכים חדשנות" סוקרים את השינויים האלה, מנסים להבין מה עומד מאחוריהם ואיך הם ישפיעו עלינו — מהסופרמרקט בכיס ועד בניית מועדון לקוחות.
+spotify: { type: show, id: 6acrafe4p5egLF0xwvfg0V }
 links:
+  - label: Spotify
+    url: https://open.spotify.com/show/6acrafe4p5egLF0xwvfg0V
   - label: Apple Podcasts
-    url: https://podcasts.apple.com/il/podcast/id1572415435
+    url: https://podcasts.apple.com/il/podcast/id1555219009
 ---
