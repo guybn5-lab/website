@@ -11,13 +11,13 @@ summary:
   he: וידאוקאסט שבו אישי ציבור מוכרים מדברים על הרעיונות שמעצבים את האידיאולוגיה שלהם.
 description:
   en: |
-    Radical is a space where people connect with bold liberal ideas. One of the ways the initiative spreads its ideas is through productions filmed and recorded in the studio — a studio I was recruited to build and manage.
+    Radical is a space where people connect with bold liberal ideas. One of the ways the initiative spreads its ideas is through productions filmed and recorded in the studio — a studio Guy was recruited to build and manage.
 
-    It’s also where we launched Radical’s flagship videocast, which I produced and edited, and for which I booked high-profile guests — among them former Prime Minister Ehud Barak, Democrats party leader Yair Golan, Knesset member Zvi Sukkot and many more.
+    It’s also where Radical launched its flagship videocast, produced and edited by Guy, who also booked its high-profile guests — among them former Prime Minister Ehud Barak, Democrats party leader Yair Golan, Knesset member Zvi Sukkot and many more.
   he: |
-    רדיקל הוא מרחב שבו אנשים מתחברים לרעיונות ליברליים נועזים. אחת הדרכים שבהן היוזמה מפיצה את רעיונותיה היא הפקות שמצולמות ומוקלטות באולפן — אולפן שגויסתי כדי להקים ולנהל.
+    רדיקל הוא מרחב שבו אנשים מתחברים לרעיונות ליברליים נועזים. אחת הדרכים שבהן היוזמה מפיצה את רעיונותיה היא הפקות שמצולמות ומוקלטות באולפן — אולפן שגיא גויס כדי להקים ולנהל.
 
-    שם גם השקנו את וידאוקאסט הדגל של רדיקל, שאותו הפקתי וערכתי, ושבשבילו ליהקתי אורחים בולטים — ביניהם ראש הממשלה לשעבר אהוד ברק, יו"ר הדמוקרטים יאיר גולן, חבר הכנסת צבי סוכות ורבים נוספים.
+    שם גם הושק וידאוקאסט הדגל של רדיקל, שגיא הפיק וערך ושבשבילו ליהק אורחים בולטים — ביניהם ראש הממשלה לשעבר אהוד ברק, יו"ר הדמוקרטים יאיר גולן, חבר הכנסת צבי סוכות ורבים נוספים.
 cover: /images/projects/radical.webp
 embeds:
   - https://www.instagram.com/reel/C8WdlEItfcy/

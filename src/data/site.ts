@@ -22,22 +22,22 @@ export const site = {
 
   /** Short paragraph shown on the home page. */
   intro: {
-    en: 'I make podcasts and videos that tell true stories — from daily news at The Guardian to award-winning documentary series and viral reporting for young audiences in Israel.',
-    he: 'אני עושה פודקאסטים וסרטונים שמספרים סיפורים אמיתיים — מחדשות יומיות בגרדיאן ועד סדרות תיעודיות זוכות פרסים וכתבות ויראליות לקהל צעיר בישראל.',
+    en: 'Podcasts and videos that tell true stories — from daily news at The Guardian to award-winning documentary series and viral reporting for young audiences in Israel.',
+    he: 'פודקאסטים וסרטונים שמספרים סיפורים אמיתיים — מחדשות יומיות בגרדיאן ועד סדרות תיעודיות זוכות פרסים וכתבות ויראליות לקהל צעיר בישראל.',
   } as Localized,
 
   /** Full bio on the About page. Separate paragraphs with a blank line. */
   bio: {
-    en: `I'm Guy, a podcast and video producer, documentarian, and investigative journalist. I started my journey as an editor and producer of some of Israel's most popular podcasts, and went on to create two award-winning documentary podcasts.
+    en: `Guy Szafman is a podcast and video producer, documentarian, and investigative journalist. Starting out as an editor and producer of some of Israel's most popular podcasts, Guy went on to create two award-winning documentary podcasts.
 
-Later, I joined an independent media organisation that targets youth exclusively and created viral news reports. After completing my MA, I joined the team behind The Guardian's podcast "Today in Focus" to produce daily episodes for the outlet's flagship show.
+Next came an independent media organisation that targets youth exclusively, where Guy created viral news reports. After completing an MA, Guy joined the team behind The Guardian's podcast "Today in Focus" to produce daily episodes for the outlet's flagship show.
 
-In between these, I published articles in Ynet, Israel's leading news website; reported from a war zone; produced a bunch of testimonial videos for monday.com; and edited the Israeli version of the American All-In Podcast.`,
-    he: `אני גיא — מפיק פודקאסטים ווידאו, יוצר תיעודי ועיתונאי תחקירים. התחלתי את הדרך כעורך ומפיק של כמה מהפודקאסטים הפופולריים בישראל, ובהמשך יצרתי שני פודקאסטים תיעודיים זוכי פרסים.
+In between: articles for Ynet, Israel's leading news website; reporting from a war zone; a series of testimonial videos for monday.com; and editing the Israeli version of the American All-In Podcast.`,
+    he: `גיא בן נון הוא מפיק פודקאסטים ווידאו, יוצר תיעודי ועיתונאי תחקירים. הוא התחיל את דרכו כעורך ומפיק של כמה מהפודקאסטים הפופולריים בישראל, ובהמשך יצר שני פודקאסטים תיעודיים זוכי פרסים.
 
-לאחר מכן הצטרפתי לארגון מדיה עצמאי שפונה לצעירים בלבד, ויצרתי כתבות חדשותיות ויראליות. לאחר שסיימתי את התואר השני, הצטרפתי לצוות של "Today in Focus", הפודקאסט של הגרדיאן, כדי להפיק פרקים יומיים לתוכנית הדגל של העיתון.
+לאחר מכן הצטרף לארגון מדיה עצמאי שפונה לצעירים בלבד, ויצר כתבות חדשותיות ויראליות. לאחר שסיים את התואר השני, הצטרף לצוות של "Today in Focus", הפודקאסט של הגרדיאן, כדי להפיק פרקים יומיים לתוכנית הדגל של העיתון.
 
-בין לבין פרסמתי כתבות ב־ynet, אתר החדשות המוביל בישראל; דיווחתי מאזור מלחמה; הפקתי סדרת סרטוני עדות עבור monday.com; וערכתי את הגרסה הישראלית של הפודקאסט האמריקאי All-In.`,
+בין לבין פרסם כתבות ב־ynet, אתר החדשות המוביל בישראל; דיווח מאזור מלחמה; הפיק סדרת סרטוני עדות עבור monday.com; וערך את הגרסה הישראלית של הפודקאסט האמריקאי All-In.`,
   } as Localized,
 
   /** Path under /public. Leave empty for a placeholder. */

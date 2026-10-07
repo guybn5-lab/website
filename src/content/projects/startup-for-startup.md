@@ -11,17 +11,17 @@ summary:
   he: סרטוני ראיונות והפודקאסט הבינלאומי הראשון של monday.com, על האתגרים של יזמים ומנהלים.
 description:
   en: |
-    Startup for Startup is a department at monday.com that creates content for entrepreneurs. There, I created both video and audio content.
+    Startup for Startup is a department at monday.com that creates content for entrepreneurs. Guy created both video and audio content there.
 
     The videos (with English and Arabic subtitles) are mostly interview-based, each focused on a specific case study and what the interviewee learned from it — filmed both on location and in the studio.
 
-    I also established monday.com’s first international podcast, where startups and managers share stories, insights and experiences, and learn from each other to apply that knowledge in their own businesses.
+    Guy also established monday.com’s first international podcast, where startups and managers share stories, insights and experiences, and learn from each other to apply that knowledge in their own businesses.
   he: |
-    Startup for Startup היא מחלקה ב־monday.com שיוצרת תוכן ליזמים. שם יצרתי תוכן וידאו ואודיו.
+    Startup for Startup היא מחלקה ב־monday.com שיוצרת תוכן ליזמים. גיא יצר שם תוכן וידאו ואודיו.
 
     הסרטונים (עם כתוביות באנגלית ובערבית) מבוססים ברובם על ראיונות, וכל אחד מהם מתמקד בסיפור מקרה ובמה שהמרואיין למד ממנו — צולמו גם בלוקיישן וגם באולפן.
 
-    בנוסף הקמתי את הפודקאסט הבינלאומי הראשון של monday.com, שבו סטארטאפים ומנהלים חולקים סיפורים, תובנות וניסיון — ולומדים זה מזה כדי ליישם את הידע בעסקים שלהם.
+    בנוסף הקים גיא את הפודקאסט הבינלאומי הראשון של monday.com, שבו סטארטאפים ומנהלים חולקים סיפורים, תובנות וניסיון — ולומדים זה מזה כדי ליישם את הידע בעסקים שלהם.
 cover: /images/projects/startup-for-startup.webp
 video: { provider: youtube, id: Q7AXhhIu9yA }
 videos:
