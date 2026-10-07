@@ -1,0 +1,92 @@
+---
+/**
+ * Embeds a piece of content from its normal share link — no embed codes needed.
+ * Supports YouTube, Vimeo, Instagram posts/reels, TikTok videos, Spotify episodes/shows,
+ * Apple Podcasts episodes/shows and Facebook videos. Unknown links render as a plain link.
+ */
+interface Props {
+  url: string;
+  title?: string;
+}
+const { url, title = '' } = Astro.props;
+
+type Kind = 'video' | 'vertical' | 'audio' | 'audio-list' | 'post' | 'link';
+function resolve(u: string): { src: string; kind: Kind } {
+  let m;
+  if ((m = u.match(/(?:youtube\.com\/(?:watch\?v=|shorts\/|embed\/)|youtu\.be\/)([\w-]{11})/)))
+    return { src: `https://www.youtube-nocookie.com/embed/${m[1]}?rel=0`, kind: u.includes('/shorts/') ? 'vertical' : 'video' };
+  if ((m = u.match(/vimeo\.com\/(?:video\/)?(\d+)/))) return { src: `https://player.vimeo.com/video/${m[1]}?dnt=1`, kind: 'video' };
+  if ((m = u.match(/instagram\.com\/(?:[\w.]+\/)?(p|reel|tv)\/([\w-]+)/)))
+    return { src: `https://www.instagram.com/${m[1]}/${m[2]}/embed/`, kind: 'post' };
+  if ((m = u.match(/tiktok\.com\/@[\w.-]+\/video\/(\d+)/))) return { src: `https://www.tiktok.com/embed/v2/${m[1]}`, kind: 'vertical' };
+  if ((m = u.match(/open\.spotify\.com\/(episode|show)\/(\w+)/)))
+    return { src: `https://open.spotify.com/embed/${m[1]}/${m[2]}`, kind: m[1] === 'show' ? 'audio-list' : 'audio' };
+  if ((m = u.match(/podcasts\.apple\.com\/([a-z]{2})\/podcast\/(?:[^/]+\/)?id(\d+)(?:\?i=(\d+))?/)))
+    return {
+      src: `https://embed.podcasts.apple.com/${m[1]}/podcast/id${m[2]}${m[3] ? `?i=${m[3]}&theme=light` : '?theme=light'}`,
+      kind: m[3] ? 'audio' : 'audio-list',
+    };
+  if (/facebook\.com\/.+\/videos\/|fb\.watch/.test(u))
+    return { src: `https://www.facebook.com/plugins/video.php?href=${encodeURIComponent(u)}&show_text=false`, kind: 'video' };
+  return { src: u, kind: 'link' };
+}
+const { src, kind } = resolve(url);
+---
+
+{
+  kind === 'link' ? (
+    <a class="embed-link btn" href={url} target="_blank" rel="noopener">
+      {title || url} <span aria-hidden="true">↗</span>
+    </a>
+  ) : (
+    <div class:list={['embed', `embed--${kind}`]}>
+      <iframe
+        src={src}
+        title={title || url}
+        loading="lazy"
+        allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+        allowfullscreen
+        scrolling={kind === 'post' ? 'no' : undefined}
+      />
+    </div>
+  )
+}
+
+<style>
+  .embed {
+    position: relative;
+    overflow: hidden;
+    border-radius: 12px;
+    background: var(--bg-raised);
+  }
+  .embed iframe {
+    display: block;
+    width: 100%;
+    border: 0;
+  }
+  .embed--video iframe {
+    aspect-ratio: 16 / 9;
+    height: auto;
+  }
+  .embed--vertical {
+    max-width: 340px;
+  }
+  .embed--vertical iframe {
+    aspect-ratio: 9 / 16;
+    height: auto;
+    min-height: 580px;
+  }
+  .embed--post {
+    max-width: 400px;
+    background: #fff;
+  }
+  .embed--post iframe {
+    height: 620px;
+  }
+  .embed--audio iframe {
+    height: 152px;
+  }
+  .embed--audio-list iframe {
+    height: 450px;
+  }
+</style>

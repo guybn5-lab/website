@@ -27,6 +27,11 @@ export interface Project {
   spotify?: { type: 'show' | 'episode'; id: string };
   /** Extra videos shown as a list of episodes. */
   videos?: { provider: 'youtube' | 'vimeo'; id: string; title: Localized | string; duration?: string }[];
+  /**
+   * Extra content embedded on the project page — paste normal share links:
+   * episodes (Spotify / Apple Podcasts), Instagram posts & reels, TikToks, YouTube videos…
+   */
+  embeds?: (string | { url: string; title?: Localized | string })[];
   /** Links to listen or watch elsewhere. */
   links?: { label: Localized | string; url: string }[];
   /** Image path under /public. Falls back to the YouTube thumbnail, then a placeholder. */
@@ -83,8 +88,11 @@ export const embedUrl = (video: VideoRef | undefined) => {
   return '';
 };
 
-export const spotifyEmbedUrl = (s: Project['spotify']) =>
-  s?.id ? `https://open.spotify.com/embed/${s.type}/${s.id}?utm_source=generator` : '';
+/** The main audio player for a project: its Spotify show/episode, else its Apple Podcasts page. */
+export const mainPlayerUrl = (p: Project) => {
+  if (p.spotify?.id) return `https://open.spotify.com/${p.spotify.type}/${p.spotify.id}`;
+  return p.links?.find((l) => /podcasts\.apple\.com\/.*\/id\d+/.test(l.url))?.url ?? '';
+};
 
 /** Split text into paragraphs on blank lines. */
 export const paragraphs = (text: string) =>

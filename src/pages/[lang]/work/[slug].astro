@@ -3,14 +3,15 @@ import Base from '../../../layouts/Base.astro';
 import Media from '../../../components/Media.astro';
 import Award from '../../../components/Award.astro';
 import VideoPlayer from '../../../components/VideoPlayer.astro';
+import Embed from '../../../components/Embed.astro';
 import { categoryLabels, formatLabels, href, languages, localHref, t, type Lang } from '../../../i18n/ui';
 import {
   byCategory,
   coverFor,
   localize,
+  mainPlayerUrl,
   paragraphs,
   projects,
-  spotifyEmbedUrl,
   youtubeThumb,
 } from '../../../lib/projects';
 
@@ -29,7 +30,10 @@ const siblings = byCategory(p.category);
 const next = siblings.length > 1 ? siblings[(siblings.indexOf(p) + 1) % siblings.length] : undefined;
 const cover = coverFor(p);
 const hasVideo = Boolean(p.video?.id);
-const spotify = spotifyEmbedUrl(p.spotify);
+const player = mainPlayerUrl(p);
+const embeds = (p.embeds ?? []).map((e) =>
+  typeof e === 'string' ? { url: e, title: '' } : { url: e.url, title: localize(e.title, lang) },
+);
 // Episodes list: skip the one already shown as the main video.
 const episodes = (p.videos ?? []).filter((v) => v.id !== p.video?.id);
 
@@ -86,14 +90,10 @@ const facts = [
         </header>
 
         {
-          spotify && (
-            <iframe
-              class="spotify"
-              src={spotify}
-              title={`Spotify — ${title}`}
-              loading="lazy"
-              allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-            />
+          player && (
+            <div class="player-embed">
+              <Embed url={player} title={title} />
+            </div>
           )
         }
 
@@ -176,6 +176,23 @@ const facts = [
               </li>
             ))}
           </ul>
+        </section>
+      )
+    }
+
+    {
+      embeds.length > 0 && (
+        <section class="more wrap">
+          <div class="section-head">
+            <h2 class="eyebrow">{t(lang, 'project.more')}</h2>
+          </div>
+          <div class="more-grid">
+            {embeds.map((e) => (
+              <div class="reveal">
+                <Embed url={e.url} title={e.title || title} />
+              </div>
+            ))}
+          </div>
         </section>
       )
     }
@@ -264,12 +281,17 @@ const facts = [
     font-size: clamp(21px, 1.9vw, 27px);
     line-height: 1.35;
   }
-  .spotify {
-    width: 100%;
-    height: 232px;
+  .player-embed {
     margin-top: 32px;
-    border: 0;
-    border-radius: 12px;
+  }
+  .more {
+    padding-top: clamp(72px, 9vw, 130px);
+  }
+  .more-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 340px), 1fr));
+    gap: clamp(20px, 2.5vw, 32px);
+    align-items: start;
   }
   .links {
     display: flex;

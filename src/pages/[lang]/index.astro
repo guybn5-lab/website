@@ -7,20 +7,20 @@ import {
   categories,
   categoryIntros,
   categoryLabels,
-  formatLabels,
   href,
   langPaths,
   localHref,
   t,
   type Lang,
 } from '../../i18n/ui';
-import { byCategory, embedUrl, featured, localize, projects } from '../../lib/projects';
+import { byCategory, embedUrl, projects } from '../../lib/projects';
 
 export const getStaticPaths = langPaths;
 const lang = Astro.params.lang as Lang;
 
-const work = featured();
-const usedCategories = categories.filter((c) => work.some((p) => p.category === c));
+// Home shows every project, one category at a time; the first category is the default tab.
+const usedCategories = categories.filter((c) => byCategory(c).length > 0);
+const defaultCategory = usedCategories[0];
 const reelSrc = embedUrl(site.showreel.full);
 ---
 
@@ -74,14 +74,10 @@ const reelSrc = embedUrl(site.showreel.full);
       {
         usedCategories.length > 1 && (
           <div class="filters" role="group" aria-label={t(lang, 'home.selected')}>
-            <button type="button" aria-pressed="true" data-filter="all">
-              {t(lang, 'home.all')}
-              <sup>{work.length}</sup>
-            </button>
             {usedCategories.map((c) => (
-              <button type="button" aria-pressed="false" data-filter={c}>
+              <button type="button" aria-pressed={String(c === defaultCategory)} data-filter={c}>
                 {categoryLabels[c][lang]}
-                <sup>{work.filter((p) => p.category === c).length}</sup>
+                <sup>{byCategory(c).length}</sup>
               </button>
             ))}
           </div>
@@ -89,36 +85,12 @@ const reelSrc = embedUrl(site.showreel.full);
       }
     </div>
     <div class="grid" data-grid>
-      {work.map((p, i) => <ProjectCard project={p} lang={lang} showCategory eager={i < 3} />)}
-    </div>
-  </section>
-
-  <section class="index wrap" aria-labelledby="index-title">
-    <div class="section-head">
-      <h2 class="eyebrow" id="index-title">{t(lang, 'home.indexAll')}</h2>
-      <span class="eyebrow">{projects.length}</span>
-    </div>
-    <ul>
       {
-        projects.map((p) => (
-          <li>
-            <a href={localHref(lang, `/work/${p.slug}/`)}>
-              <span class="i-title">
-                {localize(p.title, lang)}
-                {p.award && (
-                  <span class="star" title={t(lang, 'project.award')}>
-                    ★<span class="sr-only">{t(lang, 'project.award')}</span>
-                  </span>
-                )}
-              </span>
-              <span class="i-client">{localize(p.client, lang)}</span>
-              <span class="i-format">{p.format ? localize(formatLabels[p.format], lang) : ''}</span>
-              <span class="i-cat">{categoryLabels[p.category][lang]}</span>
-            </a>
-          </li>
+        projects.map((p, i) => (
+          <ProjectCard project={p} lang={lang} eager={i < 3} hidden={p.category !== defaultCategory} />
         ))
       }
-    </ul>
+    </div>
   </section>
 
   <section class="practices wrap">
@@ -284,60 +256,6 @@ const reelSrc = embedUrl(site.showreel.full);
     display: none;
   }
 
-  /* Index */
-  .index {
-    padding-top: clamp(96px, 11vw, 160px);
-  }
-  .index ul {
-    list-style: none;
-    margin: -1px 0 0;
-    padding: 0;
-  }
-  .index li {
-    border-bottom: 1px solid var(--line);
-  }
-  .index a {
-    display: grid;
-    grid-template-columns: minmax(0, 2.2fr) minmax(0, 1.2fr) minmax(0, 1fr) minmax(0, 1.2fr);
-    gap: 4px 24px;
-    align-items: baseline;
-    padding-block: 16px;
-    transition: color 0.2s, padding 0.4s var(--ease);
-  }
-  .index a:hover {
-    color: var(--accent);
-    padding-inline-start: 10px;
-  }
-  .i-title {
-    font-family: var(--font-display);
-    font-size: clamp(20px, 1.8vw, 26px);
-    line-height: 1.2;
-  }
-  .star {
-    color: var(--accent);
-    font-size: 0.6em;
-    vertical-align: super;
-    margin-inline-start: 6px;
-  }
-  .i-client,
-  .i-format,
-  .i-cat {
-    font-size: 14px;
-    color: var(--muted);
-  }
-  .i-cat {
-    text-align: end;
-  }
-  @media (max-width: 760px) {
-    .index a {
-      grid-template-columns: 1fr auto;
-    }
-    .i-format,
-    .i-cat {
-      display: none;
-    }
-  }
-
   /* Practices index */
   .practices {
     padding-top: clamp(96px, 11vw, 160px);
@@ -445,19 +363,24 @@ const reelSrc = embedUrl(site.showreel.full);
 </style>
 
 <script>
-  // Category filter for "Selected work"
-  const buttons = document.querySelectorAll<HTMLButtonElement>('[data-filter]');
+  // Category tabs for the work grid. The choice is kept in the URL (#commercial) so it survives Back.
+  const buttons = [...document.querySelectorAll<HTMLButtonElement>('[data-filter]')];
   const cards = document.querySelectorAll<HTMLElement>('[data-grid] .card');
+  const select = (category: string) => {
+    if (!buttons.some((b) => b.dataset.filter === category)) return;
+    buttons.forEach((b) => b.setAttribute('aria-pressed', String(b.dataset.filter === category)));
+    cards.forEach((card) => {
+      card.hidden = card.dataset.category !== category;
+      card.classList.add('is-in');
+    });
+  };
   buttons.forEach((btn) =>
     btn.addEventListener('click', () => {
-      const f = btn.dataset.filter;
-      buttons.forEach((b) => b.setAttribute('aria-pressed', String(b === btn)));
-      cards.forEach((card) => {
-        card.hidden = f !== 'all' && card.dataset.category !== f;
-        card.classList.add('is-in');
-      });
+      select(btn.dataset.filter!);
+      history.replaceState(null, '', `#${btn.dataset.filter}`);
     }),
   );
+  select(location.hash.slice(1));
 
   // Showreel modal
   const dialog = document.querySelector<HTMLDialogElement>('[data-reel]');

@@ -9,8 +9,9 @@ interface Props {
   lang: Lang;
   showCategory?: boolean;
   eager?: boolean;
+  hidden?: boolean;
 }
-const { project: p, lang, showCategory = false, eager = false } = Astro.props;
+const { project: p, lang, showCategory = false, eager = false, hidden = false } = Astro.props;
 const title = localize(p.title, lang);
 const meta = [
   showCategory ? categoryLabels[p.category][lang] : '',
@@ -20,7 +21,7 @@ const meta = [
 ].filter(Boolean);
 ---
 
-<article class="card reveal" data-category={p.category}>
+<article class="card reveal" data-category={p.category} hidden={hidden}>
   <a href={localHref(lang, `/work/${p.slug}/`)} class="card-link">
     <Media src={coverFor(p)} alt="" seed={p.slug} eager={eager} ratio="1 / 1" class="card-media" label={title}>
       {
