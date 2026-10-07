@@ -4,28 +4,39 @@ export type Localized = Record<Lang, string>;
 
 export const dir = (lang: Lang) => (lang === 'he' ? 'rtl' : 'ltr');
 
-export const categories = ['documentary', 'commercial', 'teaching'] as const;
+export const categories = ['journalism', 'commercial', 'teaching'] as const;
 export type Category = (typeof categories)[number];
 
 export const categoryLabels: Record<Category, Localized> = {
-  documentary: { en: 'Documentary & Journalism', he: 'תיעודי ועיתונות' },
+  journalism: { en: 'Journalism & Documentary', he: 'עיתונות ותיעוד' },
   commercial: { en: 'Commercial', he: 'מסחרי' },
   teaching: { en: 'Teaching', he: 'הוראה' },
 };
 
 export const categoryIntros: Record<Category, Localized> = {
-  documentary: {
-    en: 'Documentaries, investigations and news features — stories that start with a question and stay with people long enough to find an answer.',
-    he: 'סרטים תיעודיים, תחקירים וכתבות — סיפורים שמתחילים בשאלה ונשארים עם האנשים מספיק זמן כדי למצוא תשובה.',
+  journalism: {
+    en: 'Documentary podcasts, daily news shows, video reports and investigations — from The Guardian and ynet to independent youth media.',
+    he: 'פודקאסטים תיעודיים, תוכניות חדשות יומיות, כתבות וידאו ותחקירים — מהגרדיאן ו־ynet ועד מדיה עצמאית לצעירים.',
   },
   commercial: {
-    en: 'Brand films, campaigns and content for organisations — made with a documentary eye: real people, real places, nothing staged that doesn’t need to be.',
-    he: 'סרטי מותג, קמפיינים ותוכן לארגונים — בעין תיעודית: אנשים אמיתיים, מקומות אמיתיים, בלי לביים את מה שלא צריך.',
+    en: 'Podcasts and video for companies and organisations — interview series, studio and on-location productions, built with a journalist’s ear for a good story.',
+    he: 'פודקאסטים ווידאו לחברות ולארגונים — סדרות ראיונות, הפקות באולפן ובלוקיישן, עם אוזן של עיתונאי לסיפור טוב.',
   },
   teaching: {
-    en: 'Courses and workshops in documentary filmmaking, cinematography and mobile storytelling — for students, journalists and communities.',
-    he: 'קורסים וסדנאות בקולנוע תיעודי, צילום וסיפור בסמארטפון — לסטודנטים, לעיתונאים ולקהילות.',
+    en: 'Workshops and courses in podcast production, audio storytelling and video journalism.',
+    he: 'סדנאות וקורסים בהפקת פודקאסטים, סיפור באודיו ועיתונות וידאו.',
   },
+};
+
+export const formatLabels: Record<string, Localized> = {
+  podcast: { en: 'Podcast', he: 'פודקאסט' },
+  'podcast-series': { en: 'Documentary podcast', he: 'פודקאסט תיעודי' },
+  'daily-podcast': { en: 'Daily podcast', he: 'פודקאסט יומי' },
+  videocast: { en: 'Videocast', he: 'וידאוקאסט' },
+  video: { en: 'Video', he: 'וידאו' },
+  'podcast-video': { en: 'Podcast & video', he: 'פודקאסט ווידאו' },
+  reporting: { en: 'Video reporting', he: 'כתבות וידאו' },
+  workshop: { en: 'Workshop', he: 'סדנה' },
 };
 
 export const ui = {
@@ -41,6 +52,9 @@ export const ui = {
     'home.practices': 'Three ways of working',
     'home.viewAll': 'View all',
     'home.reel': 'Watch showreel',
+    'home.index': 'Index',
+    'home.indexAll': 'All projects',
+    'home.hello': 'Hello, I’m Guy.',
     'home.aboutMore': 'More about me',
     'project.year': 'Year',
     'project.role': 'Role',
@@ -53,12 +67,17 @@ export const ui = {
     'project.back': 'Back to',
     'project.play': 'Play',
     'project.noVideo': 'Video coming soon',
+    'project.award': 'Award-winning',
+    'project.listen': 'Listen & watch',
+    'project.videos': 'Episodes',
+    'project.format': 'Format',
     'teaching.courses': 'Courses & workshops',
     'teaching.work': 'From the classroom',
+    'teaching.empty': 'I teach workshops in podcast production, audio storytelling and video journalism — for newsrooms, organisations and students. Get in touch to plan one.',
     'about.title': 'About',
     'about.clients': 'Selected outlets & clients',
     'contact.title': 'Let’s work together',
-    'contact.text': 'For commissions, collaborations, workshops and teaching — write to me.',
+    'contact.text': 'Have a story, a show or a workshop in mind? I’d love to hear about it.',
     'contact.email': 'Email',
     'contact.phone': 'Phone',
     'contact.whatsapp': 'WhatsApp',
@@ -80,6 +99,9 @@ export const ui = {
     'home.practices': 'שלושה תחומים',
     'home.viewAll': 'לכל העבודות',
     'home.reel': 'צפייה בשואוריל',
+    'home.index': 'אינדקס',
+    'home.indexAll': 'כל הפרויקטים',
+    'home.hello': 'היי, אני גיא.',
     'home.aboutMore': 'עוד עליי',
     'project.year': 'שנה',
     'project.role': 'תפקיד',
@@ -92,12 +114,17 @@ export const ui = {
     'project.back': 'חזרה אל',
     'project.play': 'ניגון',
     'project.noVideo': 'הווידאו יעלה בקרוב',
+    'project.award': 'זוכה פרסים',
+    'project.listen': 'להאזנה ולצפייה',
+    'project.videos': 'פרקים',
+    'project.format': 'פורמט',
     'teaching.courses': 'קורסים וסדנאות',
     'teaching.work': 'מהכיתה',
+    'teaching.empty': 'אני מעביר סדנאות בהפקת פודקאסטים, סיפור באודיו ועיתונות וידאו — למערכות חדשות, לארגונים ולסטודנטים. דברו איתי כדי לתכנן סדנה.',
     'about.title': 'אודות',
     'about.clients': 'כלי תקשורת ולקוחות',
     'contact.title': 'בואו נעבוד יחד',
-    'contact.text': 'להזמנות עבודה, שיתופי פעולה, סדנאות והוראה — כתבו לי.',
+    'contact.text': 'יש לכם סיפור, תוכנית או סדנה בראש? אשמח לשמוע.',
     'contact.email': 'אימייל',
     'contact.phone': 'טלפון',
     'contact.whatsapp': 'וואטסאפ',

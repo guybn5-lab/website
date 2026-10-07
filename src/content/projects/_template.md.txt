@@ -1,23 +1,29 @@
 ---
 # Copy this file to a new name, e.g. my-film.md — the file name becomes the URL: /en/work/my-film/
-# category: documentary | commercial | teaching
-category: documentary
+# category: journalism | commercial | teaching
+# format: podcast | podcast-series | daily-podcast | videocast | video | podcast-video | reporting | workshop
+category: journalism
+format: podcast
+award: false            # true adds the award badge
+highlight:              # optional short line, e.g. a chart position
+  en: "#1 on Apple Podcasts"
+  he: "מקום ראשון ב־Apple Podcasts"
 featured: true          # show on the home page
 order: 10               # lower = earlier
 year: 2025
 title:
-  en: Film title
-  he: שם הסרט
+  en: Project title
+  he: שם הפרויקט
 client:                 # outlet / channel / client / institution
   en: Channel or client
   he: ערוץ או לקוח
 role:
-  en: Director, Cinematographer
-  he: במאי, צלם
+  en: Producer, Editor
+  he: הפקה, עריכה
 duration: "24 min"
 summary:                # one line, shown under the title
-  en: One sentence about the film.
-  he: משפט אחד על הסרט.
+  en: One sentence about the project.
+  he: משפט אחד על הפרויקט.
 description:            # leave a blank line between paragraphs
   en: |
     First paragraph.
@@ -27,10 +33,16 @@ description:            # leave a blank line between paragraphs
     פסקה ראשונה.
 
     פסקה שנייה.
+spotify:                # optional Spotify player: type is show or episode, id from the Spotify link
+  type: show
+  id: 00XeZtXvboICEFbEOBOgO0
+links:                  # optional buttons to listen / watch elsewhere
+  - label: Apple Podcasts
+    url: https://podcasts.apple.com/...
 video:                  # provider: youtube | vimeo ; id is the code from the video URL
   provider: vimeo
   id: "123456789"
-cover: /images/projects/my-film.jpg     # 16:9 image in public/images/projects/
+cover: /images/projects/my-film.jpg     # square image (1200×1200) in public/images/projects/
 preview: /video/my-film.mp4             # optional: 3–6 s silent loop shown on hover
 stills:
   - /images/projects/my-film-1.jpg

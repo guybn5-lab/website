@@ -45,6 +45,9 @@ const bio = paragraphs(site.bio[lang]);
     gap: clamp(32px, 6vw, 112px);
     padding-top: clamp(48px, 7vw, 110px);
   }
+  .side :global(.media) {
+    border-radius: var(--radius);
+  }
   .side {
     position: sticky;
     top: calc(var(--header-h) + 32px);

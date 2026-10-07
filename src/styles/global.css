@@ -6,23 +6,25 @@
 @import '@fontsource/frank-ruhl-libre/500.css';
 
 :root {
-  --bg: #0e0e0d;
-  --bg-raised: #171715;
-  --fg: #edebe5;
-  --muted: #98958d;
-  --line: rgb(237 235 229 / 0.14);
-  --accent: #e5533b; /* the red "REC" dot — use sparingly */
+  --bg: #f5f2ec; /* warm paper */
+  --bg-raised: #ebe6dd;
+  --fg: #171614;
+  --fg-soft: rgb(23 22 20 / 0.78);
+  --muted: #6b665e;
+  --line: rgb(23 22 20 / 0.13);
+  --accent: #dc3f2a; /* "on air" red — use sparingly */
+  --on-accent: #fff;
 
   --font-display: 'Frank Ruhl Libre', Georgia, serif;
   --font-body: 'Inter Variable', 'Heebo', system-ui, sans-serif;
 
   --gutter: clamp(16px, 4vw, 56px);
-  --max: 1520px;
+  --max: 1440px;
   --header-h: 72px;
-  --radius: 2px;
+  --radius: 14px;
   --ease: cubic-bezier(0.2, 0.7, 0.2, 1);
 
-  color-scheme: dark;
+  color-scheme: light;
 }
 
 :root[lang='he'] {
@@ -55,7 +57,6 @@ body {
 
 :root[lang='he'] body {
   font-size: 18px;
-  font-weight: 300;
 }
 
 img,
@@ -80,7 +81,7 @@ button {
 }
 
 :focus-visible {
-  outline: 2px solid var(--fg);
+  outline: 2px solid var(--accent);
   outline-offset: 3px;
 }
 
@@ -120,7 +121,7 @@ p {
 }
 
 :root[lang='he'] .eyebrow {
-  letter-spacing: 0.04em;
+  letter-spacing: 0.02em;
   font-size: 14px;
 }
 
@@ -146,19 +147,48 @@ p {
 .btn {
   display: inline-flex;
   align-items: center;
-  gap: 0.75em;
-  padding: 0.9em 1.4em;
-  border: 1px solid var(--line);
+  gap: 0.6em;
+  padding: 0.85em 1.4em;
+  border: 1px solid var(--fg);
   border-radius: 999px;
-  font-size: 14px;
+  font-size: 15px;
   font-weight: 500;
-  letter-spacing: 0.02em;
-  transition: background 0.3s var(--ease), color 0.3s var(--ease), border-color 0.3s var(--ease);
+  line-height: 1.2;
+  transition: background 0.25s var(--ease), color 0.25s var(--ease), border-color 0.25s var(--ease);
 }
 .btn:hover {
   background: var(--fg);
   color: var(--bg);
-  border-color: var(--fg);
+}
+.btn--solid {
+  background: var(--fg);
+  color: var(--bg);
+}
+.btn--solid:hover {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: var(--on-accent);
+}
+
+/* Award badge */
+.award {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 10px 4px 8px;
+  border-radius: 999px;
+  background: var(--accent);
+  color: var(--on-accent);
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 1.3;
+  white-space: nowrap;
+}
+:root[dir='rtl'] .award {
+  padding: 4px 8px 4px 10px;
+}
+.award svg {
+  flex: none;
 }
 
 .sr-only {
@@ -178,6 +208,7 @@ p {
   background: var(--fg);
   color: var(--bg);
   padding: 10px 14px;
+  border-radius: 8px;
   transition: top 0.2s;
 }
 .skip-link:focus {
@@ -189,17 +220,9 @@ p {
   position: absolute;
   inset: 0;
   background:
-    radial-gradient(120% 90% at 20% 15%, hsl(var(--h) 28% 30% / 0.9), transparent 60%),
-    radial-gradient(90% 80% at 85% 90%, hsl(calc(var(--h) + 40) 22% 18%), transparent 70%),
-    hsl(var(--h) 10% 11%);
-}
-.ph::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  opacity: 0.18;
-  mix-blend-mode: overlay;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    radial-gradient(120% 90% at 20% 15%, hsl(var(--h) 45% 78%), transparent 60%),
+    radial-gradient(90% 80% at 85% 90%, hsl(calc(var(--h) + 40) 35% 70%), transparent 70%),
+    hsl(var(--h) 20% 86%);
 }
 
 /* Reveal on scroll */
@@ -232,11 +255,28 @@ p {
 /* Project grid (shared by home and category pages) */
 .grid {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: clamp(36px, 5vw, 72px) clamp(16px, 2.4vw, 32px);
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(40px, 4.5vw, 64px) clamp(16px, 2.2vw, 32px);
 }
-@media (max-width: 760px) {
+@media (max-width: 1000px) {
+  .grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+@media (max-width: 560px) {
   .grid {
     grid-template-columns: 1fr;
   }
+}
+
+/* Section heading row */
+.section-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px 32px;
+  margin-bottom: clamp(28px, 3.5vw, 48px);
+  padding-bottom: 18px;
+  border-bottom: 1px solid var(--line);
 }

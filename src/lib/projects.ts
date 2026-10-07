@@ -10,14 +10,25 @@ export interface Project {
   slug: string;
   category: Category;
   title: Localized;
-  year: number | string;
+  /** podcast | podcast-series | daily-podcast | videocast | video | podcast-video | reporting | workshop */
+  format?: string;
+  year?: number | string;
   /** Outlet, channel, client or institution. */
   client?: Localized;
   role?: Localized;
   duration?: string;
+  /** Short line under the title, e.g. "#1 on Apple Podcasts in Israel". */
+  highlight?: Localized;
+  award?: boolean;
   summary?: Localized;
   description?: Localized;
   video?: VideoRef;
+  /** Spotify show or episode, e.g. { type: show, id: 00XeZtXvboICEFbEOBOgO0 } */
+  spotify?: { type: 'show' | 'episode'; id: string };
+  /** Extra videos shown as a list of episodes. */
+  videos?: { provider: 'youtube' | 'vimeo'; id: string; title: Localized | string; duration?: string }[];
+  /** Links to listen or watch elsewhere. */
+  links?: { label: Localized | string; url: string }[];
   /** Image path under /public. Falls back to the YouTube thumbnail, then a placeholder. */
   cover?: string;
   /** Short silent mp4 under /public that plays when hovering the card. */
@@ -39,21 +50,23 @@ export const projects: Project[] = Object.entries(modules)
     ...mod.frontmatter,
     slug: file.split('/').pop()!.replace(/\.md$/, ''),
   }))
-  .sort((a, b) => (a.order ?? 999) - (b.order ?? 999) || Number(b.year) - Number(a.year));
+  .sort((a, b) => (a.order ?? 999) - (b.order ?? 999) || Number(b.year ?? 0) - Number(a.year ?? 0));
 
 export const byCategory = (category: Category) => projects.filter((p) => p.category === category);
 
 export const featured = () => {
   const list = projects.filter((p) => p.featured);
-  return list.length ? list : projects.slice(0, 8);
+  return list.length ? list : projects.slice(0, 6);
 };
 
 export const localize = (value: Localized | string | undefined, lang: Lang) =>
   value == null ? '' : typeof value === 'string' ? value : value[lang] || value.en || value.he;
 
+export const youtubeThumb = (id: string) => `https://i.ytimg.com/vi/${id}/maxresdefault.jpg`;
+
 export const coverFor = (p: Project) => {
   if (p.cover) return p.cover;
-  if (p.video?.provider === 'youtube' && p.video.id) return `https://i.ytimg.com/vi/${p.video.id}/maxresdefault.jpg`;
+  if (p.video?.provider === 'youtube' && p.video.id) return youtubeThumb(p.video.id);
   return '';
 };
 
@@ -64,6 +77,9 @@ export const embedUrl = (video: VideoRef | undefined) => {
   if (video.provider === 'vimeo') return `https://player.vimeo.com/video/${video.id}?autoplay=1&dnt=1&title=0&byline=0&portrait=0`;
   return '';
 };
+
+export const spotifyEmbedUrl = (s: Project['spotify']) =>
+  s?.id ? `https://open.spotify.com/embed/${s.type}/${s.id}?utm_source=generator` : '';
 
 /** Split text into paragraphs on blank lines. */
 export const paragraphs = (text: string) =>

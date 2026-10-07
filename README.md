@@ -8,11 +8,11 @@ There's no Wix, no database and no monthly CMS fee: the site is just files in th
 | URL | Page |
 | --- | --- |
 | `/` | Detects the visitor's language and redirects to `/he/` or `/en/` |
-| `/he/`, `/en/` | Home: showreel hero, selected work (filterable), the three practices and a short about section |
-| `/{lang}/documentary/` | Documentary & Journalism |
+| `/he/`, `/en/` | Home: intro and portrait, selected work (filterable), an index of all projects, and the three areas |
+| `/{lang}/journalism/` | Journalism & Documentary |
 | `/{lang}/commercial/` | Commercial |
 | `/{lang}/teaching/` | Teaching: a list of courses plus classroom projects |
-| `/{lang}/work/{project}/` | A single project: video, details, credits, stills and a link to the next project |
+| `/{lang}/work/{project}/` | A single project: cover art or video, Spotify player, description, details, episodes, stills and a link to the next project |
 | `/{lang}/about/` | Bio, portrait, outlets and clients |
 
 Every page has a language switch that keeps you on the same page in the other language.
@@ -24,23 +24,28 @@ Hebrew pages are fully right-to-left.
 
 **Projects** → one file per project in `src/content/projects/`.
 Copy `_template.md.txt` to a new file such as `my-film.md`. The file name becomes the URL. Then fill in the fields.
-Everything is optional except `category`, `title` and `year`.
+Everything is optional except `category` and `title`.
 
-- `category`: `documentary`, `commercial` or `teaching`
+- `category`: `journalism`, `commercial` or `teaching`
+- `format`: `podcast`, `podcast-series`, `daily-podcast`, `videocast`, `video`, `podcast-video`, `reporting` or `workshop`
+- `award: true` adds the red "Award-winning" badge; `highlight` is a short line such as a chart position
 - `featured: true` puts the project on the home page. `order` sets the order (lower numbers come first).
 - `video`: `provider: vimeo` or `youtube`, plus the `id` from the video's URL
   (`vimeo.com/123456789` → `"123456789"`, `youtube.com/watch?v=AbC123` → `AbC123`)
-- `cover`: a 16:9 image in `public/images/projects/`. If a YouTube video has no cover, its thumbnail is used automatically.
+- `spotify`: `type: show` (or `episode`) plus the `id` from the Spotify link, to show a Spotify player
+- `links`: buttons to listen or watch elsewhere (Apple Podcasts, the outlet's website and so on)
+- `videos`: a list of extra YouTube/Vimeo videos shown as episodes
+- `cover`: a square image (1200×1200) in `public/images/projects/`. If a YouTube video has no cover, its thumbnail is used automatically.
 - `preview`: an optional 3–6 second silent `.mp4` in `public/video/` that plays when someone hovers over the project
 - `stills`: a list of images shown below the text
 
-The sample projects in the folder are placeholders. Delete them once your real work is in.
+The projects were copied from the old Wix site. Several are missing years, roles and listening links, which you can add any time.
 
 **Interface text** (menu labels, buttons, category descriptions) → `src/i18n/ui.ts`
 
 ### Image and video tips
 
-- Covers: JPG, 1920×1080, under about 400 KB (export at around 75% quality).
+- Covers: square JPG or WebP, 1200×1200, under about 300 KB.
 - Hero loop (`showreel.loop`): 10–20 seconds, no audio, 1920 px wide, H.264, ideally under 6 MB.
 - Full-length films stay on Vimeo or YouTube. The site only embeds them, and loads the player only when someone presses play.
 

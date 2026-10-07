@@ -8,56 +8,59 @@ import type { Localized } from '../i18n/ui';
 export const site = {
   name: { en: 'Guy Szafman', he: 'גיא שפמן' } as Localized,
 
-  /** One line under the name in the hero and in search results. */
+  /** Short list of what you do — shown above your name on the home page. */
+  roles: {
+    en: ['Video & podcast producer', 'Journalist', 'Documentarian'],
+    he: ['מפיק וידאו ופודקאסטים', 'עיתונאי', 'יוצר תיעודי'],
+  },
+
+  /** One line used in search results and link previews. */
   tagline: {
-    en: 'Director & cinematographer — documentary, journalism and commercial film.',
-    he: 'במאי וצלם — קולנוע תיעודי, עיתונות ותוכן מסחרי.',
+    en: 'Video & podcast producer, journalist and documentarian.',
+    he: 'מפיק וידאו ופודקאסטים, עיתונאי ויוצר תיעודי.',
   } as Localized,
 
   /** Short paragraph shown on the home page. */
   intro: {
-    en: 'I make films about people and the places they live in — for television news and current affairs, for independent documentaries, and for brands that want to tell a true story. I also teach documentary filmmaking and visual storytelling.',
-    he: 'אני עושה סרטים על אנשים ועל המקומות שבהם הם חיים — לחדשות ולתחקירים בטלוויזיה, לסרטים תיעודיים עצמאיים, ולמותגים שרוצים לספר סיפור אמיתי. אני גם מלמד קולנוע תיעודי וסיפור חזותי.',
+    en: 'I make podcasts and videos that tell true stories — from daily news at The Guardian to award-winning documentary series and viral reporting for young audiences in Israel.',
+    he: 'אני עושה פודקאסטים וסרטונים שמספרים סיפורים אמיתיים — מחדשות יומיות בגרדיאן ועד סדרות תיעודיות זוכות פרסים וכתבות ויראליות לקהל צעיר בישראל.',
   } as Localized,
 
   /** Full bio on the About page. Separate paragraphs with a blank line. */
   bio: {
-    en: `Guy Szafman is a director and cinematographer based in Tel Aviv. His work moves between journalism, documentary and commercial production — always starting from the same place: real people, real situations, and the patience to wait for the moment that tells the story.
+    en: `I'm Guy, a podcast and video producer, documentarian and investigative journalist. I started my journey as an editor and producer of some of Israel's most popular podcasts, and went on to create two award-winning documentary podcasts.
 
-He has filmed and directed for television news and current-affairs programmes, independent documentaries and international outlets, and works with agencies and brands on documentary-style campaigns.
+Later, I joined an independent media organisation that targets youth exclusively and created viral news reports. Recently, I joined the team behind The Guardian's podcast Today in Focus, producing daily episodes for the outlet's flagship show.
 
-Alongside his own work, Guy teaches documentary filmmaking, cinematography and mobile storytelling in academic programmes, newsrooms and community workshops.`,
-    he: `גיא שפמן הוא במאי וצלם שחי ועובד בתל אביב. העבודה שלו נעה בין עיתונות, קולנוע תיעודי והפקות מסחריות — ותמיד מתחילה מאותה נקודה: אנשים אמיתיים, מצבים אמיתיים, והסבלנות לחכות לרגע שמספר את הסיפור.
+In between, I published articles in Ynet, Israel's leading news website; reported from a war zone; produced a series of testimonial videos for monday.com; and edited the Israeli version of the American All-In podcast.`,
+    he: `אני גיא — מפיק פודקאסטים ווידאו, יוצר תיעודי ועיתונאי תחקירים. התחלתי את הדרך כעורך ומפיק של כמה מהפודקאסטים הפופולריים בישראל, ובהמשך יצרתי שני פודקאסטים תיעודיים זוכי פרסים.
 
-הוא צילם וביים עבור חדשות ותוכניות תחקיר בטלוויזיה, סרטים תיעודיים עצמאיים וכלי תקשורת בינלאומיים, ועובד עם משרדי פרסום ומותגים על קמפיינים בסגנון תיעודי.
+אחר כך הצטרפתי לארגון מדיה עצמאי שפונה לצעירים בלבד, ויצרתי כתבות חדשותיות ויראליות. לאחרונה הצטרפתי לצוות של Today in Focus, הפודקאסט היומי של הגרדיאן, ואני מפיק פרקים יומיים לתוכנית הדגל של העיתון.
 
-לצד העבודה האישית, גיא מלמד קולנוע תיעודי, צילום וסיפור בסמארטפון בתוכניות אקדמיות, במערכות חדשות ובסדנאות קהילתיות.`,
+בין לבין פרסמתי כתבות ב־ynet, דיווחתי מאזור מלחמה, הפקתי סדרת סרטוני עדות עבור monday.com וערכתי את הגרסה הישראלית של הפודקאסט האמריקאי All-In.`,
   } as Localized,
 
-  /** Path under /public, e.g. '/images/portrait.jpg'. Leave empty for a placeholder. */
-  portrait: '',
+  /** Path under /public. Leave empty for a placeholder. */
+  portrait: '/images/portrait.webp',
 
   contact: {
-    // TODO: replace with your real details
-    email: 'hello@example.com',
-    phone: '+972-50-000-0000',
-    whatsapp: '972500000000', // digits only, used for the wa.me link; '' to hide
-    location: { en: 'Tel Aviv, Israel', he: 'תל אביב' } as Localized,
+    // TODO: add the email address you want visitors to use ('' hides it)
+    email: '',
+    phone: '', // e.g. '+972-50-000-0000'
+    whatsapp: '', // digits only, e.g. '972500000000'
+    location: { en: '', he: '' } as Localized,
   },
 
   /** Leave a url empty to hide that link. */
   social: [
-    { label: 'Instagram', url: '' },
-    { label: 'Vimeo', url: '' },
-    { label: 'YouTube', url: '' },
-    { label: 'LinkedIn', url: '' },
-    { label: 'IMDb', url: '' },
+    { label: 'LinkedIn', url: 'https://www.linkedin.com/in/guy-bin-nun-szafman-1b440b195' },
+    { label: 'Instagram', url: 'https://www.instagram.com/guybn5/' },
+    { label: 'Facebook', url: 'https://www.facebook.com/guy.binnoun' },
   ],
 
   /**
-   * Showreel.
-   * - loop: a short, silent, compressed mp4 (/public/video/reel-loop.mp4) that plays behind the hero.
-   * - poster: still image shown before the loop loads.
+   * Optional showreel.
+   * - loop: a short, silent, compressed mp4 (e.g. /video/reel-loop.mp4) that plays in the home page hero instead of the portrait.
    * - full: the full reel with sound, opened from the "Watch showreel" button.
    */
   showreel: {
@@ -66,30 +69,17 @@ Alongside his own work, Guy teaches documentary filmmaking, cinematography and m
     full: { provider: '', id: '' } as VideoRef,
   },
 
-  /** Outlets and clients — shown as a simple list on the About page. */
+  /** Outlets and clients — shown on the About page. */
   clients: {
-    en: ['Outlet / channel', 'Production company', 'Agency', 'Brand', 'NGO', 'University'],
-    he: ['ערוץ / כלי תקשורת', 'חברת הפקה', 'משרד פרסום', 'מותג', 'עמותה', 'אוניברסיטה'],
+    en: ['The Guardian', 'ynet', 'Yad Vashem', 'monday.com', 'Under the Radar', 'Radical', 'Hillel'],
+    he: ['הגרדיאן', 'ynet', 'יד ושם', 'monday.com', 'מתחת לרדאר', 'הרדיקל', 'עמותת הלל'],
   },
 
-  /** Courses and workshops — listed on the Teaching page. Newest first. */
-  courses: [
-    {
-      years: '2023 —',
-      title: { en: 'Documentary Filmmaking Workshop', he: 'סדנת קולנוע תיעודי' },
-      where: { en: 'Institution name', he: 'שם המוסד' },
-    },
-    {
-      years: '2022 —',
-      title: { en: 'Mobile Journalism (MoJo) for Newsrooms', he: 'עיתונות בסמארטפון למערכות חדשות' },
-      where: { en: 'Newsroom training programme', he: 'תוכנית הכשרה למערכות חדשות' },
-    },
-    {
-      years: '2020 — 2022',
-      title: { en: 'Cinematography for Documentary', he: 'צילום לקולנוע תיעודי' },
-      where: { en: 'Film school', he: 'בית ספר לקולנוע' },
-    },
-  ] as { years: string; title: Localized; where: Localized }[],
+  /**
+   * Courses and workshops — listed on the Teaching page. Newest first. Example:
+   * { years: '2024 —', title: { en: 'Podcast Production Workshop', he: 'סדנת הפקת פודקאסטים' }, where: { en: 'Institution', he: 'מוסד' } },
+   */
+  courses: [] as { years: string; title: Localized; where: Localized }[],
 };
 
 export type VideoRef = { provider: 'vimeo' | 'youtube' | ''; id: string };

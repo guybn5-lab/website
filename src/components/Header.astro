@@ -79,7 +79,7 @@ const current = (p: string) => (section ?? path).startsWith(p);
     top: 0;
     z-index: 50;
     height: var(--header-h);
-    background: rgb(14 14 13 / 0.82);
+    background: rgb(245 242 236 / 0.86);
     backdrop-filter: blur(14px);
     -webkit-backdrop-filter: blur(14px);
     border-bottom: 1px solid var(--line);
@@ -95,7 +95,7 @@ const current = (p: string) => (section ?? path).startsWith(p);
   }
   .site-header.is-overlay.is-scrolled,
   .site-header.menu-open {
-    background: rgb(14 14 13 / 0.9);
+    background: rgb(245 242 236 / 0.94);
     border-color: var(--line);
     backdrop-filter: blur(14px);
     -webkit-backdrop-filter: blur(14px);
@@ -114,7 +114,7 @@ const current = (p: string) => (section ?? path).startsWith(p);
     align-items: center;
     gap: 10px;
     font-family: var(--font-display);
-    font-size: 22px;
+    font-size: 23px;
     letter-spacing: -0.01em;
     white-space: nowrap;
   }
@@ -148,15 +148,15 @@ const current = (p: string) => (section ?? path).startsWith(p);
     color: var(--fg);
   }
   .nav ul a {
-    color: rgb(237 235 229 / 0.78);
+    color: var(--fg-soft);
     transition: color 0.2s;
   }
   .nav ul a:hover {
     color: var(--fg);
   }
   .lang {
-    padding: 6px 12px;
-    border: 1px solid var(--line);
+    padding: 6px 13px;
+    border: 1px solid var(--fg);
     border-radius: 999px;
     font-size: 13px;
     transition: background 0.2s, color 0.2s;

@@ -1,6 +1,7 @@
 ---
 import Media from './Media.astro';
-import { categoryLabels, href, localHref, type Lang } from '../i18n/ui';
+import Award from './Award.astro';
+import { categoryLabels, formatLabels, href, localHref, type Lang } from '../i18n/ui';
 import { coverFor, localize, type Project } from '../lib/projects';
 
 interface Props {
@@ -9,13 +10,19 @@ interface Props {
   showCategory?: boolean;
   eager?: boolean;
 }
-const { project: p, lang, showCategory = true, eager = false } = Astro.props;
+const { project: p, lang, showCategory = false, eager = false } = Astro.props;
 const title = localize(p.title, lang);
+const meta = [
+  showCategory ? categoryLabels[p.category][lang] : '',
+  p.format ? localize(formatLabels[p.format], lang) : '',
+  localize(p.client, lang),
+  p.year ? String(p.year) : '',
+].filter(Boolean);
 ---
 
 <article class="card reveal" data-category={p.category}>
   <a href={localHref(lang, `/work/${p.slug}/`)} class="card-link">
-    <Media src={coverFor(p)} alt={title} seed={p.slug} eager={eager} class="card-media">
+    <Media src={coverFor(p)} alt="" seed={p.slug} eager={eager} ratio="1 / 1" class="card-media">
       {
         p.preview && (
           <video
@@ -30,15 +37,16 @@ const title = localize(p.title, lang);
           />
         )
       }
+      {p.award && <span class="badge"><Award lang={lang} /></span>}
     </Media>
     <div class="meta">
       <h3>{title}</h3>
-      <p class="sub">
-        {showCategory && <span>{categoryLabels[p.category][lang]}</span>}
-        {p.client && <span>{localize(p.client, lang)}</span>}
-        <span>{p.year}</span>
-      </p>
-      {p.summary && <p class="summary">{localize(p.summary, lang)}</p>}
+      {meta.length > 0 && <p class="sub">{meta.map((m) => <span>{m}</span>)}</p>}
+      {
+        (p.highlight || p.summary) && (
+          <p class="summary">{localize(p.highlight, lang) || localize(p.summary, lang)}</p>
+        )
+      }
     </div>
   </a>
 </article>
@@ -48,16 +56,21 @@ const title = localize(p.title, lang);
     display: block;
   }
   .card :global(.card-media) {
-    transition: filter 0.6s var(--ease);
+    border-radius: var(--radius);
+    box-shadow: 0 1px 0 var(--line);
   }
   .card :global(.card-media img),
   .card :global(.card-media .ph) {
-    transition: transform 1.2s var(--ease);
+    transition: transform 1s var(--ease);
   }
   .card-link:hover :global(.card-media img),
-  .card-link:hover :global(.card-media .ph),
-  .card-link:focus-visible :global(.card-media img) {
-    transform: scale(1.035);
+  .card-link:hover :global(.card-media .ph) {
+    transform: scale(1.04);
+  }
+  .badge {
+    position: absolute;
+    top: 12px;
+    inset-inline-start: 12px;
   }
   .preview {
     position: absolute;
@@ -72,29 +85,34 @@ const title = localize(p.title, lang);
     opacity: 1;
   }
   .meta {
-    padding-top: 18px;
+    padding-top: 16px;
   }
   h3 {
-    font-size: clamp(24px, 2.3vw, 34px);
+    font-size: clamp(24px, 2vw, 30px);
+    transition: color 0.2s;
+  }
+  .card-link:hover h3 {
+    color: var(--accent);
   }
   .sub {
     display: flex;
     flex-wrap: wrap;
-    gap: 4px 0;
-    margin: 10px 0 0;
+    gap: 2px 0;
+    margin: 8px 0 0;
     font-size: 13px;
     color: var(--muted);
   }
   .sub span:not(:last-child)::after {
     content: '·';
-    margin-inline: 10px;
-    opacity: 0.6;
+    margin-inline: 8px;
+    opacity: 0.7;
   }
   .summary {
-    margin: 10px 0 0;
-    max-width: 52ch;
-    color: rgb(237 235 229 / 0.8);
+    margin: 8px 0 0;
+    max-width: 48ch;
+    color: var(--fg-soft);
     font-size: 15px;
+    line-height: 1.5;
   }
 </style>
 
