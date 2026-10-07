@@ -32,6 +32,16 @@ export interface Project {
    * episodes (Spotify / Apple Podcasts), Instagram posts & reels, TikToks, YouTube videos…
    */
   embeds?: (string | { url: string; title?: Localized | string })[];
+  /** Individual episodes with their own audio player (title, date, audio mp3, page url, image…). */
+  episodes?: {
+    title: string;
+    date?: string;
+    description?: string;
+    url?: string;
+    audio?: string;
+    duration?: string;
+    image?: string;
+  }[];
   /** Links to listen or watch elsewhere. */
   links?: { label: Localized | string; url: string }[];
   /** Image path under /public. Falls back to the YouTube thumbnail, then a placeholder. */

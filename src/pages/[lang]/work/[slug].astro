@@ -4,6 +4,7 @@ import Media from '../../../components/Media.astro';
 import Award from '../../../components/Award.astro';
 import VideoPlayer from '../../../components/VideoPlayer.astro';
 import Embed from '../../../components/Embed.astro';
+import EpisodeCard from '../../../components/EpisodeCard.astro';
 import { embedKind, isSocial } from '../../../lib/embeds';
 import { categoryLabels, formatLabels, href, languages, localHref, t, type Lang } from '../../../i18n/ui';
 import {
@@ -36,6 +37,9 @@ const embeds = (p.embeds ?? []).map((e) =>
   typeof e === 'string' ? { url: e, title: '' } : { url: e.url, title: localize(e.title, lang) },
 );
 const episodeEmbeds = embeds.filter((e) => !isSocial(e.url));
+const audioEpisodes = p.episodes ?? [];
+const episodeCount = audioEpisodes.length + episodeEmbeds.length;
+const episodeSource = audioEpisodes[0]?.url?.includes('theguardian.com') ? 'The Guardian' : undefined;
 const socialEmbeds = embeds.filter((e) => isSocial(e.url));
 const hasInstagram = socialEmbeds.some((e) => embedKind(e.url).kind === 'instagram');
 // Long lists start collapsed with a "Show all" button.
@@ -187,22 +191,27 @@ const facts = [
     }
 
     {
-      episodeEmbeds.length > 0 && (
+      episodeCount > 0 && (
         <section class="more wrap" data-collapsible>
           <div class="section-head">
             <h2 class="eyebrow">{t(lang, 'project.episodes')}</h2>
-            <span class="eyebrow">{episodeEmbeds.length}</span>
+            <span class="eyebrow">{episodeCount}</span>
           </div>
           <div class="episodes-grid">
-            {episodeEmbeds.map((e, i) => (
+            {audioEpisodes.map((ep, i) => (
               <div class="item" data-extra={i >= PREVIEW.episodes ? '' : undefined}>
+                <EpisodeCard episode={ep} lang={lang} source={episodeSource} />
+              </div>
+            ))}
+            {episodeEmbeds.map((e, i) => (
+              <div class="item" data-extra={audioEpisodes.length + i >= PREVIEW.episodes ? '' : undefined}>
                 <Embed url={e.url} title={e.title || title} />
               </div>
             ))}
           </div>
-          {episodeEmbeds.length > PREVIEW.episodes && (
+          {episodeCount > PREVIEW.episodes && (
             <button type="button" class="btn show-all" data-show-all>
-              {t(lang, 'project.showAll')} ({episodeEmbeds.length})
+              {t(lang, 'project.showAll')} ({episodeCount})
             </button>
           )}
         </section>
