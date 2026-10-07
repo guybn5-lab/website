@@ -5,6 +5,10 @@ featured: true
 order: 2
 award: true
 title: { en: "The Clock Heist", he: "שוד השעונים הגדול" }
+year: 2023
+client: { en: "PI Media", he: "PI Media" }
+role: { en: "Writer & director", he: "תסריט ובימוי" }
+duration: "7 episodes"
 highlight:
   en: "#1 on Apple Podcasts in Israel."
   he: "מקום ראשון בדירוג Apple Podcasts בישראל."
@@ -29,4 +33,11 @@ spotify: { type: show, id: 00XeZtXvboICEFbEOBOgO0 }
 links:
   - label: Spotify
     url: https://open.spotify.com/show/00XeZtXvboICEFbEOBOgO0
+  - label: Apple Podcasts
+    url: https://podcasts.apple.com/il/podcast/id1692327437
+credits:
+  - role: { en: Host, he: הגשה }
+    name: { en: Shifra Kornfeld, he: שפרה קורנפלד }
+  - role: { en: Sound design, he: עיצוב סאונד }
+    name: { en: Ben-Or Herbary, he: בן־אור הרברי }
 ---

@@ -6,7 +6,7 @@
 import type { Localized } from '../i18n/ui';
 
 export const site = {
-  name: { en: 'Guy Szafman', he: 'גיא שפמן' } as Localized,
+  name: { en: 'Guy Szafman', he: 'גיא בן נון' } as Localized,
 
   /** Short list of what you do — shown above your name on the home page. */
   roles: {
@@ -44,8 +44,13 @@ In between, I published articles in Ynet, Israel's leading news website; reporte
   portrait: '/images/portrait.webp',
 
   contact: {
-    // TODO: add the email address you want visitors to use ('' hides it)
-    email: '',
+    /**
+     * Contact form → your inbox, without showing your address on the site.
+     * Uses Web3Forms (free): get an access key at https://web3forms.com by entering the
+     * address that should receive messages, then paste the key here.
+     */
+    formAccessKey: '',
+    email: '', // shown publicly on the site — leave '' to keep it private
     phone: '', // e.g. '+972-50-000-0000'
     whatsapp: '', // digits only, e.g. '972500000000'
     location: { en: '', he: '' } as Localized,
@@ -71,8 +76,8 @@ In between, I published articles in Ynet, Israel's leading news website; reporte
 
   /** Outlets and clients — shown on the About page. */
   clients: {
-    en: ['The Guardian', 'ynet', 'Yad Vashem', 'monday.com', 'Under the Radar', 'Radical', 'Hillel'],
-    he: ['הגרדיאן', 'ynet', 'יד ושם', 'monday.com', 'מתחת לרדאר', 'הרדיקל', 'עמותת הלל'],
+    en: ['The Guardian', 'ynet', 'PI Media', 'monday.com', 'monday.com Foundation', 'Wix', 'Check Point', 'Shufersal', 'Yad Vashem', 'Hillel', 'Under the Radar', 'Radical'],
+    he: ['הגרדיאן', 'ynet', 'PI Media', 'monday.com', 'קרן monday.com', 'וויקס', 'צ׳ק פוינט', 'שופרסל', 'יד ושם', 'עמותת הלל', 'מתחת לרדאר', 'רדיקל'],
   },
 
   /**

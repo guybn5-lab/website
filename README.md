@@ -41,6 +41,9 @@ Everything is optional except `category` and `title`.
 
 The projects were copied from the old Wix site. Several are missing years, roles and listening links, which you can add any time.
 
+**Contact form** → messages are delivered by [Web3Forms](https://web3forms.com) (free), so your email address never appears on the site.
+Go to web3forms.com, enter the address that should receive messages, and paste the access key you get by email into `formAccessKey` in `src/data/site.ts`.
+
 **Interface text** (menu labels, buttons, category descriptions) → `src/i18n/ui.ts`
 
 ### Image and video tips

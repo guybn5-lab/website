@@ -9,4 +9,7 @@ summary:
   en: An award-winning podcast in which each episode explores an esoteric, intriguing question we’ve always wondered about.
   he: פודקאסט זוכה פרסים שבו כל פרק חוקר שאלה אזוטרית ומסקרנת שתמיד רצינו לדעת את התשובה עליה.
 cover: /images/projects/the-answer.webp
+links:
+  - label: Apple Podcasts
+    url: https://podcasts.apple.com/il/podcast/id1441947841
 ---

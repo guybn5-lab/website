@@ -22,7 +22,7 @@ const meta = [
 
 <article class="card reveal" data-category={p.category}>
   <a href={localHref(lang, `/work/${p.slug}/`)} class="card-link">
-    <Media src={coverFor(p)} alt="" seed={p.slug} eager={eager} ratio="1 / 1" class="card-media">
+    <Media src={coverFor(p)} alt="" seed={p.slug} eager={eager} ratio="1 / 1" class="card-media" label={title}>
       {
         p.preview && (
           <video

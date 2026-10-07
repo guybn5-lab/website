@@ -10,8 +10,10 @@ interface Props {
   eager?: boolean;
   ratio?: string;
   class?: string;
+  /** Text set on the placeholder when there is no image (e.g. the project title). */
+  label?: string;
 }
-const { src, alt, seed, eager = false, ratio = '16 / 9', class: cls } = Astro.props;
+const { src, alt, seed, eager = false, ratio = '16 / 9', class: cls, label } = Astro.props;
 const url = src ? (src.startsWith('http') ? src : href(src)) : '';
 ---
 
@@ -26,13 +28,27 @@ const url = src ? (src.startsWith('http') ? src : href(src)) : '';
         onerror="if(this.src.includes('maxresdefault'))this.src=this.src.replace('maxresdefault','hqdefault')"
       />
     ) : (
-      <div class="ph" role="img" aria-label={alt} />
+      <div class="ph" role="img" aria-label={alt}>
+        {label && <span class="ph-label">{label}</span>}
+      </div>
     )
   }
   <slot />
 </div>
 
 <style>
+  .ph-label {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: flex-end;
+    padding: 9%;
+    font-family: var(--font-display);
+    font-size: clamp(26px, 3vw, 44px);
+    line-height: 1;
+    letter-spacing: -0.01em;
+    color: hsl(var(--h) 45% 16%);
+  }
   .media {
     position: relative;
     overflow: hidden;

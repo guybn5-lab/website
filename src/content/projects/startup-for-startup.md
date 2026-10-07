@@ -32,4 +32,7 @@ videos:
 stills:
   - /images/projects/startup-for-startup-2.webp
   - /images/projects/startup-for-startup-1.webp
+links:
+  - label: { en: "Startup for Startup Global — Apple Podcasts", he: "Startup for Startup Global — Apple Podcasts" }
+    url: https://podcasts.apple.com/il/podcast/id1583541710
 ---

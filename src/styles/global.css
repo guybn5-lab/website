@@ -220,9 +220,9 @@ p {
   position: absolute;
   inset: 0;
   background:
-    radial-gradient(120% 90% at 20% 15%, hsl(var(--h) 45% 78%), transparent 60%),
-    radial-gradient(90% 80% at 85% 90%, hsl(calc(var(--h) + 40) 35% 70%), transparent 70%),
-    hsl(var(--h) 20% 86%);
+    radial-gradient(120% 90% at 85% 10%, hsl(var(--h) 70% 72%), transparent 60%),
+    radial-gradient(90% 80% at 10% 95%, hsl(calc(var(--h) + 50) 55% 80%), transparent 70%),
+    hsl(var(--h) 40% 88%);
 }
 
 /* Reveal on scroll */

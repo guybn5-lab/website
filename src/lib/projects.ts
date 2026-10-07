@@ -41,6 +41,11 @@ export interface Project {
   order?: number;
 }
 
+/** First four-digit year in `year` (handles ranges like "2021–2023"). */
+function startYear(p: { year?: number | string }) {
+  return Number(String(p.year ?? '').match(/\d{4}/)?.[0] ?? 0);
+}
+
 const modules = import.meta.glob<{ frontmatter: Omit<Project, 'slug'> }>('../content/projects/*.md', {
   eager: true,
 });
@@ -50,7 +55,7 @@ export const projects: Project[] = Object.entries(modules)
     ...mod.frontmatter,
     slug: file.split('/').pop()!.replace(/\.md$/, ''),
   }))
-  .sort((a, b) => (a.order ?? 999) - (b.order ?? 999) || Number(b.year ?? 0) - Number(a.year ?? 0));
+  .sort((a, b) => (a.order ?? 999) - (b.order ?? 999) || startYear(b) - startYear(a));
 
 export const byCategory = (category: Category) => projects.filter((p) => p.category === category);
 
