@@ -25,6 +25,6 @@ description:
     הסדרה עוסקת במה שמלחמה עושה לאנשים: אובדן התמימות, מחשבות על הגירה, החיפוש אחר תקווה, ההומור המוזר של יחידת מילואים, אחדות — והיעדרה — אכזבה מהממשלה, והחיים עם פחד וטראומה.
 cover: /images/projects/my-first-war.webp
 links:
-  - label: Apple Podcasts
+  - label: { en: "Apple Podcasts", he: "Apple Podcasts" }
     url: https://podcasts.apple.com/il/podcast/id1719874821
 ---

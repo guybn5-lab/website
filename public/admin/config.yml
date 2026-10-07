@@ -1,0 +1,204 @@
+# Settings for the website editor at /admin/ (Sveltia CMS — https://github.com/sveltia/sveltia-cms).
+# Every save is a commit to GitHub; the host rebuilds the site from it.
+
+backend:
+  name: github
+  repo: guybn5-lab/website
+  # The branch the live site is built from. Change this if the host deploys a different branch.
+  branch: claude/personal-website-redesign-ten1pc
+  commit_messages:
+    create: 'Add {{collection}} “{{slug}}”'
+    update: 'Update {{collection}} “{{slug}}”'
+    delete: 'Delete {{collection}} “{{slug}}”'
+    uploadMedia: 'Upload “{{path}}”'
+    deleteMedia: 'Delete “{{path}}”'
+
+media_folder: public/images/projects
+public_folder: /images/projects
+
+# Don't write empty optional fields into the files.
+# Bilingual fields reuse the English/Hebrew sub-fields defined (&name) the first time they appear and referenced (*name) after that.
+
+output:
+  omit_empty_optional_fields: true
+
+slug:
+  encoding: ascii
+  clean_accents: true
+
+collections:
+  - name: projects
+    label: Projects
+    label_singular: Project
+    folder: src/content/projects
+    extension: md
+    format: frontmatter
+    create: true
+    identifier_field: title.en
+    slug: '{{fields.title.en}}'
+    summary: '{{title.en}} — {{category}}'
+    sortable_fields: [order, title.en, year, category]
+    view_groups:
+      - { label: Category, field: category }
+    fields:
+      - { label: Title, name: title, required: true, widget: object, fields: [&en { label: English, name: en, widget: string, required: false }, &he { label: Hebrew, name: he, widget: string, required: false }] }
+      - label: Category
+        name: category
+        widget: select
+        options:
+          - { label: Journalism & Documentary, value: journalism }
+          - { label: Commercial, value: commercial }
+          - { label: Teaching, value: teaching }
+      - label: Format
+        name: format
+        widget: select
+        required: false
+        options:
+          - { label: Podcast, value: podcast }
+          - { label: Documentary podcast, value: podcast-series }
+          - { label: Daily podcast, value: daily-podcast }
+          - { label: Videocast, value: videocast }
+          - { label: Video, value: video }
+          - { label: Podcast & video, value: podcast-video }
+          - { label: Video reporting, value: reporting }
+          - { label: Workshop, value: workshop }
+          - { label: Education programme, value: program }
+          - { label: Teacher training, value: training }
+      - { label: Show on the home page, name: featured, widget: boolean, required: false }
+      - { label: Order (lower numbers come first), name: order, widget: number, value_type: int, required: false }
+      - { label: Award-winning badge, name: award, widget: boolean, required: false }
+      - { label: "Highlight (short line, e.g. a chart position)", name: highlight, required: false, widget: object, fields: [*en, *he] }
+      - { label: Year (e.g. 2024 or 2021–2023), name: year, widget: string, required: false }
+      - { label: Length (e.g. “24 min” or “8 episodes”), name: duration, widget: string, required: false }
+      - { label: Client / outlet, name: client, required: false, widget: object, fields: [*en, *he] }
+      - { label: Guy's role, name: role, required: false, widget: object, fields: [*en, *he] }
+      - { label: Summary (one sentence under the title), name: summary, required: false, widget: object, fields: [&enText { label: English, name: en, widget: text, required: false }, &heText { label: Hebrew, name: he, widget: text, required: false }] }
+      - { label: Description (blank line between paragraphs), name: description, required: false, widget: object, fields: [*enText, *heText] }
+      - { label: "Cover image (square, 1200×1200)", name: cover, widget: image, required: false }
+      - label: Hover preview (3–6 s silent .mp4)
+        name: preview
+        widget: file
+        required: false
+        media_folder: /public/video
+        public_folder: /video
+      - { label: Main video, name: video, widget: object, required: false, fields: [&provider { label: Provider, name: provider, widget: select, options: [youtube, vimeo], required: false }, &videoId { label: Video ID (the code in the video's URL), name: id, widget: string, required: false }] }
+      - label: Spotify player
+        name: spotify
+        widget: object
+        required: false
+        fields:
+          - { label: Type, name: type, widget: select, options: [show, episode], required: false }
+          - { label: Spotify ID (the code in the Spotify link), name: id, widget: string, required: false }
+      - label: Links (buttons to listen or watch elsewhere)
+        name: links
+        widget: list
+        required: false
+        summary: '{{label.en}}'
+        fields:
+          - { label: Button text, name: label, widget: object, fields: [*en, *he] }
+          - { label: URL, name: url, widget: string }
+      - label: Embeds (paste share links — Spotify/Apple episodes, Instagram, TikTok, YouTube…)
+        name: embeds
+        widget: list
+        required: false
+        field: { label: Link, name: url, widget: string }
+      - label: Extra videos (shown as episodes)
+        name: videos
+        widget: list
+        required: false
+        summary: '{{title}}'
+        fields:
+          - { label: Provider, name: provider, widget: select, options: [youtube, vimeo] }
+          - { label: Video ID, name: id, widget: string }
+          - { label: Title, name: title, widget: string }
+          - { label: Length (e.g. 4:51), name: duration, widget: string, required: false }
+      - label: Episodes (with their own audio player)
+        name: episodes
+        widget: list
+        required: false
+        summary: '{{date}} — {{title}}'
+        fields:
+          - { label: Title, name: title, widget: string }
+          - { label: Date (YYYY-MM-DD), name: date, widget: string, required: false }
+          - { label: Description, name: description, widget: text, required: false }
+          - { label: Page URL, name: url, widget: string, required: false }
+          - { label: Audio URL (.mp3), name: audio, widget: string, required: false }
+          - { label: Length, name: duration, widget: string, required: false }
+          - { label: Image URL, name: image, widget: string, required: false }
+      - label: Stills (images below the text)
+        name: stills
+        widget: list
+        required: false
+        field: { label: Image, name: image, widget: image }
+      - label: Credits
+        name: credits
+        widget: list
+        required: false
+        summary: '{{role.en}}: {{name.en}}'
+        fields:
+          - { label: Role, name: role, widget: object, fields: [*en, *he] }
+          - { label: Name, name: name, widget: object, fields: [*en, *he] }
+      - { label: Festivals & selections, name: festivals, required: false, widget: object, fields: [&enList { label: English, name: en, widget: list, required: false }, &heList { label: Hebrew, name: he, widget: list, required: false }] }
+
+  - name: settings
+    label: Site settings
+    files:
+      - name: site
+        label: Name, bio, contact & more
+        file: src/data/site.json
+        format: json
+        fields:
+          - { label: Name, name: name, widget: object, fields: [*en, *he] }
+          - { label: Roles (shown above the name on the home page), name: roles, widget: object, fields: [*enList, *heList] }
+          - { label: Tagline (search results and link previews), name: tagline, widget: object, fields: [*en, *he] }
+          - { label: Intro (home page), name: intro, widget: object, fields: [*enText, *heText] }
+          - { label: Bio (About page — blank line between paragraphs), name: bio, widget: object, fields: [*enText, *heText] }
+          - label: Portrait
+            name: portrait
+            widget: image
+            required: false
+            media_folder: /public/images
+            public_folder: /images
+          - label: Contact
+            name: contact
+            widget: object
+            fields:
+              - { label: Web3Forms access key (contact form), name: formAccessKey, widget: string, required: false }
+              - { label: Public email (leave empty to keep it private), name: email, widget: string, required: false }
+              - { label: Phone, name: phone, widget: string, required: false }
+              - { label: "WhatsApp (digits only, e.g. 972500000000)", name: whatsapp, widget: string, required: false }
+              - { label: Location, name: location, widget: object, fields: [*en, *he] }
+          - label: Social links (leave the URL empty to hide one)
+            name: social
+            widget: list
+            summary: '{{label}}'
+            fields:
+              - { label: Label, name: label, widget: string }
+              - { label: URL, name: url, widget: string, required: false }
+          - label: Showreel
+            name: showreel
+            widget: object
+            fields:
+              - label: Hero loop (short silent .mp4)
+                name: loop
+                widget: file
+                required: false
+                media_folder: /public/video
+                public_folder: /video
+              - label: Poster image for the loop
+                name: poster
+                widget: image
+                required: false
+                media_folder: /public/images
+                public_folder: /images
+              - { label: Full showreel, name: full, widget: object, required: false, fields: [*provider, *videoId] }
+          - { label: Outlets & clients (About page), name: clients, widget: object, fields: [*enList, *heList] }
+          - label: Courses (Teaching page, newest first)
+            name: courses
+            widget: list
+            required: false
+            summary: '{{years}} — {{title.en}}'
+            fields:
+              - { label: Years (e.g. 2024 —), name: years, widget: string }
+              - { label: Course, name: title, widget: object, fields: [*en, *he] }
+              - { label: Institution, name: where, widget: object, fields: [*en, *he] }

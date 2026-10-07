@@ -1,90 +1,82 @@
 /**
  * Site-wide settings and copy.
- * Everything with { en, he } is shown in the matching language.
- * Edit this file to change your name, bio, contact details and showreel.
+ * The values live in site.json, so they can be edited at /admin/ ("Site settings")
+ * or by hand. Everything with { en, he } is shown in the matching language.
  */
 import type { Localized } from '../i18n/ui';
+import data from './site.json';
 
-export const site = {
-  name: { en: 'Guy Szafman', he: 'גיא בן נון' } as Localized,
+export type VideoRef = { provider: 'vimeo' | 'youtube' | ''; id: string };
 
+export interface SiteData {
+  name: Localized;
   /** Short list of what you do — shown above your name on the home page. */
-  roles: {
-    en: ['Video & podcast producer', 'Journalist', 'Documentarian'],
-    he: ['מפיק וידאו ופודקאסטים', 'עיתונאי', 'יוצר תיעודי'],
-  },
-
+  roles: { en: string[]; he: string[] };
   /** One line used in search results and link previews. */
-  tagline: {
-    en: 'Video & podcast producer, journalist and documentarian.',
-    he: 'מפיק וידאו ופודקאסטים, עיתונאי ויוצר תיעודי.',
-  } as Localized,
-
+  tagline: Localized;
   /** Short paragraph shown on the home page. */
-  intro: {
-    en: 'Podcasts and videos that tell true stories — from daily news at The Guardian to award-winning documentary series and viral reporting for young audiences in Israel.',
-    he: 'פודקאסטים וסרטונים שמספרים סיפורים אמיתיים — מחדשות יומיות בגרדיאן ועד סדרות תיעודיות זוכות פרסים וכתבות ויראליות לקהל צעיר בישראל.',
-  } as Localized,
-
+  intro: Localized;
   /** Full bio on the About page. Separate paragraphs with a blank line. */
-  bio: {
-    en: `Guy Szafman is a podcast and video producer, documentarian, and investigative journalist. Starting out as an editor and producer of some of Israel's most popular podcasts, Guy went on to create two award-winning documentary podcasts.
-
-Next came an independent media organisation that targets youth exclusively, where Guy created viral news reports. After completing an MA, Guy joined the team behind The Guardian's podcast "Today in Focus" to produce daily episodes for the outlet's flagship show.
-
-In between: articles for Ynet, Israel's leading news website; reporting from a war zone; a series of testimonial videos for monday.com; and editing the Israeli version of the American All-In Podcast.`,
-    he: `גיא בן נון הוא מפיק פודקאסטים ווידאו, יוצר תיעודי ועיתונאי תחקירים. הוא התחיל את דרכו כעורך ומפיק של כמה מהפודקאסטים הפופולריים בישראל, ובהמשך יצר שני פודקאסטים תיעודיים זוכי פרסים.
-
-לאחר מכן הצטרף לארגון מדיה עצמאי שפונה לצעירים בלבד, ויצר כתבות חדשותיות ויראליות. לאחר שסיים את התואר השני, הצטרף לצוות של "Today in Focus", הפודקאסט של הגרדיאן, כדי להפיק פרקים יומיים לתוכנית הדגל של העיתון.
-
-בין לבין פרסם כתבות ב־ynet, אתר החדשות המוביל בישראל; דיווח מאזור מלחמה; הפיק סדרת סרטוני עדות עבור monday.com; וערך את הגרסה הישראלית של הפודקאסט האמריקאי All-In.`,
-  } as Localized,
-
+  bio: Localized;
   /** Path under /public. Leave empty for a placeholder. */
-  portrait: '/images/portrait.webp',
-
+  portrait: string;
   contact: {
     /**
      * Contact form → your inbox, without showing your address on the site.
      * Uses Web3Forms (free): get an access key at https://web3forms.com by entering the
      * address that should receive messages, then paste the key here.
      */
-    formAccessKey: 'd78c560e-0423-465a-87a0-975c5a66e702',
-    email: '', // shown publicly on the site — leave '' to keep it private
-    phone: '', // e.g. '+972-50-000-0000'
-    whatsapp: '', // digits only, e.g. '972500000000'
-    location: { en: '', he: '' } as Localized,
-  },
-
+    formAccessKey: string;
+    /** Shown publicly on the site — leave '' to keep it private. */
+    email: string;
+    /** e.g. '+972-50-000-0000' */
+    phone: string;
+    /** Digits only, e.g. '972500000000' */
+    whatsapp: string;
+    location: Localized;
+  };
   /** Leave a url empty to hide that link. */
-  social: [
-    { label: 'LinkedIn', url: 'https://www.linkedin.com/in/guy-bin-nun-szafman-1b440b195' },
-    { label: 'Instagram', url: 'https://www.instagram.com/guybn5/' },
-    { label: 'Facebook', url: 'https://www.facebook.com/guy.binnoun' },
-  ],
-
+  social: { label: string; url: string }[];
   /**
    * Optional showreel.
    * - loop: a short, silent, compressed mp4 (e.g. /video/reel-loop.mp4) that plays in the home page hero instead of the portrait.
    * - full: the full reel with sound, opened from the "Watch showreel" button.
    */
+  showreel: { loop: string; poster: string; full: VideoRef };
+  /** Outlets and clients — shown on the About page. */
+  clients: { en: string[]; he: string[] };
+  /** Courses and workshops — listed on the Teaching page. Newest first. */
+  courses: { years: string; title: Localized; where: Localized }[];
+}
+
+/** The editor leaves empty fields out of site.json, so fill them back in here. */
+const json = data as Partial<SiteData>;
+const empty = { en: '', he: '' };
+const emptyList = { en: [], he: [] };
+
+export const site: SiteData = {
+  ...json,
+  name: { ...empty, ...json.name },
+  roles: { ...emptyList, ...json.roles },
+  tagline: { ...empty, ...json.tagline },
+  intro: { ...empty, ...json.intro },
+  bio: { ...empty, ...json.bio },
+  portrait: json.portrait ?? '',
+  contact: {
+    formAccessKey: '',
+    email: '',
+    phone: '',
+    whatsapp: '',
+    ...json.contact,
+    location: { ...empty, ...json.contact?.location },
+  },
+  social: json.social ?? [],
   showreel: {
     loop: '',
     poster: '',
-    full: { provider: '', id: '' } as VideoRef,
+    ...json.showreel,
+    full: { provider: '', id: '', ...json.showreel?.full },
   },
-
-  /** Outlets and clients — shown on the About page. */
-  clients: {
-    en: ['The Guardian', 'ynet', 'PI Media', 'monday.com', 'monday.com Foundation', 'Wix', 'Check Point', 'Shufersal', 'Yad Vashem', 'Hillel', 'Under the Radar', 'Radical'],
-    he: ['הגרדיאן', 'ynet', 'PI Media', 'monday.com', 'קרן monday.com', 'וויקס', 'צ׳ק פוינט', 'שופרסל', 'יד ושם', 'עמותת הלל', 'מתחת לרדאר', 'רדיקל'],
-  },
-
-  /**
-   * Courses and workshops — listed on the Teaching page. Newest first. Example:
-   * { years: '2024 —', title: { en: 'Podcast Production Workshop', he: 'סדנת הפקת פודקאסטים' }, where: { en: 'Institution', he: 'מוסד' } },
-   */
-  courses: [] as { years: string; title: Localized; where: Localized }[],
+  clients: { ...emptyList, ...json.clients },
+  courses: json.courses ?? [],
 };
-
-export type VideoRef = { provider: 'vimeo' | 'youtube' | ''; id: string };

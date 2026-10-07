@@ -10,6 +10,6 @@ summary:
   he: פודקאסט זוכה פרסים שבו כל פרק חוקר שאלה אזוטרית ומסקרנת שתמיד רצינו לדעת את התשובה עליה.
 cover: /images/projects/the-answer.webp
 links:
-  - label: Apple Podcasts
+  - label: { en: "Apple Podcasts", he: "Apple Podcasts" }
     url: https://podcasts.apple.com/il/podcast/id1441947841
 ---

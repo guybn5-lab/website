@@ -37,7 +37,7 @@ spotify:                # optional Spotify player: type is show or episode, id f
   type: show
   id: 00XeZtXvboICEFbEOBOgO0
 links:                  # optional buttons to listen / watch elsewhere
-  - label: Apple Podcasts
+  - label: { en: Apple Podcasts, he: Apple Podcasts }
     url: https://podcasts.apple.com/...
 video:                  # provider: youtube | vimeo ; id is the code from the video URL
   provider: vimeo

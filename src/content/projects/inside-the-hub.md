@@ -20,8 +20,8 @@ description:
     הפודקאסט עוסק באתגרים של המגזר החברתי ובנושאים היומיומיים שמעסיקים עמותות — מגיוס משאבים ושותפויות ועד ניהול, חדשנות ובינה מלאכותית. בהנחיית מעיין שר שלום מקרן monday.com.
 spotify: { type: show, id: 033YZFWWYLv9unKhmnkesQ }
 links:
-  - label: Spotify
+  - label: { en: "Spotify", he: "Spotify" }
     url: https://open.spotify.com/show/033YZFWWYLv9unKhmnkesQ
-  - label: Apple Podcasts
+  - label: { en: "Apple Podcasts", he: "Apple Podcasts" }
     url: https://podcasts.apple.com/il/podcast/id6797197900
 ---

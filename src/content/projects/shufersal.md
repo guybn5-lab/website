@@ -21,8 +21,8 @@ description:
     ב"צורכים חדשנות" סוקרים את השינויים האלה, מנסים להבין מה עומד מאחוריהם ואיך הם ישפיעו עלינו — מהסופרמרקט בכיס ועד בניית מועדון לקוחות.
 spotify: { type: show, id: 6acrafe4p5egLF0xwvfg0V }
 links:
-  - label: Spotify
+  - label: { en: "Spotify", he: "Spotify" }
     url: https://open.spotify.com/show/6acrafe4p5egLF0xwvfg0V
-  - label: Apple Podcasts
+  - label: { en: "Apple Podcasts", he: "Apple Podcasts" }
     url: https://podcasts.apple.com/il/podcast/id1555219009
 ---

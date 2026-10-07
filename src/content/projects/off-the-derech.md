@@ -15,6 +15,6 @@ description:
     נוצר לרגל 30 שנה לעמותת הלל, שמלווה יוצאים בשאלה. כל פרק מביא שני סיפורים מהקהילה, עם נקודות מבט שונות על היציאה ועל התנועה כולה — משפחה, הלם תרבותי והתחלה מחדש בחברה החילונית.
 cover: /images/projects/off-the-derech.webp
 links:
-  - label: Apple Podcasts
+  - label: { en: "Apple Podcasts", he: "Apple Podcasts" }
     url: https://podcasts.apple.com/il/podcast/id1547782952
 ---
