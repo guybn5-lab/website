@@ -5,7 +5,7 @@ featured: true
 order: 3
 award: true
 title: { en: "My First War", he: "המלחמה הראשונה שלי" }
-year: 2023
+year: 2023–2024
 duration: "5 episodes"
 client: { en: "Under the Radar", he: "מתחת לרדאר" }
 highlight:

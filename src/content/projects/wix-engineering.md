@@ -3,6 +3,7 @@ category: commercial
 format: podcast
 order: 21
 year: 2020–2023
+cover: /images/projects/wix-engineering.webp
 title: { en: "Wix Engineering Podcast", he: "Wix Engineering Podcast" }
 client: { en: "Wix", he: "וויקס" }
 duration: "24 episodes"

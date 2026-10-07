@@ -2,6 +2,7 @@
 category: commercial
 format: podcast-series
 order: 23
+cover: /images/projects/family-story.webp
 title: { en: "Family Story", he: "סיפור משפחתי" }
 client: { en: "Osim Historia Productions", he: "הפקות עושים היסטוריה" }
 summary:
@@ -15,4 +16,6 @@ description:
 links:
   - label: Apple Podcasts
     url: https://podcasts.apple.com/il/podcast/id1494128710
+  - label: { en: "Family Sounds website", he: "האתר של סיפור משפחתי" }
+    url: https://www.familysounds.co.il/
 ---

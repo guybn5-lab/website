@@ -2,8 +2,11 @@
 category: commercial
 format: podcast
 order: 22
+cover: /images/projects/shufersal.webp
 title: { en: "AT YOUR SERVICE IL", he: "AT YOUR SERVICE IL" }
 client: { en: "Shufersal", he: "שופרסל" }
+year: 2021
+duration: "10 episodes"
 summary:
   en: Shufersal’s podcast on service, customer experience and consumerism, hosted by the group’s Chief Customer Officer, Zvika Baida.
   he: הפודקאסט של שופרסל על שירות, חוויית לקוח וצרכנות, בהגשת סמנכ״ל חוויית הלקוח של הקבוצה, צביקה ביידה.

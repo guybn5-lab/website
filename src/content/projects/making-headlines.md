@@ -4,6 +4,7 @@ format: podcast
 order: 8
 title: { en: "Making Headlines", he: "עושים כותרות" }
 client: { en: "ynet", he: "ynet" }
+year: 2019–2021
 summary:
   en: The first news podcast of ynet, Israel’s leading news website.
   he: פודקאסט החדשות הראשון של ynet, אתר החדשות המוביל בישראל.

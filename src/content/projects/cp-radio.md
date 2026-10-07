@@ -2,7 +2,8 @@
 category: commercial
 format: podcast
 order: 20
-year: 2019–2024
+year: 2020–2024
+cover: /images/projects/cp-radio.webp
 title: { en: "CPRadio", he: "CPRadio" }
 client: { en: "Check Point", he: "צ׳ק פוינט" }
 duration: "45 episodes"

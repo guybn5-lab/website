@@ -49,7 +49,7 @@ In between, I published articles in Ynet, Israel's leading news website; reporte
      * Uses Web3Forms (free): get an access key at https://web3forms.com by entering the
      * address that should receive messages, then paste the key here.
      */
-    formAccessKey: '',
+    formAccessKey: 'd78c560e-0423-465a-87a0-975c5a66e702',
     email: '', // shown publicly on the site — leave '' to keep it private
     phone: '', // e.g. '+972-50-000-0000'
     whatsapp: '', // digits only, e.g. '972500000000'

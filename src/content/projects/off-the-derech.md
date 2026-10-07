@@ -3,8 +3,7 @@ category: commercial
 format: podcast
 order: 11
 title: { en: "Off the Derech", he: "יוצאים בשאלה" }
-year: 2021–2023
-duration: "42 episodes"
+year: 2021
 client: { en: "Hillel", he: "עמותת הלל" }
 summary:
   en: The real-life stories of people born into Orthodox Jewish life — who decided to leave.

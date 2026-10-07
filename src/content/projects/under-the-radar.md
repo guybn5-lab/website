@@ -18,7 +18,4 @@ description:
 
     זה חייב לחשוב מהר ויצירתי, ולהפיק עיתונות שמושכת את הקהל ושיש לה פוטנציאל להפוך לוויראלית.
 cover: /images/projects/under-the-radar.webp
-links:
-  - label: Apple Podcasts
-    url: https://podcasts.apple.com/il/podcast/id1574170322
 ---
