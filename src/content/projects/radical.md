@@ -19,4 +19,13 @@ description:
 
     שם גם השקנו את וידאוקאסט הדגל של רדיקל, שאותו הפקתי וערכתי, ושבשבילו ליהקתי אורחים בולטים — ביניהם ראש הממשלה לשעבר אהוד ברק, יו"ר הדמוקרטים יאיר גולן, חבר הכנסת צבי סוכות ורבים נוספים.
 cover: /images/projects/radical.webp
+embeds:
+  - https://www.instagram.com/reel/C8WdlEItfcy/
+  - https://www.instagram.com/reel/C8PessxNNKK/
+  - https://www.instagram.com/reel/DIvejdFt3WM/
+  - https://www.instagram.com/reel/C8J3PnYNAPW/
+  - https://www.instagram.com/reel/C8pGu9DNmgn/
+  - https://open.spotify.com/episode/6LC6SkXhUN4nI1Q74c8Xo9/video
+  - https://www.instagram.com/reel/DFVQeAKt0ak/
+  - https://open.spotify.com/episode/1zgEmk2CM7uZfTCrnx64bb/video
 ---

@@ -28,4 +28,30 @@ links:
     url: https://www.theguardian.com/news/series/todayinfocus
   - label: Apple Podcasts
     url: https://podcasts.apple.com/il/podcast/id1440133626
+embeds:
+  - https://open.spotify.com/episode/49pC1y9STzOX0tx2BCKaIL
+  - https://open.spotify.com/episode/643POpodmTI8JmV2LrP7SL
+  - https://open.spotify.com/episode/7lrKJrGozIKOiqDjNwbs9W
+  - https://open.spotify.com/episode/7qIZt2upvJrlmRRcc5OSvc
+  - https://open.spotify.com/episode/0EoGJ8eYuMNtKSMvNHO2Ay
+  - https://open.spotify.com/episode/4cfdjG8QLZrQ49cc2roAyy
+  - https://www.instagram.com/reel/DZupchGo8Fm/
+  - https://www.instagram.com/reel/DZfEV9hI1Jf/
+  - https://open.spotify.com/episode/60Yws00p1tcydwOJDiXg4T
+  - https://open.spotify.com/episode/11w8eAJURuA4Cjf81iNUtT
+  - https://open.spotify.com/episode/3tW9GsQv9tqBuY8E4xhacG
+  - https://open.spotify.com/episode/2VHJruO2OoZ0MKC5ZHAV7K
+  - https://open.spotify.com/episode/0xiLntoHytrRZrhJwd5Ze4
+  - https://open.spotify.com/episode/204d61nQ8uBvVq8qLtlOiZ
+  - https://www.instagram.com/reel/Dda-5zHCMkq/
+  - https://www.instagram.com/reel/DcyxJxRIXlK/
+  - https://open.spotify.com/episode/3vfM5Zv2IA5F3f1wq43tBk
+  - https://www.instagram.com/reel/DaST_FnIu4n/
+  - https://www.instagram.com/reel/DZrxKtkI5ky/
+  - https://open.spotify.com/episode/4UbhWz3vTSo3LTeLZbrfPQ
+  - https://open.spotify.com/episode/3iCGW8N42PIQvZ1PIM9xvF
+  - https://open.spotify.com/episode/3YZM37gOUiTXXdk5NqU0Fa
+  - https://www.instagram.com/reel/DW_0-wROVDh/
+  - https://open.spotify.com/episode/1jl4fyvBOAMFSgehU57jD5
+  - https://www.instagram.com/p/DVLwVI4iPyJ/
 ---

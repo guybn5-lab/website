@@ -35,4 +35,6 @@ stills:
 links:
   - label: { en: "Startup for Startup Global — Apple Podcasts", he: "Startup for Startup Global — Apple Podcasts" }
     url: https://podcasts.apple.com/il/podcast/id1583541710
+embeds:
+  - https://open.spotify.com/episode/5XHSGSwJc7Bdx0T9xie9DK
 ---

@@ -4,6 +4,7 @@ import Media from '../../../components/Media.astro';
 import Award from '../../../components/Award.astro';
 import VideoPlayer from '../../../components/VideoPlayer.astro';
 import Embed from '../../../components/Embed.astro';
+import { embedKind, isSocial } from '../../../lib/embeds';
 import { categoryLabels, formatLabels, href, languages, localHref, t, type Lang } from '../../../i18n/ui';
 import {
   byCategory,
@@ -34,6 +35,11 @@ const player = mainPlayerUrl(p);
 const embeds = (p.embeds ?? []).map((e) =>
   typeof e === 'string' ? { url: e, title: '' } : { url: e.url, title: localize(e.title, lang) },
 );
+const episodeEmbeds = embeds.filter((e) => !isSocial(e.url));
+const socialEmbeds = embeds.filter((e) => isSocial(e.url));
+const hasInstagram = socialEmbeds.some((e) => embedKind(e.url).kind === 'instagram');
+// Long lists start collapsed with a "Show all" button.
+const PREVIEW = { episodes: 6, social: 6 };
 // Episodes list: skip the one already shown as the main video.
 const episodes = (p.videos ?? []).filter((v) => v.id !== p.video?.id);
 
@@ -181,21 +187,52 @@ const facts = [
     }
 
     {
-      embeds.length > 0 && (
-        <section class="more wrap">
+      episodeEmbeds.length > 0 && (
+        <section class="more wrap" data-collapsible>
           <div class="section-head">
-            <h2 class="eyebrow">{t(lang, 'project.more')}</h2>
+            <h2 class="eyebrow">{t(lang, 'project.episodes')}</h2>
+            <span class="eyebrow">{episodeEmbeds.length}</span>
           </div>
-          <div class="more-grid">
-            {embeds.map((e) => (
-              <div class="reveal">
+          <div class="episodes-grid">
+            {episodeEmbeds.map((e, i) => (
+              <div class="item" data-extra={i >= PREVIEW.episodes ? '' : undefined}>
                 <Embed url={e.url} title={e.title || title} />
               </div>
             ))}
           </div>
+          {episodeEmbeds.length > PREVIEW.episodes && (
+            <button type="button" class="btn show-all" data-show-all>
+              {t(lang, 'project.showAll')} ({episodeEmbeds.length})
+            </button>
+          )}
         </section>
       )
     }
+
+    {
+      socialEmbeds.length > 0 && (
+        <section class="more wrap" data-collapsible>
+          <div class="section-head">
+            <h2 class="eyebrow">{t(lang, 'project.social')}</h2>
+            <span class="eyebrow">{socialEmbeds.length}</span>
+          </div>
+          <div class="social-grid">
+            {socialEmbeds.map((e, i) => (
+              <div class="item" data-extra={i >= PREVIEW.social ? '' : undefined}>
+                <Embed url={e.url} title={e.title || title} />
+              </div>
+            ))}
+          </div>
+          {socialEmbeds.length > PREVIEW.social && (
+            <button type="button" class="btn show-all" data-show-all>
+              {t(lang, 'project.showAll')} ({socialEmbeds.length})
+            </button>
+          )}
+        </section>
+      )
+    }
+
+    {hasInstagram && <script is:inline async src="https://www.instagram.com/embed.js" />}
 
     {
       p.stills && p.stills.length > 0 && (
@@ -287,11 +324,23 @@ const facts = [
   .more {
     padding-top: clamp(72px, 9vw, 130px);
   }
-  .more-grid {
+  .episodes-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(min(100%, 340px), 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 420px), 1fr));
+    gap: 16px clamp(16px, 2vw, 28px);
+    align-items: start;
+  }
+  .social-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 320px), 1fr));
     gap: clamp(20px, 2.5vw, 32px);
     align-items: start;
+  }
+  [data-collapsible]:not(.is-open) [data-extra] {
+    display: none;
+  }
+  .show-all {
+    margin-top: 28px;
   }
   .links {
     display: flex;
@@ -429,3 +478,14 @@ const facts = [
     }
   }
 </style>
+
+<script>
+  document.querySelectorAll<HTMLElement>('[data-collapsible]').forEach((section) => {
+    section.querySelector('[data-show-all]')?.addEventListener('click', (e) => {
+      section.classList.add('is-open');
+      (e.currentTarget as HTMLElement).remove();
+      // Instagram posts that were hidden need to be processed now that they're visible.
+      (window as any).instgrm?.Embeds?.process();
+    });
+  });
+</script>

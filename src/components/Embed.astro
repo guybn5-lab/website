@@ -1,36 +1,18 @@
 ---
 /**
  * Embeds a piece of content from its normal share link — no embed codes needed.
- * Supports YouTube, Vimeo, Instagram posts/reels, TikTok videos, Spotify episodes/shows,
- * Apple Podcasts episodes/shows and Facebook videos. Unknown links render as a plain link.
+ * Supports YouTube, Vimeo, Instagram posts/reels, TikTok videos, Spotify episodes/shows
+ * (including video episodes), Apple Podcasts episodes/shows and Facebook videos.
+ * Unknown links render as a plain link.
  */
+import { embedKind } from '../lib/embeds';
+
 interface Props {
   url: string;
   title?: string;
 }
 const { url, title = '' } = Astro.props;
-
-type Kind = 'video' | 'vertical' | 'audio' | 'audio-list' | 'post' | 'link';
-function resolve(u: string): { src: string; kind: Kind } {
-  let m;
-  if ((m = u.match(/(?:youtube\.com\/(?:watch\?v=|shorts\/|embed\/)|youtu\.be\/)([\w-]{11})/)))
-    return { src: `https://www.youtube-nocookie.com/embed/${m[1]}?rel=0`, kind: u.includes('/shorts/') ? 'vertical' : 'video' };
-  if ((m = u.match(/vimeo\.com\/(?:video\/)?(\d+)/))) return { src: `https://player.vimeo.com/video/${m[1]}?dnt=1`, kind: 'video' };
-  if ((m = u.match(/instagram\.com\/(?:[\w.]+\/)?(p|reel|tv)\/([\w-]+)/)))
-    return { src: `https://www.instagram.com/${m[1]}/${m[2]}/embed/`, kind: 'post' };
-  if ((m = u.match(/tiktok\.com\/@[\w.-]+\/video\/(\d+)/))) return { src: `https://www.tiktok.com/embed/v2/${m[1]}`, kind: 'vertical' };
-  if ((m = u.match(/open\.spotify\.com\/(episode|show)\/(\w+)/)))
-    return { src: `https://open.spotify.com/embed/${m[1]}/${m[2]}`, kind: m[1] === 'show' ? 'audio-list' : 'audio' };
-  if ((m = u.match(/podcasts\.apple\.com\/([a-z]{2})\/podcast\/(?:[^/]+\/)?id(\d+)(?:\?i=(\d+))?/)))
-    return {
-      src: `https://embed.podcasts.apple.com/${m[1]}/podcast/id${m[2]}${m[3] ? `?i=${m[3]}&theme=light` : '?theme=light'}`,
-      kind: m[3] ? 'audio' : 'audio-list',
-    };
-  if (/facebook\.com\/.+\/videos\/|fb\.watch/.test(u))
-    return { src: `https://www.facebook.com/plugins/video.php?href=${encodeURIComponent(u)}&show_text=false`, kind: 'video' };
-  return { src: u, kind: 'link' };
-}
-const { src, kind } = resolve(url);
+const { src, kind } = embedKind(url);
 ---
 
 {
@@ -38,6 +20,15 @@ const { src, kind } = resolve(url);
     <a class="embed-link btn" href={url} target="_blank" rel="noopener">
       {title || url} <span aria-hidden="true">↗</span>
     </a>
+  ) : kind === 'instagram' ? (
+    <div class="embed embed--instagram">
+      {/* Instagram's embed.js (loaded once by the page) turns this into a correctly sized post. */}
+      <blockquote class="instagram-media" data-instgrm-permalink={src} data-instgrm-version="14">
+        <a href={src} target="_blank" rel="noopener">
+          {title || 'Instagram'} ↗
+        </a>
+      </blockquote>
+    </div>
   ) : (
     <div class:list={['embed', `embed--${kind}`]}>
       <iframe
@@ -46,7 +37,6 @@ const { src, kind } = resolve(url);
         loading="lazy"
         allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
         allowfullscreen
-        scrolling={kind === 'post' ? 'no' : undefined}
       />
     </div>
   )
@@ -57,7 +47,6 @@ const { src, kind } = resolve(url);
     position: relative;
     overflow: hidden;
     border-radius: 12px;
-    background: var(--bg-raised);
   }
   .embed iframe {
     display: block;
@@ -68,20 +57,27 @@ const { src, kind } = resolve(url);
     aspect-ratio: 16 / 9;
     height: auto;
   }
-  .embed--vertical {
+  .embed--spotify-video iframe {
+    height: 351px;
+  }
+  .embed--tiktok {
     max-width: 340px;
-  }
-  .embed--vertical iframe {
-    aspect-ratio: 9 / 16;
-    height: auto;
-    min-height: 580px;
-  }
-  .embed--post {
-    max-width: 400px;
+    margin-inline: auto;
     background: #fff;
   }
-  .embed--post iframe {
-    height: 620px;
+  .embed--tiktok iframe {
+    height: 740px;
+  }
+  .embed--instagram {
+    overflow: visible;
+    border-radius: 0;
+  }
+  .embed--instagram :global(.instagram-media) {
+    margin: 0 auto !important;
+    min-width: 0 !important;
+    width: 100% !important;
+    max-width: 420px !important;
+    border-radius: 12px !important;
   }
   .embed--audio iframe {
     height: 152px;
