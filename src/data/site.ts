@@ -30,12 +30,12 @@ export const site = {
   bio: {
     en: `I'm Guy, a podcast and video producer, documentarian, and investigative journalist. I started my journey as an editor and producer of some of Israel's most popular podcasts, and went on to create two award-winning documentary podcasts.
 
-Later, I joined an independent media organisation that targets youth exclusively and created viral news reports. Recently, I joined the team behind The Guardian's podcast "Today in Focus" to produce daily episodes for the outlet's flagship show.
+Later, I joined an independent media organisation that targets youth exclusively and created viral news reports. After completing my MA, I joined the team behind The Guardian's podcast "Today in Focus" to produce daily episodes for the outlet's flagship show.
 
 In between these, I published articles in Ynet, Israel's leading news website; reported from a war zone; produced a bunch of testimonial videos for monday.com; and edited the Israeli version of the American All-In Podcast.`,
     he: `אני גיא — מפיק פודקאסטים ווידאו, יוצר תיעודי ועיתונאי תחקירים. התחלתי את הדרך כעורך ומפיק של כמה מהפודקאסטים הפופולריים בישראל, ובהמשך יצרתי שני פודקאסטים תיעודיים זוכי פרסים.
 
-לאחר מכן הצטרפתי לארגון מדיה עצמאי שפונה לצעירים בלבד, ויצרתי כתבות חדשותיות ויראליות. לאחרונה הצטרפתי לצוות של "Today in Focus", הפודקאסט של הגרדיאן, כדי להפיק פרקים יומיים לתוכנית הדגל של העיתון.
+לאחר מכן הצטרפתי לארגון מדיה עצמאי שפונה לצעירים בלבד, ויצרתי כתבות חדשותיות ויראליות. לאחר שסיימתי את התואר השני, הצטרפתי לצוות של "Today in Focus", הפודקאסט של הגרדיאן, כדי להפיק פרקים יומיים לתוכנית הדגל של העיתון.
 
 בין לבין פרסמתי כתבות ב־ynet, אתר החדשות המוביל בישראל; דיווחתי מאזור מלחמה; הפקתי סדרת סרטוני עדות עבור monday.com; וערכתי את הגרסה הישראלית של הפודקאסט האמריקאי All-In.`,
   } as Localized,
