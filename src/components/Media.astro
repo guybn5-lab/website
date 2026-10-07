@@ -1,0 +1,48 @@
+---
+/** A 16:9 frame showing an image, or a tinted placeholder when there is none. */
+import { href } from '../i18n/ui';
+import { hueFor } from '../lib/projects';
+
+interface Props {
+  src?: string;
+  alt: string;
+  seed: string;
+  eager?: boolean;
+  ratio?: string;
+  class?: string;
+}
+const { src, alt, seed, eager = false, ratio = '16 / 9', class: cls } = Astro.props;
+const url = src ? (src.startsWith('http') ? src : href(src)) : '';
+---
+
+<div class:list={['media', cls]} style={`aspect-ratio:${ratio};--h:${hueFor(seed)}`}>
+  {
+    url ? (
+      <img
+        src={url}
+        alt={alt}
+        loading={eager ? 'eager' : 'lazy'}
+        decoding="async"
+        onerror="if(this.src.includes('maxresdefault'))this.src=this.src.replace('maxresdefault','hqdefault')"
+      />
+    ) : (
+      <div class="ph" role="img" aria-label={alt} />
+    )
+  }
+  <slot />
+</div>
+
+<style>
+  .media {
+    position: relative;
+    overflow: hidden;
+    background: var(--bg-raised);
+  }
+  .media img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+</style>

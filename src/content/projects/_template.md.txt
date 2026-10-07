@@ -1,0 +1,44 @@
+---
+# Copy this file to a new name, e.g. my-film.md — the file name becomes the URL: /en/work/my-film/
+# category: documentary | commercial | teaching
+category: documentary
+featured: true          # show on the home page
+order: 10               # lower = earlier
+year: 2025
+title:
+  en: Film title
+  he: שם הסרט
+client:                 # outlet / channel / client / institution
+  en: Channel or client
+  he: ערוץ או לקוח
+role:
+  en: Director, Cinematographer
+  he: במאי, צלם
+duration: "24 min"
+summary:                # one line, shown under the title
+  en: One sentence about the film.
+  he: משפט אחד על הסרט.
+description:            # leave a blank line between paragraphs
+  en: |
+    First paragraph.
+
+    Second paragraph.
+  he: |
+    פסקה ראשונה.
+
+    פסקה שנייה.
+video:                  # provider: youtube | vimeo ; id is the code from the video URL
+  provider: vimeo
+  id: "123456789"
+cover: /images/projects/my-film.jpg     # 16:9 image in public/images/projects/
+preview: /video/my-film.mp4             # optional: 3–6 s silent loop shown on hover
+stills:
+  - /images/projects/my-film-1.jpg
+  - /images/projects/my-film-2.jpg
+credits:
+  - role: { en: Producer, he: הפקה }
+    name: { en: Name Surname, he: שם משפחה }
+festivals:
+  en: [Docaviv 2025 — Official Selection]
+  he: [דוקאביב 2025 — תחרות רשמית]
+---

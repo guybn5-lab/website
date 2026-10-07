@@ -1,0 +1,234 @@
+---
+import Base from '../../../layouts/Base.astro';
+import Media from '../../../components/Media.astro';
+import VideoPlayer from '../../../components/VideoPlayer.astro';
+import { categoryLabels, languages, localHref, t, type Lang } from '../../../i18n/ui';
+import { byCategory, coverFor, localize, paragraphs, projects } from '../../../lib/projects';
+
+export const getStaticPaths = () =>
+  languages.flatMap((lang) => projects.map((p) => ({ params: { lang, slug: p.slug } })));
+
+const lang = Astro.params.lang as Lang;
+const p = projects.find((x) => x.slug === Astro.params.slug)!;
+
+const title = localize(p.title, lang);
+const summary = localize(p.summary, lang);
+const description = paragraphs(localize(p.description, lang));
+const festivals = p.festivals?.[lang] ?? [];
+const siblings = byCategory(p.category);
+const next = siblings.length > 1 ? siblings[(siblings.indexOf(p) + 1) % siblings.length] : undefined;
+const cover = coverFor(p);
+
+const facts = [
+  { label: t(lang, 'project.client'), value: localize(p.client, lang) },
+  { label: t(lang, 'project.role'), value: localize(p.role, lang) },
+  { label: t(lang, 'project.year'), value: String(p.year ?? '') },
+  { label: t(lang, 'project.duration'), value: p.duration ?? '' },
+].filter((f) => f.value);
+---
+
+<Base
+  lang={lang}
+  path={`/work/${p.slug}/`}
+  section={`/${p.category}/`}
+  title={title}
+  description={summary || undefined}
+  image={cover || undefined}
+>
+  <article>
+    <header class="head wrap">
+      <a class="back eyebrow link-underline" href={localHref(lang, `/${p.category}/`)}>
+        {categoryLabels[p.category][lang]}
+      </a>
+      <h1>{title}</h1>
+      {summary && <p class="summary">{summary}</p>}
+    </header>
+
+    <div class="wrap player-wrap">
+      <VideoPlayer video={p.video} cover={cover} title={title} seed={p.slug} lang={lang} />
+    </div>
+
+    <div class="body wrap">
+      <dl class="facts">
+        {
+          facts.map((f) => (
+            <div>
+              <dt class="eyebrow">{f.label}</dt>
+              <dd>{f.value}</dd>
+            </div>
+          ))
+        }
+        {
+          p.credits && p.credits.length > 0 && (
+            <div>
+              <dt class="eyebrow">{t(lang, 'project.credits')}</dt>
+              <dd>
+                <ul class="credits">
+                  {p.credits.map((c) => (
+                    <li>
+                      <span class="muted">{localize(c.role, lang)}</span> {localize(c.name, lang)}
+                    </li>
+                  ))}
+                </ul>
+              </dd>
+            </div>
+          )
+        }
+      </dl>
+
+      <div class="text">
+        {description.map((para) => <p>{para}</p>)}
+        {
+          festivals.length > 0 && (
+            <section class="festivals">
+              <h2 class="eyebrow">{t(lang, 'project.festivals')}</h2>
+              <ul>
+                {festivals.map((f) => (
+                  <li>{f}</li>
+                ))}
+              </ul>
+            </section>
+          )
+        }
+      </div>
+    </div>
+
+    {
+      p.stills && p.stills.length > 0 && (
+        <section class="stills wrap">
+          <h2 class="sr-only">{t(lang, 'project.stills')}</h2>
+          {p.stills.map((s, i) => (
+            <Media src={s} alt={`${title} — ${i + 1}`} seed={`${p.slug}-${i}`} class="reveal" />
+          ))}
+        </section>
+      )
+    }
+
+    {
+      next && (
+        <nav class="next wrap" aria-label={t(lang, 'project.next')}>
+          <a href={localHref(lang, `/work/${next.slug}/`)}>
+            <span class="eyebrow">{t(lang, 'project.next')}</span>
+            <span class="next-title">
+              {localize(next.title, lang)} <span class="arrow" aria-hidden="true">→</span>
+            </span>
+          </a>
+        </nav>
+      )
+    }
+  </article>
+</Base>
+
+<style>
+  .head {
+    padding-top: clamp(48px, 7vw, 110px);
+    padding-bottom: clamp(32px, 4vw, 56px);
+  }
+  .back {
+    display: inline-block;
+  }
+  h1 {
+    margin-top: 20px;
+    font-size: clamp(44px, 8vw, 124px);
+    line-height: 0.98;
+    letter-spacing: -0.03em;
+    max-width: 16ch;
+  }
+  :root[lang='he'] h1 {
+    letter-spacing: -0.01em;
+  }
+  .summary {
+    max-width: 48ch;
+    margin-top: 24px;
+    font-size: clamp(18px, 1.6vw, 22px);
+    color: rgb(237 235 229 / 0.82);
+  }
+  .body {
+    display: grid;
+    grid-template-columns: minmax(0, 4fr) minmax(0, 7fr);
+    gap: clamp(32px, 6vw, 112px);
+    padding-top: clamp(48px, 6vw, 88px);
+  }
+  .facts {
+    margin: 0;
+    display: grid;
+    gap: 24px;
+    align-content: start;
+  }
+  .facts > div {
+    padding-bottom: 20px;
+    border-bottom: 1px solid var(--line);
+  }
+  dd {
+    margin: 6px 0 0;
+  }
+  .credits {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: 4px;
+  }
+  .text {
+    font-size: clamp(17px, 1.35vw, 20px);
+    line-height: 1.7;
+    max-width: 62ch;
+  }
+  :root[lang='he'] .text {
+    font-size: clamp(18px, 1.45vw, 21px);
+  }
+  .festivals {
+    margin-top: 40px;
+  }
+  .festivals ul {
+    margin: 12px 0 0;
+    padding-inline-start: 1.1em;
+  }
+  .stills {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: clamp(12px, 1.6vw, 24px);
+    padding-top: clamp(64px, 8vw, 120px);
+  }
+  .stills :global(.media:first-child) {
+    grid-column: 1 / -1;
+  }
+  .next {
+    margin-top: clamp(80px, 10vw, 160px);
+  }
+  .next a {
+    display: grid;
+    gap: 12px;
+    padding-top: 32px;
+    border-top: 1px solid var(--line);
+  }
+  .next-title {
+    font-family: var(--font-display);
+    font-size: clamp(36px, 6vw, 88px);
+    line-height: 1;
+  }
+  .arrow {
+    display: inline-block;
+    transition: transform 0.4s var(--ease);
+  }
+  :global([dir='rtl']) .arrow {
+    transform: scaleX(-1);
+  }
+  .next a:hover .arrow {
+    transform: translateX(10px);
+  }
+  :global([dir='rtl']) .next a:hover .arrow {
+    transform: scaleX(-1) translateX(10px);
+  }
+  @media (max-width: 860px) {
+    .body {
+      grid-template-columns: 1fr;
+    }
+    .text {
+      order: -1;
+    }
+    .stills {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

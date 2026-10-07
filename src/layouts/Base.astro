@@ -1,0 +1,86 @@
+---
+import '../styles/global.css';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import { site } from '../data/site';
+import { dir, href, languages, t, type Lang } from '../i18n/ui';
+
+interface Props {
+  lang: Lang;
+  /** Path without the language prefix, e.g. '/about/'. Used for the language switch and hreflang. */
+  path: string;
+  title?: string;
+  description?: string;
+  image?: string;
+  /** Header sits over the hero (transparent until scrolled). */
+  overlayHeader?: boolean;
+  section?: string;
+}
+
+const { lang, path, title, description, image, overlayHeader = false, section } = Astro.props;
+const siteName = site.name[lang];
+const pageTitle = title ? `${title} — ${siteName}` : `${siteName} — ${site.tagline[lang]}`;
+const metaDescription = description || site.tagline[lang];
+const canonical = new URL(href(`/${lang}${path}`), Astro.site);
+const ogImage = image ? new URL(image.startsWith('http') ? image : href(image), Astro.site) : undefined;
+---
+
+<!doctype html>
+<html lang={lang} dir={dir(lang)}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{pageTitle}</title>
+    <meta name="description" content={metaDescription} />
+    <link rel="canonical" href={canonical} />
+    {
+      languages.map((l) => (
+        <link rel="alternate" hreflang={l} href={new URL(href(`/${l}${path}`), Astro.site)} />
+      ))
+    }
+    <link rel="alternate" hreflang="x-default" href={new URL(href(`/en${path}`), Astro.site)} />
+    <link rel="icon" href={href('/favicon.svg')} type="image/svg+xml" />
+    <meta name="theme-color" content="#0e0e0d" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content={siteName} />
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:description" content={metaDescription} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:locale" content={lang === 'he' ? 'he_IL' : 'en_US'} />
+    {ogImage && <meta property="og:image" content={ogImage} />}
+    <meta name="twitter:card" content="summary_large_image" />
+  </head>
+  <body class:list={{ 'has-overlay-header': overlayHeader }}>
+    <a class="skip-link" href="#main">{t(lang, 'a11y.skip')}</a>
+    <Header lang={lang} path={path} overlay={overlayHeader} section={section} />
+    <main id="main">
+      <slot />
+    </main>
+    <Footer lang={lang} path={path} />
+
+    <script is:inline define:vars={{ lang }}>
+      // Remember the visitor's language choice for the root redirect.
+      try { localStorage.setItem('lang', lang); } catch {}
+    </script>
+    <script>
+      // Fade content in as it scrolls into view.
+      const els = document.querySelectorAll<HTMLElement>('.reveal');
+      if ('IntersectionObserver' in window) {
+        const io = new IntersectionObserver(
+          (entries) => {
+            for (const e of entries) {
+              if (e.isIntersecting) {
+                e.target.classList.add('is-in');
+                io.unobserve(e.target);
+              }
+            }
+          },
+          { rootMargin: '0px 0px -8% 0px' },
+        );
+        els.forEach((el) => io.observe(el));
+      } else {
+        els.forEach((el) => el.classList.add('is-in'));
+      }
+    </script>
+  </body>
+</html>

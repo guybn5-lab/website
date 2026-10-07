@@ -1,0 +1,115 @@
+---
+import Media from './Media.astro';
+import { categoryLabels, href, localHref, type Lang } from '../i18n/ui';
+import { coverFor, localize, type Project } from '../lib/projects';
+
+interface Props {
+  project: Project;
+  lang: Lang;
+  showCategory?: boolean;
+  eager?: boolean;
+}
+const { project: p, lang, showCategory = true, eager = false } = Astro.props;
+const title = localize(p.title, lang);
+---
+
+<article class="card reveal" data-category={p.category}>
+  <a href={localHref(lang, `/work/${p.slug}/`)} class="card-link">
+    <Media src={coverFor(p)} alt={title} seed={p.slug} eager={eager} class="card-media">
+      {
+        p.preview && (
+          <video
+            class="preview"
+            src={href(p.preview)}
+            muted
+            loop
+            playsinline
+            preload="none"
+            aria-hidden="true"
+            data-preview
+          />
+        )
+      }
+    </Media>
+    <div class="meta">
+      <h3>{title}</h3>
+      <p class="sub">
+        {showCategory && <span>{categoryLabels[p.category][lang]}</span>}
+        {p.client && <span>{localize(p.client, lang)}</span>}
+        <span>{p.year}</span>
+      </p>
+      {p.summary && <p class="summary">{localize(p.summary, lang)}</p>}
+    </div>
+  </a>
+</article>
+
+<style>
+  .card-link {
+    display: block;
+  }
+  .card :global(.card-media) {
+    transition: filter 0.6s var(--ease);
+  }
+  .card :global(.card-media img),
+  .card :global(.card-media .ph) {
+    transition: transform 1.2s var(--ease);
+  }
+  .card-link:hover :global(.card-media img),
+  .card-link:hover :global(.card-media .ph),
+  .card-link:focus-visible :global(.card-media img) {
+    transform: scale(1.035);
+  }
+  .preview {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0;
+    transition: opacity 0.5s var(--ease);
+  }
+  .card-link:hover .preview.is-playing {
+    opacity: 1;
+  }
+  .meta {
+    padding-top: 18px;
+  }
+  h3 {
+    font-size: clamp(24px, 2.3vw, 34px);
+  }
+  .sub {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px 0;
+    margin: 10px 0 0;
+    font-size: 13px;
+    color: var(--muted);
+  }
+  .sub span:not(:last-child)::after {
+    content: '·';
+    margin-inline: 10px;
+    opacity: 0.6;
+  }
+  .summary {
+    margin: 10px 0 0;
+    max-width: 52ch;
+    color: rgb(237 235 229 / 0.8);
+    font-size: 15px;
+  }
+</style>
+
+<script>
+  // Play the short silent preview while hovering (pointer devices only).
+  if (matchMedia('(hover: hover)').matches) {
+    document.querySelectorAll<HTMLVideoElement>('[data-preview]').forEach((video) => {
+      const link = video.closest('a')!;
+      link.addEventListener('mouseenter', () => {
+        video.play().then(() => video.classList.add('is-playing')).catch(() => {});
+      });
+      link.addEventListener('mouseleave', () => {
+        video.pause();
+        video.classList.remove('is-playing');
+      });
+    });
+  }
+</script>

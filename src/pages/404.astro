@@ -1,0 +1,31 @@
+---
+import Base from '../layouts/Base.astro';
+import { localHref, t } from '../i18n/ui';
+---
+
+<Base lang="en" path="/" title={t('en', 'notfound.title')}>
+  <section class="nf wrap">
+    <h1>404</h1>
+    <p>{t('en', 'notfound.title')} · <span lang="he" dir="rtl">{t('he', 'notfound.title')}</span></p>
+    <p>
+      <a class="btn" href={localHref('en')}>{t('en', 'notfound.back')}</a>
+      <a class="btn" href={localHref('he')} lang="he">{t('he', 'notfound.back')}</a>
+    </p>
+  </section>
+</Base>
+
+<style>
+  .nf {
+    padding-top: clamp(64px, 12vw, 180px);
+  }
+  h1 {
+    font-size: clamp(96px, 20vw, 280px);
+    line-height: 0.9;
+  }
+  p {
+    margin-top: 24px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+</style>
