@@ -2,6 +2,7 @@
 category: teaching
 format: training
 order: 31
+cover: /images/projects/oded-teacher-training.webp
 title: { en: "Teacher Training Course", he: "השתלמות מורים" }
 client: { en: "Oded High School, Kadima", he: "תיכון עודד, קדימה" }
 role: { en: "Course leader", he: "ניהול ההשתלמות" }

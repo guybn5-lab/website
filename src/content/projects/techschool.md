@@ -3,6 +3,7 @@ category: teaching
 format: program
 featured: true
 order: 30
+cover: /images/projects/techschool.webp
 title: { en: "Tech School — Podcast Programme", he: "Tech School — תוכנית הפודקאסטים" }
 client: { en: "monday.com Foundation", he: "קרן monday.com" }
 role: { en: "Head of the podcast programme", he: "מוביל תוכנית הפודקאסטים" }
