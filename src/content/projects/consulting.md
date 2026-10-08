@@ -2,6 +2,7 @@
 category: knowledge-sharing
 format: consulting
 order: 32
+cover: /images/projects/consulting.webp
 title: { en: "Podcast Consulting", he: "ייעוץ לפודקאסטים" }
 client: { en: "Organisations, brands & creators", he: "ארגונים, מותגים ויוצרים" }
 summary:
