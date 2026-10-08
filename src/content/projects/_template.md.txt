@@ -1,6 +1,6 @@
 ---
 # Copy this file to a new name, e.g. my-film.md — the file name becomes the URL: /en/work/my-film/
-# category: journalism | commercial | teaching
+# category: journalism | commercial | knowledge-sharing
 # format: podcast | podcast-series | daily-podcast | videocast | video | podcast-video | reporting | workshop
 category: journalism
 format: podcast

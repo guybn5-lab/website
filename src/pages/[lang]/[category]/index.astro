@@ -20,7 +20,7 @@ const lang = Astro.params.lang as Lang;
 const category = Astro.params.category as Category;
 const list = byCategory(category);
 const label = categoryLabels[category][lang];
-const isTeaching = category === 'teaching';
+const isTeaching = category === 'knowledge-sharing';
 ---
 
 <Base lang={lang} path={`/${category}/`} title={label} description={categoryIntros[category][lang]}>

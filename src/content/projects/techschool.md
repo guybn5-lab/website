@@ -1,5 +1,5 @@
 ---
-category: teaching
+category: knowledge-sharing
 format: program
 featured: true
 order: 30

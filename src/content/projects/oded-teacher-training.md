@@ -1,5 +1,5 @@
 ---
-category: teaching
+category: knowledge-sharing
 format: training
 order: 31
 cover: /images/projects/oded-teacher-training.webp

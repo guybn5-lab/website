@@ -11,7 +11,7 @@ There's no Wix, no database and no monthly CMS fee: the site is just files in th
 | `/he/`, `/en/` | Home: intro and portrait, selected work (filterable), an index of all projects, and the three areas |
 | `/{lang}/journalism/` | Journalism & Documentary |
 | `/{lang}/commercial/` | Commercial |
-| `/{lang}/teaching/` | Teaching: a list of courses plus classroom projects |
+| `/{lang}/knowledge-sharing/` | Knowledge Sharing: courses, workshops and education programmes |
 | `/{lang}/work/{project}/` | A single project: cover art or video, Spotify player, description, details, episodes, stills and a link to the next project |
 | `/{lang}/about/` | Bio, portrait, outlets and clients |
 
@@ -26,7 +26,7 @@ Hebrew pages are fully right-to-left.
 Copy `_template.md.txt` to a new file such as `my-film.md`. The file name becomes the URL. Then fill in the fields.
 Everything is optional except `category` and `title`.
 
-- `category`: `journalism`, `commercial` or `teaching`
+- `category`: `journalism`, `commercial` or `knowledge-sharing`
 - `format`: `podcast`, `podcast-series`, `daily-podcast`, `videocast`, `video`, `podcast-video`, `reporting` or `workshop`
 - `award: true` adds the red "Award-winning" badge; `highlight` is a short line such as a chart position
 - `featured: true` puts the project on the home page. `order` sets the order (lower numbers come first).

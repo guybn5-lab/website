@@ -81,7 +81,7 @@ In between: articles for Ynet, Israel's leading news website; reporting from a w
   },
 
   /**
-   * Courses and workshops — listed on the Teaching page. Newest first. Example:
+   * Courses and workshops — listed on the Knowledge Sharing page. Newest first. Example:
    * { years: '2024 —', title: { en: 'Podcast Production Workshop', he: 'סדנת הפקת פודקאסטים' }, where: { en: 'Institution', he: 'מוסד' } },
    */
   courses: [] as { years: string; title: Localized; where: Localized }[],

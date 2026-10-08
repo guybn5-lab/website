@@ -4,13 +4,13 @@ export type Localized = Record<Lang, string>;
 
 export const dir = (lang: Lang) => (lang === 'he' ? 'rtl' : 'ltr');
 
-export const categories = ['journalism', 'commercial', 'teaching'] as const;
+export const categories = ['journalism', 'commercial', 'knowledge-sharing'] as const;
 export type Category = (typeof categories)[number];
 
 export const categoryLabels: Record<Category, Localized> = {
   journalism: { en: 'Journalism & Documentary', he: 'עיתונות ותיעוד' },
   commercial: { en: 'Commercial', he: 'מסחרי' },
-  teaching: { en: 'Teaching', he: 'הוראה' },
+  'knowledge-sharing': { en: 'Knowledge Sharing', he: 'שיתוף ידע' },
 };
 
 export const categoryIntros: Record<Category, Localized> = {
@@ -22,9 +22,9 @@ export const categoryIntros: Record<Category, Localized> = {
     en: 'Branded podcasts and video for companies and organisations — from monday.com, Wix and Check Point to Shufersal, Yad Vashem and Hillel — made with a journalist’s ear for a good story.',
     he: 'פודקאסטים ווידאו ממותגים לחברות ולארגונים — מ־monday.com, וויקס וצ׳ק פוינט ועד שופרסל, יד ושם ועמותת הלל — עם אוזן של עיתונאי לסיפור טוב.',
   },
-  teaching: {
-    en: 'Teaching podcast creation — to students across Israel through Tech School, and to teachers in professional training courses.',
-    he: 'הוראת יצירת פודקאסטים — לתלמידים ברחבי הארץ דרך Tech School, ולמורים בהשתלמויות מקצועיות.',
+  'knowledge-sharing': {
+    en: 'Sharing the craft of podcast-making — with students across Israel through Tech School, and with teachers in professional training courses.',
+    he: 'שיתוף הידע ביצירת פודקאסטים — עם תלמידים ברחבי הארץ דרך Tech School, ועם מורים בהשתלמויות מקצועיות.',
   },
 };
 
@@ -93,7 +93,7 @@ export const ui = {
     'form.subject': 'What’s it about?',
     'form.subject.podcast': 'A podcast',
     'form.subject.video': 'Video',
-    'form.subject.teaching': 'Teaching or a workshop',
+    'form.subject.teaching': 'A workshop or talk',
     'form.subject.other': 'Something else',
     'form.message': 'Message',
     'form.send': 'Send message',
@@ -156,7 +156,7 @@ export const ui = {
     'form.subject': 'על מה מדובר?',
     'form.subject.podcast': 'פודקאסט',
     'form.subject.video': 'וידאו',
-    'form.subject.teaching': 'הוראה או סדנה',
+    'form.subject.teaching': 'סדנה או הרצאה',
     'form.subject.other': 'משהו אחר',
     'form.message': 'הודעה',
     'form.send': 'שליחה',
