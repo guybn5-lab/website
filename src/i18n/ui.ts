@@ -23,8 +23,8 @@ export const categoryIntros: Record<Category, Localized> = {
     he: 'פודקאסטים ווידאו ממותגים לחברות ולארגונים — מ־monday.com, וויקס וצ׳ק פוינט ועד שופרסל, יד ושם ועמותת הלל — עם אוזן של עיתונאי לסיפור טוב.',
   },
   'knowledge-sharing': {
-    en: 'Sharing the craft of podcast-making — with students across Israel through Tech School, and with teachers in professional training courses.',
-    he: 'שיתוף הידע ביצירת פודקאסטים — עם תלמידים ברחבי הארץ דרך Tech School, ועם מורים בהשתלמויות מקצועיות.',
+    en: 'Sharing the craft of podcast-making — with students across Israel through Tech School, with teachers in professional training courses, and with organisations through consulting.',
+    he: 'שיתוף הידע ביצירת פודקאסטים — עם תלמידים ברחבי הארץ דרך Tech School, עם מורים בהשתלמויות מקצועיות, ועם ארגונים דרך ייעוץ.',
   },
 };
 
@@ -39,6 +39,7 @@ export const formatLabels: Record<string, Localized> = {
   workshop: { en: 'Workshop', he: 'סדנה' },
   program: { en: 'Education programme', he: 'תוכנית חינוכית' },
   training: { en: 'Teacher training', he: 'השתלמות מורים' },
+  consulting: { en: 'Consultancy', he: 'ייעוץ' },
 };
 
 export const ui = {
@@ -78,7 +79,7 @@ export const ui = {
     'project.showAll': 'Show all',
     'project.format': 'Format',
     'teaching.courses': 'Courses & workshops',
-    'teaching.work': 'From the classroom',
+    'teaching.work': 'Programmes & consulting',
     'teaching.empty': 'Workshops in podcast production, audio storytelling and video journalism — for newsrooms, organisations and students. Get in touch to plan one.',
     'about.title': 'About',
     'about.clients': 'Selected outlets & clients',
@@ -141,7 +142,7 @@ export const ui = {
     'project.showAll': 'להציג הכל',
     'project.format': 'פורמט',
     'teaching.courses': 'קורסים וסדנאות',
-    'teaching.work': 'מהכיתה',
+    'teaching.work': 'תוכניות וייעוץ',
     'teaching.empty': 'סדנאות בהפקת פודקאסטים, סיפור באודיו ועיתונות וידאו — למערכות חדשות, לארגונים ולסטודנטים. צרו קשר כדי לתכנן סדנה.',
     'about.title': 'אודות',
     'about.clients': 'כלי תקשורת ולקוחות',
