@@ -29,7 +29,7 @@ description:
 
     הסדרה היא אחד הפודקאסטים המצליחים ביותר שיצאו בישראל, והגיעה למקום הראשון בדירוג התוכניות של Apple Podcasts.
 cover: /images/projects/the-clock-heist.webp
-spotify: { type: show, id: 00XeZtXvboICEFbEOBOgO0 }
+spotify: { type: episode, id: 28OrBgOqmwWJXvlBzuhtSk }
 links:
   - label: { en: "Spotify", he: "Spotify" }
     url: https://open.spotify.com/show/00XeZtXvboICEFbEOBOgO0
