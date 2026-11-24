@@ -39,7 +39,7 @@ credits:
   - role: { en: Host, he: הגשה }
     name: { en: Shifra Kornfeld, he: שפרה קורנפלד }
   - role: { en: Sound design, he: עיצוב סאונד }
-    name: { en: Ben-Or Habari, he: בן־אור הרברי }
+    name: { en: Ben-Or Habari, he: בן-אור הברי }
 embeds:
   - https://www.instagram.com/p/Cv4QQK-M25F/
   - https://www.instagram.com/reel/CuMpP68sceQ/
