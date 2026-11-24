@@ -211,3 +211,160 @@ collections:
               - { label: Stamp text (keep it very short), name: badge, widget: object, fields: [*en, *he] }
               - { label: Title, name: title, widget: object, fields: [*en, *he] }
               - { label: Story (blank line between paragraphs; leave empty to hide the stamp), name: body, widget: object, fields: [*enText, *heText] }
+      - name: text
+        label: Page text (menus, headings, buttons, contact form)
+        file: src/data/text.json
+        format: json
+        fields:
+          - label: Categories (name and intro)
+            name: categories
+            widget: object
+            collapsed: true
+            fields:
+              - label: "Journalism & Documentary"
+                name: journalism
+                widget: object
+                fields:
+                  - { label: "Name", name: label, widget: object, fields: [*en, *he] }
+                  - { label: "Intro", name: intro, widget: object, fields: [*enText, *heText] }
+              - label: "Commercial"
+                name: commercial
+                widget: object
+                fields:
+                  - { label: "Name", name: label, widget: object, fields: [*en, *he] }
+                  - { label: "Intro", name: intro, widget: object, fields: [*enText, *heText] }
+              - label: "Knowledge Sharing"
+                name: knowledge_sharing
+                widget: object
+                fields:
+                  - { label: "Name", name: label, widget: object, fields: [*en, *he] }
+                  - { label: "Intro", name: intro, widget: object, fields: [*enText, *heText] }
+          - label: Formats (the small tag on project cards)
+            name: formats
+            widget: object
+            collapsed: true
+            fields:
+              - { label: "Podcast", name: podcast, widget: object, fields: [*en, *he] }
+              - { label: "Documentary podcast", name: podcast_series, widget: object, fields: [*en, *he] }
+              - { label: "Daily podcast", name: daily_podcast, widget: object, fields: [*en, *he] }
+              - { label: "Videocast", name: videocast, widget: object, fields: [*en, *he] }
+              - { label: "Video", name: video, widget: object, fields: [*en, *he] }
+              - { label: "Podcast & video", name: podcast_video, widget: object, fields: [*en, *he] }
+              - { label: "Video reporting", name: reporting, widget: object, fields: [*en, *he] }
+              - { label: "Workshop", name: workshop, widget: object, fields: [*en, *he] }
+              - { label: "Education programme", name: program, widget: object, fields: [*en, *he] }
+              - { label: "Teacher training", name: training, widget: object, fields: [*en, *he] }
+              - { label: "Consultancy", name: consulting, widget: object, fields: [*en, *he] }
+          - label: "Menu"
+            name: nav
+            widget: object
+            collapsed: true
+            fields:
+              - { label: "About link", name: about, widget: object, fields: [*en, *he] }
+              - { label: "Contact link / label", name: contact, widget: object, fields: [*en, *he] }
+              - { label: "Mobile “Menu” button", name: menu, widget: object, fields: [*en, *he] }
+              - { label: "“Close” button (mobile menu & pop-ups)", name: close, widget: object, fields: [*en, *he] }
+          - label: "Language switch"
+            name: lang
+            widget: object
+            collapsed: true
+            fields:
+              - { label: "Language switch button", name: switch, widget: object, fields: [*en, *he] }
+              - { label: "Language switch (screen readers)", name: switchLabel, widget: object, fields: [*en, *he] }
+          - label: "Home page"
+            name: home
+            widget: object
+            collapsed: true
+            fields:
+              - { label: "“Selected work” heading", name: selected, widget: object, fields: [*en, *he] }
+              - { label: "Heading above the three categories", name: practices, widget: object, fields: [*en, *he] }
+              - { label: "Showreel button", name: reel, widget: object, fields: [*en, *he] }
+          - label: "Project pages"
+            name: project
+            widget: object
+            collapsed: true
+            fields:
+              - { label: "Year", name: year, widget: object, fields: [*en, *he] }
+              - { label: "Role", name: role, widget: object, fields: [*en, *he] }
+              - { label: "Client / outlet", name: client, widget: object, fields: [*en, *he] }
+              - { label: "Length", name: duration, widget: object, fields: [*en, *he] }
+              - { label: "Credits heading", name: credits, widget: object, fields: [*en, *he] }
+              - { label: "Festivals & awards heading", name: festivals, widget: object, fields: [*en, *he] }
+              - { label: "Stills heading", name: stills, widget: object, fields: [*en, *he] }
+              - { label: "“Next project” link", name: next, widget: object, fields: [*en, *he] }
+              - { label: "Play button", name: play, widget: object, fields: [*en, *he] }
+              - { label: "When there’s no video yet", name: noVideo, widget: object, fields: [*en, *he] }
+              - { label: "Award badge", name: award, widget: object, fields: [*en, *he] }
+              - { label: "Episodes heading (videos)", name: videos, widget: object, fields: [*en, *he] }
+              - { label: "Episodes heading (audio)", name: episodes, widget: object, fields: [*en, *he] }
+              - { label: "Social posts heading", name: social, widget: object, fields: [*en, *he] }
+              - { label: "“Show all” button", name: showAll, widget: object, fields: [*en, *he] }
+              - { label: "Format", name: format, widget: object, fields: [*en, *he] }
+          - label: "Knowledge Sharing page"
+            name: teaching
+            widget: object
+            collapsed: true
+            fields:
+              - { label: "Courses heading", name: courses, widget: object, fields: [*en, *he] }
+              - { label: "Programmes heading", name: work, widget: object, fields: [*en, *he] }
+              - { label: "Text when there are no courses or projects yet", name: empty, widget: object, fields: [*enText, *heText] }
+          - label: "About page"
+            name: about
+            widget: object
+            collapsed: true
+            fields:
+              - { label: "Page title", name: title, widget: object, fields: [*en, *he] }
+              - { label: "Clients heading", name: clients, widget: object, fields: [*en, *he] }
+          - label: "Contact section (bottom of every page)"
+            name: contact
+            widget: object
+            collapsed: true
+            fields:
+              - { label: "Big headline", name: title, widget: object, fields: [*en, *he] }
+              - { label: "Line under the headline", name: text, widget: object, fields: [*enText, *heText] }
+              - { label: "Email label", name: email, widget: object, fields: [*en, *he] }
+              - { label: "Phone label", name: phone, widget: object, fields: [*en, *he] }
+              - { label: "WhatsApp label", name: whatsapp, widget: object, fields: [*en, *he] }
+              - { label: "Social links label", name: elsewhere, widget: object, fields: [*en, *he] }
+          - label: "Contact form"
+            name: form
+            widget: object
+            collapsed: true
+            fields:
+              - { label: "Name field", name: name, widget: object, fields: [*en, *he] }
+              - { label: "Email field", name: email, widget: object, fields: [*en, *he] }
+              - { label: "Topic question", name: subject, widget: object, fields: [*en, *he] }
+              - { label: "Topic option: podcast", name: subject_podcast, widget: object, fields: [*en, *he] }
+              - { label: "Topic option: video", name: subject_video, widget: object, fields: [*en, *he] }
+              - { label: "Topic option: workshop", name: subject_teaching, widget: object, fields: [*en, *he] }
+              - { label: "Topic option: other", name: subject_other, widget: object, fields: [*en, *he] }
+              - { label: "Message field", name: message, widget: object, fields: [*en, *he] }
+              - { label: "Send button", name: send, widget: object, fields: [*en, *he] }
+              - { label: "While sending", name: sending, widget: object, fields: [*en, *he] }
+              - { label: "After sending", name: success, widget: object, fields: [*en, *he] }
+              - { label: "If sending fails", name: error, widget: object, fields: [*enText, *heText] }
+          - label: "Footer"
+            name: footer
+            widget: object
+            collapsed: true
+            fields:
+              - { label: "“All rights reserved”", name: rights, widget: object, fields: [*en, *he] }
+          - label: "Fun-fact card"
+            name: names
+            widget: object
+            collapsed: true
+            fields:
+              - { label: "Small label above the title", name: eyebrow, widget: object, fields: [*en, *he] }
+          - label: "“Page not found” page"
+            name: notfound
+            widget: object
+            collapsed: true
+            fields:
+              - { label: "Message", name: title, widget: object, fields: [*en, *he] }
+              - { label: "Button back home", name: back, widget: object, fields: [*en, *he] }
+          - label: "Accessibility"
+            name: a11y
+            widget: object
+            collapsed: true
+            fields:
+              - { label: "“Skip to content” link (keyboard users)", name: skip, widget: object, fields: [*en, *he] }

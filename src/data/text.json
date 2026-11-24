@@ -1,0 +1,316 @@
+{
+  "categories": {
+    "journalism": {
+      "label": {
+        "en": "Journalism & Documentary",
+        "he": "עיתונות ותיעוד"
+      },
+      "intro": {
+        "en": "Documentary podcasts, daily news shows, video reports and investigations — from The Guardian and ynet to independent youth media.",
+        "he": "פודקאסטים תיעודיים, תוכניות חדשות יומיות, כתבות וידאו ותחקירים — מהגרדיאן ו־ynet ועד מדיה עצמאית לצעירים."
+      }
+    },
+    "commercial": {
+      "label": {
+        "en": "Commercial",
+        "he": "מסחרי"
+      },
+      "intro": {
+        "en": "Branded podcasts and video for companies and organisations — from monday.com, Wix and Check Point to Shufersal, Yad Vashem and Hillel — made with a journalist’s ear for a good story.",
+        "he": "פודקאסטים ווידאו ממותגים לחברות ולארגונים — מ־monday.com, וויקס וצ׳ק פוינט ועד שופרסל, יד ושם ועמותת הלל — עם אוזן של עיתונאי לסיפור טוב."
+      }
+    },
+    "knowledge_sharing": {
+      "label": {
+        "en": "Knowledge Sharing",
+        "he": "שיתוף ידע"
+      },
+      "intro": {
+        "en": "Sharing the craft of podcast-making — with students across Israel through Tech School, with teachers in professional training courses, and with organisations through consulting.",
+        "he": "שיתוף הידע ביצירת פודקאסטים — עם תלמידים ברחבי הארץ דרך Tech School, עם מורים בהשתלמויות מקצועיות, ועם ארגונים דרך ייעוץ."
+      }
+    }
+  },
+  "formats": {
+    "podcast": {
+      "en": "Podcast",
+      "he": "פודקאסט"
+    },
+    "podcast_series": {
+      "en": "Documentary podcast",
+      "he": "פודקאסט תיעודי"
+    },
+    "daily_podcast": {
+      "en": "Daily podcast",
+      "he": "פודקאסט יומי"
+    },
+    "videocast": {
+      "en": "Videocast",
+      "he": "וידאוקאסט"
+    },
+    "video": {
+      "en": "Video",
+      "he": "וידאו"
+    },
+    "podcast_video": {
+      "en": "Podcast & video",
+      "he": "פודקאסט ווידאו"
+    },
+    "reporting": {
+      "en": "Video reporting",
+      "he": "כתבות וידאו"
+    },
+    "workshop": {
+      "en": "Workshop",
+      "he": "סדנה"
+    },
+    "program": {
+      "en": "Education programme",
+      "he": "תוכנית חינוכית"
+    },
+    "training": {
+      "en": "Teacher training",
+      "he": "השתלמות מורים"
+    },
+    "consulting": {
+      "en": "Consultancy",
+      "he": "ייעוץ"
+    }
+  },
+  "nav": {
+    "about": {
+      "en": "About",
+      "he": "אודות"
+    },
+    "contact": {
+      "en": "Contact",
+      "he": "צור קשר"
+    },
+    "menu": {
+      "en": "Menu",
+      "he": "תפריט"
+    },
+    "close": {
+      "en": "Close",
+      "he": "סגירה"
+    }
+  },
+  "lang": {
+    "switch": {
+      "en": "עברית",
+      "he": "English"
+    },
+    "switchLabel": {
+      "en": "עברית — Hebrew version",
+      "he": "English version"
+    }
+  },
+  "home": {
+    "selected": {
+      "en": "Selected work",
+      "he": "עבודות נבחרות"
+    },
+    "practices": {
+      "en": "Three ways of working",
+      "he": "שלושה תחומים"
+    },
+    "reel": {
+      "en": "Watch showreel",
+      "he": "צפייה בשואוריל"
+    }
+  },
+  "project": {
+    "year": {
+      "en": "Year",
+      "he": "שנה"
+    },
+    "role": {
+      "en": "Role",
+      "he": "תפקיד"
+    },
+    "client": {
+      "en": "For",
+      "he": "עבור"
+    },
+    "duration": {
+      "en": "Duration",
+      "he": "אורך"
+    },
+    "credits": {
+      "en": "Credits",
+      "he": "קרדיטים"
+    },
+    "festivals": {
+      "en": "Screenings & awards",
+      "he": "הקרנות ופרסים"
+    },
+    "stills": {
+      "en": "Stills",
+      "he": "סטילס"
+    },
+    "next": {
+      "en": "Next project",
+      "he": "לפרויקט הבא"
+    },
+    "play": {
+      "en": "Play",
+      "he": "ניגון"
+    },
+    "noVideo": {
+      "en": "Video coming soon",
+      "he": "הווידאו יעלה בקרוב"
+    },
+    "award": {
+      "en": "Award-winning",
+      "he": "זוכה פרסים"
+    },
+    "videos": {
+      "en": "Episodes",
+      "he": "פרקים"
+    },
+    "episodes": {
+      "en": "Selected episodes",
+      "he": "פרקים נבחרים"
+    },
+    "social": {
+      "en": "On social",
+      "he": "ברשתות"
+    },
+    "showAll": {
+      "en": "Show all",
+      "he": "להציג הכל"
+    },
+    "format": {
+      "en": "Format",
+      "he": "פורמט"
+    }
+  },
+  "teaching": {
+    "courses": {
+      "en": "Courses & workshops",
+      "he": "קורסים וסדנאות"
+    },
+    "work": {
+      "en": "Programmes & consulting",
+      "he": "תוכניות וייעוץ"
+    },
+    "empty": {
+      "en": "Workshops in podcast production, audio storytelling and video journalism — for newsrooms, organisations and students. Get in touch to plan one.",
+      "he": "סדנאות בהפקת פודקאסטים, סיפור באודיו ועיתונות וידאו — למערכות חדשות, לארגונים ולסטודנטים. צרו קשר כדי לתכנן סדנה."
+    }
+  },
+  "about": {
+    "title": {
+      "en": "About",
+      "he": "אודות"
+    },
+    "clients": {
+      "en": "Selected outlets & clients",
+      "he": "כלי תקשורת ולקוחות"
+    }
+  },
+  "contact": {
+    "title": {
+      "en": "Let’s work together",
+      "he": "בואו נעבוד יחד"
+    },
+    "text": {
+      "en": "Have a story, a show or a workshop in mind? Get in touch.",
+      "he": "יש לכם סיפור, תוכנית או סדנה בראש? צרו קשר."
+    },
+    "email": {
+      "en": "Email",
+      "he": "אימייל"
+    },
+    "phone": {
+      "en": "Phone",
+      "he": "טלפון"
+    },
+    "whatsapp": {
+      "en": "WhatsApp",
+      "he": "וואטסאפ"
+    },
+    "elsewhere": {
+      "en": "Elsewhere",
+      "he": "ברשת"
+    }
+  },
+  "form": {
+    "name": {
+      "en": "Name",
+      "he": "שם"
+    },
+    "email": {
+      "en": "Email",
+      "he": "אימייל"
+    },
+    "subject": {
+      "en": "What’s it about?",
+      "he": "על מה מדובר?"
+    },
+    "subject_podcast": {
+      "en": "A podcast",
+      "he": "פודקאסט"
+    },
+    "subject_video": {
+      "en": "Video",
+      "he": "וידאו"
+    },
+    "subject_teaching": {
+      "en": "A workshop or talk",
+      "he": "סדנה או הרצאה"
+    },
+    "subject_other": {
+      "en": "Something else",
+      "he": "משהו אחר"
+    },
+    "message": {
+      "en": "Message",
+      "he": "הודעה"
+    },
+    "send": {
+      "en": "Send message",
+      "he": "שליחה"
+    },
+    "sending": {
+      "en": "Sending…",
+      "he": "שולח…"
+    },
+    "success": {
+      "en": "Thanks — your message has been sent.",
+      "he": "תודה — ההודעה נשלחה."
+    },
+    "error": {
+      "en": "Something went wrong and the message wasn’t sent. Please try again, or get in touch on LinkedIn.",
+      "he": "משהו השתבש וההודעה לא נשלחה. אפשר לנסות שוב, או ליצור קשר בלינקדאין."
+    }
+  },
+  "footer": {
+    "rights": {
+      "en": "All rights reserved.",
+      "he": "כל הזכויות שמורות."
+    }
+  },
+  "names": {
+    "eyebrow": {
+      "en": "Fun fact",
+      "he": "עובדה משעשעת"
+    }
+  },
+  "notfound": {
+    "title": {
+      "en": "Page not found",
+      "he": "העמוד לא נמצא"
+    },
+    "back": {
+      "en": "Back to the home page",
+      "he": "חזרה לעמוד הבית"
+    }
+  },
+  "a11y": {
+    "skip": {
+      "en": "Skip to content",
+      "he": "דילוג לתוכן"
+    }
+  }
+}
