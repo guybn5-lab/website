@@ -1,23 +1,29 @@
 ---
+title:
+  en: The Radical
+  he: הרדיקל
 category: journalism
 format: videocast
 featured: true
 order: 4
-title: { en: "The Radical", he: "הרדיקל" }
-client: { en: "Radical", he: "רדיקל" }
-role: { en: "Producer, editor & guest booker; built and ran the studio", he: "הפקה, עריכה וליהוק אורחים; הקמה וניהול של האולפן" }
+award: false
+year: '2024'
+client:
+  en: Radical
+  he: רדיקל
+role:
+  en: Producer; Studio Manager
+  he: מפיק ומנהל אולפן
 summary:
-  en: A videocast where high-profile public figures talk about the ideas that shape their ideology.
-  he: וידאוקאסט שבו אישי ציבור מוכרים מדברים על הרעיונות שמעצבים את האידיאולוגיה שלהם.
+  en: A videocast where activists, policitians and public figures talk about the ideas that shape their ideology.
+  he: וידאוקאסט שבו פולטיקיאים, אקטיביסטים, ואישי ציבור מדברים על הרעיונות שמעצבים את האידיאולוגיה שלהם.
 description:
-  en: |
-    Radical is a space where people connect with bold liberal ideas. One of the ways the initiative spreads its ideas is through productions filmed and recorded in the studio — a studio Guy was recruited to build and manage.
-
-    It’s also where Radical launched its flagship videocast, produced and edited by Guy, who also booked its high-profile guests — among them former Prime Minister Ehud Barak, Democrats party leader Yair Golan, Knesset member Zvi Sukkot and many more.
-  he: |
-    רדיקל הוא מרחב שבו אנשים מתחברים לרעיונות ליברליים נועזים. אחת הדרכים שבהן היוזמה מפיצה את רעיונותיה היא הפקות שמצולמות ומוקלטות באולפן — אולפן שגיא גויס כדי להקים ולנהל.
-
-    שם גם הושק וידאוקאסט הדגל של רדיקל, שגיא הפיק וערך ושבשבילו ליהק אורחים בולטים — ביניהם ראש הממשלה לשעבר אהוד ברק, יו"ר הדמוקרטים יאיר גולן, חבר הכנסת צבי סוכות ורבים נוספים.
+  en: |-
+    As the Radical Studio launched, so has Radical’s flagship podcast "The Radical", hosted by Philospher Dr. Jeremy Fogel, a philosopher, author, and lecturer. In each episode, a public figure joins for a conversation about the formative ideas underlying their ideology. Guests included Former Prime Minister Ehud Barak, The Democts Party leader Yair Golan, and Knesset Member Naama Lazimi.
+    Guy produced the show, and managed the building and ongoing work of the studio.
+  he: |-
+    אולפן רדיקל הוא האולפן של בית רדיקל, אותו גיא הקים וניהל.
+    פודקאסט הדגל של רדיקל עם הקמת האולפן היה ״הרדיקל״ בהגשת ד״ר ג׳רמי פוגל, בו בכל פרק התארח איש ציבור לשיחה על הרעיונות המעצבים שבבסיס האידיאלוגיה שלו. בין המרואיינים אהוד ברק, יאיר גולן, לינור דויטש, אור-לי ברלב וגיל דיקמן.
 cover: /images/projects/radical.webp
 embeds:
   - https://www.instagram.com/reel/C8WdlEItfcy/
