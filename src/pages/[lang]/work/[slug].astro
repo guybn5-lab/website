@@ -39,7 +39,8 @@ const embeds = (p.embeds ?? []).map((e) =>
 const episodeEmbeds = embeds.filter((e) => !isSocial(e.url));
 const audioEpisodes = p.episodes ?? [];
 const episodeCount = audioEpisodes.length + episodeEmbeds.length;
-const episodeSource = audioEpisodes[0]?.url?.includes('theguardian.com') ? 'The Guardian' : undefined;
+const episodeSource = (url?: string) =>
+  url?.includes('theguardian.com') ? 'The Guardian' : url?.includes('podcasts.apple.com') ? 'Apple Podcasts' : undefined;
 const socialEmbeds = embeds.filter((e) => isSocial(e.url));
 const hasInstagram = socialEmbeds.some((e) => embedKind(e.url).kind === 'instagram');
 // Long lists start collapsed with a "Show all" button.
@@ -200,7 +201,7 @@ const facts = [
           <div class="episodes-grid">
             {audioEpisodes.map((ep, i) => (
               <div class="item" data-extra={i >= PREVIEW.episodes ? '' : undefined}>
-                <EpisodeCard episode={ep} lang={lang} source={episodeSource} />
+                <EpisodeCard episode={ep} lang={lang} source={episodeSource(ep.url)} />
               </div>
             ))}
             {episodeEmbeds.map((e, i) => (
