@@ -11,7 +11,7 @@ import {
   type Category,
   type Lang,
 } from '../../../i18n/ui';
-import { byCategory } from '../../../lib/projects';
+import { byCategory, paragraphs } from '../../../lib/projects';
 
 export const getStaticPaths = () =>
   languages.flatMap((lang) => categories.map((category) => ({ params: { lang, category } })));
@@ -28,7 +28,16 @@ const isTeaching = category === 'knowledge-sharing';
     <p class="eyebrow">
       {String(categories.indexOf(category) + 1).padStart(2, '0')} / {String(categories.length).padStart(2, '0')}
     </p>
-    <h1>{label}</h1>
+    <div class="head-row">
+      <h1>{label}</h1>
+      {
+        isTeaching && (
+          <button type="button" class="stamp" data-names-open aria-haspopup="dialog" aria-label={t(lang, 'names.badgeLabel')}>
+            <span aria-hidden="true">{t(lang, 'names.badge')}</span>
+          </button>
+        )
+      }
+    </div>
     <p class="intro">{categoryIntros[category][lang]}</p>
   </header>
 
@@ -70,6 +79,23 @@ const isTeaching = category === 'knowledge-sharing';
           ))}
         </div>
       </section>
+    )
+  }
+
+  {
+    isTeaching && (
+      <dialog class="names" data-names aria-labelledby="names-title">
+        <button type="button" class="names-close" data-names-close>
+          {t(lang, 'nav.close')} ✕
+        </button>
+        <p class="eyebrow">{t(lang, 'names.eyebrow')}</p>
+        <h2 id="names-title">{t(lang, 'names.title')}</h2>
+        <div class="names-pair" aria-hidden="true">
+          <span lang="en" dir="ltr">Szafman <small>Paris · London</small></span>
+          <span lang="he" dir="rtl">בן נון <small>ישראל</small></span>
+        </div>
+        {paragraphs(t(lang, 'names.body')).map((para) => <p>{para}</p>)}
+      </dialog>
     )
   }
 </Base>
@@ -155,4 +181,118 @@ const isTeaching = category === 'knowledge-sharing';
       grid-template-columns: 1fr;
     }
   }
+  /* Hidden "why two names?" stamp (knowledge-sharing page only) */
+  .head-row {
+    display: flex;
+    align-items: flex-start;
+    gap: clamp(12px, 2vw, 28px);
+  }
+  .stamp {
+    flex: none;
+    display: grid;
+    place-items: center;
+    width: 64px;
+    height: 64px;
+    margin-top: clamp(24px, 3vw, 40px);
+    border: 1.5px dashed var(--accent);
+    border-radius: 50%;
+    outline: 1.5px solid var(--accent);
+    outline-offset: 3px;
+    color: var(--accent);
+    font-size: 10px;
+    font-weight: 600;
+    line-height: 1.1;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    text-align: center;
+    opacity: 0.55;
+    transform: rotate(-14deg);
+    cursor: pointer;
+    transition:
+      opacity 0.3s var(--ease),
+      transform 0.4s var(--ease);
+  }
+  .stamp:hover,
+  .stamp:focus-visible {
+    opacity: 1;
+    transform: rotate(0deg) scale(1.08);
+  }
+  .stamp:focus-visible {
+    outline-color: var(--fg);
+  }
+  :root[lang='he'] .stamp {
+    font-size: 11px;
+    letter-spacing: 0;
+  }
+  .names {
+    width: min(92vw, 560px);
+    padding: clamp(24px, 4vw, 44px);
+    border: 0;
+    border-radius: var(--radius);
+    background: var(--bg-raised);
+    color: var(--fg);
+    box-shadow: 0 30px 80px rgb(0 0 0 / 0.25);
+  }
+  .names::backdrop {
+    background: rgb(10 10 10 / 0.6);
+  }
+  .names h2 {
+    margin: 12px 0 20px;
+    font-size: clamp(28px, 4vw, 40px);
+    line-height: 1.1;
+  }
+  .names p:not(.eyebrow) {
+    margin: 0 0 14px;
+    color: var(--fg-soft);
+  }
+  .names-pair {
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+    margin-bottom: 24px;
+    padding-block: 14px;
+    border-block: 1px dashed var(--line);
+    font-family: var(--font-display);
+    font-size: clamp(22px, 3vw, 28px);
+  }
+  .names-pair span {
+    display: grid;
+  }
+  .names-pair small {
+    font-family: var(--font-body);
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+  .names-close {
+    display: block;
+    margin: 0 0 8px auto;
+    font-size: 14px;
+    color: var(--muted);
+  }
+  :global([dir='rtl']) .names-close {
+    margin: 0 auto 8px 0;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .stamp {
+      transition: none;
+    }
+  }
 </style>
+
+<script>
+  // Hidden "why two names?" fun fact
+  const names = document.querySelector<HTMLDialogElement>('[data-names]');
+  const opener = document.querySelector<HTMLButtonElement>('[data-names-open]');
+  if (names && opener) {
+    opener.addEventListener('click', () => names.showModal());
+    names.querySelector('[data-names-close]')!.addEventListener('click', () => names.close());
+    // Close on backdrop clicks only (the dialog has padding, so check the click is outside its box).
+    names.addEventListener('click', (e) => {
+      const r = names.getBoundingClientRect();
+      const inside = e.clientX >= r.left && e.clientX <= r.right && e.clientY >= r.top && e.clientY <= r.bottom;
+      if (!inside) names.close();
+    });
+  }
+</script>
