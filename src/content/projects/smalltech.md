@@ -31,4 +31,12 @@ embeds:
   - https://www.instagram.com/reel/DGxqvZwK-l5/
   - https://www.tiktok.com/@smalltechpod/video/7561481882513231122
   - https://www.tiktok.com/@smalltechpod/video/7667518665813675284
+stills:
+  - /images/projects/jounEY.jpg
+  - /images/projects/1719998688628.jpg
+  - /images/projects/1719998690591.jpg
+  - /images/projects/1719998689774.jpg
+  - /images/projects/1719998689507.jpg
+  - /images/projects/1719998690095.jpg
+  - /images/projects/1719998689817.jpg
 ---
