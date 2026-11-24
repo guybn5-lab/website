@@ -66,7 +66,10 @@ const current = (p: string) => (section ?? path).startsWith(p);
           </li>
         ))
       }
-      <li style={`--i:${nav.length}`} class="mobile-lang">
+      <li style={`--i:${nav.length}`}>
+        <a href="#contact" data-menu-close>{t(lang, 'nav.contact')}</a>
+      </li>
+      <li style={`--i:${nav.length + 1}`} class="mobile-lang">
         <a href={localHref(other, path)} hreflang={other} lang={other}>{t(lang, 'lang.switch')}</a>
       </li>
     </ul>
@@ -79,26 +82,37 @@ const current = (p: string) => (section ?? path).startsWith(p);
     top: 0;
     z-index: 50;
     height: var(--header-h);
+    border-bottom: 1px solid var(--line);
+    transition: border-color 0.4s var(--ease);
+  }
+  /* The frosted background lives on a separate layer. If the header itself had
+     backdrop-filter, Safari would trap the fixed mobile menu inside the 72px bar. */
+  .site-header::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: -1;
     background: rgb(245 242 236 / 0.86);
     backdrop-filter: blur(14px);
     -webkit-backdrop-filter: blur(14px);
-    border-bottom: 1px solid var(--line);
-    transition: background 0.4s var(--ease), border-color 0.4s var(--ease);
+    transition: background 0.4s var(--ease), opacity 0.4s var(--ease);
   }
   .site-header.is-overlay {
     position: fixed;
     inset-inline: 0;
-    background: transparent;
     border-color: transparent;
-    backdrop-filter: none;
-    -webkit-backdrop-filter: none;
+  }
+  .site-header.is-overlay::before {
+    opacity: 0;
   }
   .site-header.is-overlay.is-scrolled,
   .site-header.menu-open {
-    background: rgb(245 242 236 / 0.94);
     border-color: var(--line);
-    backdrop-filter: blur(14px);
-    -webkit-backdrop-filter: blur(14px);
+  }
+  .site-header.is-overlay.is-scrolled::before,
+  .site-header.menu-open::before {
+    opacity: 1;
+    background: rgb(245 242 236 / 0.94);
   }
 
   .bar {
@@ -231,6 +245,7 @@ const current = (p: string) => (section ?? path).startsWith(p);
     label.textContent = (open ? label.dataset.closeLabel : label.dataset.openLabel) ?? '';
   };
   btn.addEventListener('click', () => setOpen(menu.hidden));
+  menu.querySelectorAll('[data-menu-close]').forEach((a) => a.addEventListener('click', () => setOpen(false)));
   document.addEventListener('keydown', (e) => e.key === 'Escape' && !menu.hidden && setOpen(false));
   matchMedia('(min-width: 981px)').addEventListener('change', (e) => e.matches && setOpen(false));
 
