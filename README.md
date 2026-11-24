@@ -86,8 +86,9 @@ npm run build    # outputs the static site to dist/
 
 Any static host works. The easiest options are:
 
-**Cloudflare Pages** or **Netlify** → "Import from GitHub" → pick this repo →
+**Cloudflare** (Workers & Pages) or **Netlify** → "Import from GitHub" → pick this repo →
 set the build command to `npm run build` and the output directory to `dist`.
+On Cloudflare's Workers setup, keep the deploy command `npx wrangler deploy`: `wrangler.jsonc` tells it to upload `dist/`.
 Then add your domain (for example `guyszafman.com`) in the host's domain settings and point your DNS to it.
 Every push to the main branch redeploys the site automatically.
 

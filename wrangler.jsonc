@@ -1,0 +1,10 @@
+// Cloudflare deploy settings. `npm run build` writes the static site to dist/,
+// and `npx wrangler deploy` uploads that folder. There's no server code.
+{
+  "name": "website",
+  "compatibility_date": "2026-11-01",
+  "assets": {
+    "directory": "./dist",
+    "not_found_handling": "404-page"
+  }
+}
