@@ -203,3 +203,11 @@ collections:
               - { label: Years (e.g. 2024 —), name: years, widget: string }
               - { label: Course, name: title, widget: object, fields: [*en, *he] }
               - { label: Institution, name: where, widget: object, fields: [*en, *he] }
+          - label: "Fun fact: why two names? (hidden stamp on the Knowledge Sharing page)"
+            name: nameStory
+            widget: object
+            required: false
+            fields:
+              - { label: Stamp text (keep it very short), name: badge, widget: object, fields: [*en, *he] }
+              - { label: Title, name: title, widget: object, fields: [*en, *he] }
+              - { label: Story (blank line between paragraphs; leave empty to hide the stamp), name: body, widget: object, fields: [*enText, *heText] }

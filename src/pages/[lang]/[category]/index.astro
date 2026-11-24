@@ -21,6 +21,8 @@ const category = Astro.params.category as Category;
 const list = byCategory(category);
 const label = categoryLabels[category][lang];
 const isTeaching = category === 'knowledge-sharing';
+const story = site.nameStory;
+const showStory = isTeaching && story.body[lang].trim() !== '';
 ---
 
 <Base lang={lang} path={`/${category}/`} title={label} description={categoryIntros[category][lang]}>
@@ -31,9 +33,15 @@ const isTeaching = category === 'knowledge-sharing';
     <div class="head-row">
       <h1>{label}</h1>
       {
-        isTeaching && (
-          <button type="button" class="stamp" data-names-open aria-haspopup="dialog" aria-label={t(lang, 'names.badgeLabel')}>
-            <span aria-hidden="true">{t(lang, 'names.badge')}</span>
+        showStory && (
+          <button
+            type="button"
+            class="stamp"
+            data-names-open
+            aria-haspopup="dialog"
+            aria-label={`${t(lang, 'names.eyebrow')}: ${story.title[lang]}`}
+          >
+            <span aria-hidden="true">{story.badge[lang] || '?'}</span>
           </button>
         )
       }
@@ -83,18 +91,18 @@ const isTeaching = category === 'knowledge-sharing';
   }
 
   {
-    isTeaching && (
+    showStory && (
       <dialog class="names" data-names aria-labelledby="names-title">
         <button type="button" class="names-close" data-names-close>
           {t(lang, 'nav.close')} ✕
         </button>
         <p class="eyebrow">{t(lang, 'names.eyebrow')}</p>
-        <h2 id="names-title">{t(lang, 'names.title')}</h2>
+        <h2 id="names-title">{story.title[lang]}</h2>
         <div class="names-pair" aria-hidden="true">
           <span lang="en" dir="ltr">Szafman <small>Paris · London</small></span>
           <span lang="he" dir="rtl">בן נון <small>ישראל</small></span>
         </div>
-        {paragraphs(t(lang, 'names.body')).map((para) => <p>{para}</p>)}
+        {paragraphs(story.body[lang]).map((para) => <p>{para}</p>)}
       </dialog>
     )
   }

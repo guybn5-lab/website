@@ -90,5 +90,19 @@
       "רדיקל"
     ]
   },
-  "courses": []
+  "courses": [],
+  "nameStory": {
+    "badge": {
+      "en": "2 names?",
+      "he": "שני שמות?"
+    },
+    "title": {
+      "en": "Why two surnames?",
+      "he": "למה שני שמות משפחה?"
+    },
+    "body": {
+      "en": "In Hebrew I’m Bin Nun; in English I’m Szafman. Same guy, I promise.\n\nMy Parisian grandpa was born Szafman. Years after marrying my grandma, he took her surname, Bin Nun. His birth certificate never got the memo, and my French passport goes by it.\n\nWhen I moved to London I did all the paperwork on that French passport, so here I’m Szafman. Back in Israel I’m Bin Nun. Airport staff usually get the full version of this story.",
+      "he": "בעברית אני בן נון, באנגלית אני Szafman. אותו גיא, מבטיח.\n\nסבא שלי, פריזאי, נולד בשם Szafman. שנים אחרי שהתחתן עם סבתא שלי, הוא אימץ את שם המשפחה שלה — בן נון. אבל תעודת הלידה שלו לא שמעה על זה, והדרכון הצרפתי שלי הולך לפיה.\n\nכשעברתי ללונדון עשיתי את כל הניירת עם הדרכון הצרפתי, אז שם אני Szafman. בישראל אני בן נון. בשדות תעופה אני מספר את הסיפור הזה לא מעט."
+    }
+  }
 }

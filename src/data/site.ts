@@ -47,6 +47,8 @@ export interface SiteData {
   clients: { en: string[]; he: string[] };
   /** Courses and workshops — listed on the Knowledge Sharing page. Newest first. */
   courses: { years: string; title: Localized; where: Localized }[];
+  /** Hidden "why two names?" fun fact — a stamp on the Knowledge Sharing page. Empty story hides the stamp. */
+  nameStory: { badge: Localized; title: Localized; body: Localized };
 }
 
 /** The editor leaves empty fields out of site.json, so fill them back in here. */
@@ -79,4 +81,9 @@ export const site: SiteData = {
   },
   clients: { ...emptyList, ...json.clients },
   courses: json.courses ?? [],
+  nameStory: {
+    badge: { ...empty, ...json.nameStory?.badge },
+    title: { ...empty, ...json.nameStory?.title },
+    body: { ...empty, ...json.nameStory?.body },
+  },
 };
