@@ -11,6 +11,8 @@ summary:
   he: סיפורים מדהימים שטרם סופרו, מהתקופה האפלה ביותר בהיסטוריה האנושית.
 cover: /images/projects/on-the-holocaust.webp
 links:
+  - label: { en: "Spotify", he: "Spotify" }
+    url: https://open.spotify.com/show/5j0ta2Qa29H6qQTtagK4la
   - label: { en: "Apple Podcasts", he: "Apple Podcasts" }
     url: https://podcasts.apple.com/il/podcast/id1506916695
 ---

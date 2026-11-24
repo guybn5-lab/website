@@ -26,12 +26,14 @@ description:
     פודקאסט הדגל של רדיקל עם הקמת האולפן היה ״הרדיקל״ בהגשת ד״ר ג׳רמי פוגל, בו בכל פרק התארח איש ציבור לשיחה על הרעיונות המעצבים שבבסיס האידיאלוגיה שלו. בין המרואיינים אהוד ברק, יאיר גולן, לינור דויטש, אור-לי ברלב וגיל דיקמן.
 cover: /images/projects/radical.webp
 embeds:
+  - https://www.instagram.com/reel/C9Pq7outEh6/
+  - https://www.instagram.com/reel/DCRt0QLIihe/
   - https://www.instagram.com/reel/C8WdlEItfcy/
   - https://www.instagram.com/reel/C8PessxNNKK/
   - https://www.instagram.com/reel/DIvejdFt3WM/
   - https://www.instagram.com/reel/C8J3PnYNAPW/
   - https://www.instagram.com/reel/C8pGu9DNmgn/
-  - https://open.spotify.com/episode/6LC6SkXhUN4nI1Q74c8Xo9/video
+  - https://open.spotify.com/episode/1jKVb4d0ebt3Msjn20NFqZ/video
   - https://www.instagram.com/reel/DFVQeAKt0ak/
-  - https://open.spotify.com/episode/1zgEmk2CM7uZfTCrnx64bb/video
+  - https://open.spotify.com/episode/0w2j34tdWnHtsiPVg3GMLM/video
 ---

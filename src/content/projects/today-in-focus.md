@@ -35,6 +35,8 @@ links:
       en: Listen on The Guardian
       he: להאזנה באתר הגרדיאן
     url: https://www.theguardian.com/news/series/todayinfocus
+  - label: { en: "Spotify", he: "Spotify" }
+    url: https://open.spotify.com/show/2cSQmzYnf6LyrN0Mi6E64p
   - label:
       en: Apple Podcasts
       he: Apple Podcasts

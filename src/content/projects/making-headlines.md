@@ -13,6 +13,8 @@ credits:
     name: { en: Attila Somfalvi, he: אטילה שומפלבי }
 cover: /images/projects/making-headlines.webp
 links:
+  - label: { en: "Spotify", he: "Spotify" }
+    url: https://open.spotify.com/show/7gechqdjCBRiN9u24VId1D
   - label: { en: "Apple Podcasts", he: "Apple Podcasts" }
     url: https://podcasts.apple.com/il/podcast/id1473116003
 ---
