@@ -27,7 +27,7 @@ cover: /images/projects/today-in-focus.webp
 links:
   - label: { en: "Listen on The Guardian", he: "להאזנה באתר הגרדיאן" }
     url: https://www.theguardian.com/news/series/todayinfocus
-  - label: Apple Podcasts
+  - label: { en: "Apple Podcasts", he: "Apple Podcasts" }
     url: https://podcasts.apple.com/il/podcast/id1440133626
 embeds:
   - https://www.instagram.com/reel/DZupchGo8Fm/

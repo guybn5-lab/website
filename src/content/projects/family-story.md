@@ -14,7 +14,7 @@ description:
   he: |
     סיפור משפחתי לוקח היסטוריה של משפחה — הישרדות בתנאים קשים, עלייה, בנייה של חיים — והופך אותה לתוכנית תיעודית באודיו שקל להפיץ ושנגישה לדורות הצעירים.
 links:
-  - label: Apple Podcasts
+  - label: { en: "Apple Podcasts", he: "Apple Podcasts" }
     url: https://podcasts.apple.com/il/podcast/id1494128710
   - label: { en: "Family Sounds website", he: "האתר של סיפור משפחתי" }
     url: https://www.familysounds.co.il/

@@ -17,8 +17,8 @@ description:
     סיפורים ותובנות של מהנדסי וויקס לצד קולות בולטים מקהילת הטכנולוגיה — ביניהם מנכ״ל ומייסד וויקס אבישי אברהמי על סשנים של כתיבת קוד בעצמו, וקנט סי. דודס על למידה וקהילות מפתחים.
 spotify: { type: show, id: 5CmjtjpdcKkHDnr0601uYS }
 links:
-  - label: Spotify
+  - label: { en: "Spotify", he: "Spotify" }
     url: https://open.spotify.com/show/5CmjtjpdcKkHDnr0601uYS
-  - label: Apple Podcasts
+  - label: { en: "Apple Podcasts", he: "Apple Podcasts" }
     url: https://podcasts.apple.com/il/podcast/id1503976848
 ---

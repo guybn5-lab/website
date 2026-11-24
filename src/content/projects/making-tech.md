@@ -10,6 +10,6 @@ summary:
   he: פודקאסט הטכנולוגיה הנרטיבי הפופולרי בישראל, על היחסים בין חברה לטכנולוגיה.
 cover: /images/projects/making-tech.webp
 links:
-  - label: Apple Podcasts
+  - label: { en: "Apple Podcasts", he: "Apple Podcasts" }
     url: https://podcasts.apple.com/il/podcast/id1296645393
 ---

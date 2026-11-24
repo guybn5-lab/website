@@ -18,9 +18,31 @@ There's no Wix, no database and no monthly CMS fee: the site is just files in th
 Every page has a language switch that keeps you on the same page in the other language.
 Hebrew pages are fully right-to-left.
 
-## Editing content
+## Editing in the browser
 
-**Your details, bio, showreel, courses and clients** → `src/data/site.ts`
+The site has a built-in editor at **`/admin/`**, for example `https://guyszafman.com/admin/`.
+It gives you forms for every project and for your bio, contact details, showreel, clients and courses, and it lets you upload images.
+Pressing **Save** commits the change to GitHub, and the host rebuilds the live site within a minute or two.
+It's free: the editor is [Sveltia CMS](https://github.com/sveltia/sveltia-cms), an open-source script, and there's no server or account to pay for.
+
+**Signing in (one time):**
+
+1. On GitHub, open **Settings → Developer settings → Personal access tokens → Fine-grained tokens → Generate new token**.
+2. Under *Repository access* choose **Only select repositories** → `guybn5-lab/website`.
+   Under *Permissions → Repository permissions* set **Contents** to **Read and write**.
+   Pick a long expiry and generate the token.
+3. Open `/admin/`, choose **Sign In Using Access Token** and paste the token. The browser remembers it.
+
+**While developing locally:** run `npm run dev`, open `http://localhost:4321/admin/` in Chrome or Edge, choose **Work with Local Repository** and select this folder.
+Changes are written straight to the files, and you commit them yourself.
+
+The editor's settings, including the fields on each form and the branch it saves to, are in `public/admin/config.yml`.
+If the host builds from a branch other than `claude/personal-website-redesign-ten1pc`, change `branch` there.
+The **Sign In with GitHub** button only works after you set up a small login service: to use it instead of a token, deploy [sveltia-cms-auth](https://github.com/sveltia/sveltia-cms-auth) (a free Cloudflare Worker) and add its URL as `base_url` under `backend`.
+
+## Editing content by hand
+
+**Your details, bio, showreel, courses and clients** → `src/data/site.json`
 
 **Projects** → one file per project in `src/content/projects/`.
 Copy `_template.md.txt` to a new file such as `my-film.md`. The file name becomes the URL. Then fill in the fields.
@@ -42,7 +64,7 @@ Everything is optional except `category` and `title`.
 The projects were copied from the old Wix site. Several are missing years, roles and listening links, which you can add any time.
 
 **Contact form** → messages are delivered by [Web3Forms](https://web3forms.com) (free), so your email address never appears on the site.
-Go to web3forms.com, enter the address that should receive messages, and paste the access key you get by email into `formAccessKey` in `src/data/site.ts`.
+Go to web3forms.com, enter the address that should receive messages, and paste the access key you get by email into *Site settings → Contact* in the editor (or `formAccessKey` in `src/data/site.json`).
 
 **Interface text** (menu labels, buttons, category descriptions) → `src/i18n/ui.ts`
 

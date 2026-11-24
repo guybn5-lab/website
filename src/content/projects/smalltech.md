@@ -10,6 +10,6 @@ summary:
   he: הגרסה הישראלית של הפודקאסט האמריקאי All-In, שבו משקיעי הון סיכון מדברים על כלכלה, טכנולוגיה ופוליטיקה.
 cover: /images/projects/smalltech.webp
 links:
-  - label: Apple Podcasts
+  - label: { en: "Apple Podcasts", he: "Apple Podcasts" }
     url: https://podcasts.apple.com/il/podcast/id1731793758
 ---

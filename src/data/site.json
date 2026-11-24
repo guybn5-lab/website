@@ -1,0 +1,94 @@
+{
+  "name": {
+    "en": "Guy Szafman",
+    "he": "גיא בן נון"
+  },
+  "roles": {
+    "en": [
+      "Video & podcast producer",
+      "Journalist",
+      "Documentarian"
+    ],
+    "he": [
+      "מפיק וידאו ופודקאסטים",
+      "עיתונאי",
+      "יוצר תיעודי"
+    ]
+  },
+  "tagline": {
+    "en": "Video & podcast producer, journalist and documentarian.",
+    "he": "מפיק וידאו ופודקאסטים, עיתונאי ויוצר תיעודי."
+  },
+  "intro": {
+    "en": "Podcasts and videos that tell true stories — from daily news at The Guardian to award-winning documentary series and viral reporting for young audiences in Israel.",
+    "he": "פודקאסטים וסרטונים שמספרים סיפורים אמיתיים — מחדשות יומיות בגרדיאן ועד סדרות תיעודיות זוכות פרסים וכתבות ויראליות לקהל צעיר בישראל."
+  },
+  "bio": {
+    "en": "Guy Szafman is a podcast and video producer, documentarian, and investigative journalist. Starting out as an editor and producer of some of Israel's most popular podcasts, Guy went on to create two award-winning documentary podcasts.\n\nNext came an independent media organisation that targets youth exclusively, where Guy created viral news reports. After completing an MA, Guy joined the team behind The Guardian's podcast \"Today in Focus\" to produce daily episodes for the outlet's flagship show.\n\nIn between: articles for Ynet, Israel's leading news website; reporting from a war zone; a series of testimonial videos for monday.com; and editing the Israeli version of the American All-In Podcast.",
+    "he": "גיא בן נון הוא מפיק פודקאסטים ווידאו, יוצר תיעודי ועיתונאי תחקירים. הוא התחיל את דרכו כעורך ומפיק של כמה מהפודקאסטים הפופולריים בישראל, ובהמשך יצר שני פודקאסטים תיעודיים זוכי פרסים.\n\nלאחר מכן הצטרף לארגון מדיה עצמאי שפונה לצעירים בלבד, ויצר כתבות חדשותיות ויראליות. לאחר שסיים את התואר השני, הצטרף לצוות של \"Today in Focus\", הפודקאסט של הגרדיאן, כדי להפיק פרקים יומיים לתוכנית הדגל של העיתון.\n\nבין לבין פרסם כתבות ב־ynet, אתר החדשות המוביל בישראל; דיווח מאזור מלחמה; הפיק סדרת סרטוני עדות עבור monday.com; וערך את הגרסה הישראלית של הפודקאסט האמריקאי All-In."
+  },
+  "portrait": "/images/portrait.webp",
+  "contact": {
+    "formAccessKey": "d78c560e-0423-465a-87a0-975c5a66e702",
+    "email": "",
+    "phone": "",
+    "whatsapp": "",
+    "location": {
+      "en": "",
+      "he": ""
+    }
+  },
+  "social": [
+    {
+      "label": "LinkedIn",
+      "url": "https://www.linkedin.com/in/guy-bin-nun-szafman-1b440b195"
+    },
+    {
+      "label": "Instagram",
+      "url": "https://www.instagram.com/guybn5/"
+    },
+    {
+      "label": "Facebook",
+      "url": "https://www.facebook.com/guy.binnoun"
+    }
+  ],
+  "showreel": {
+    "loop": "",
+    "poster": "",
+    "full": {
+      "provider": "",
+      "id": ""
+    }
+  },
+  "clients": {
+    "en": [
+      "The Guardian",
+      "ynet",
+      "PI Media",
+      "monday.com",
+      "monday.com Foundation",
+      "Wix",
+      "Check Point",
+      "Shufersal",
+      "Yad Vashem",
+      "Hillel",
+      "Under the Radar",
+      "Radical"
+    ],
+    "he": [
+      "הגרדיאן",
+      "ynet",
+      "PI Media",
+      "monday.com",
+      "קרן monday.com",
+      "וויקס",
+      "צ׳ק פוינט",
+      "שופרסל",
+      "יד ושם",
+      "עמותת הלל",
+      "מתחת לרדאר",
+      "רדיקל"
+    ]
+  },
+  "courses": []
+}
