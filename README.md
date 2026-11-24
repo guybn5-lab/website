@@ -20,7 +20,7 @@ Hebrew pages are fully right-to-left.
 
 ## Editing in the browser
 
-The site has a built-in editor at **`/admin/`**, for example `https://guyszafman.com/admin/`.
+The site has a built-in editor at **`/admin/`**, for example `https://guywithamic.com/admin/`.
 It gives you forms for every project and for your bio, contact details, showreel, clients and courses, and it lets you upload images.
 Pressing **Save** commits the change to GitHub, and the host rebuilds the live site within a minute or two.
 It's free: the editor is [Sveltia CMS](https://github.com/sveltia/sveltia-cms), an open-source script, and there's no server or account to pay for.
@@ -89,8 +89,8 @@ Any static host works. The easiest options are:
 **Cloudflare** (Workers & Pages) or **Netlify** → "Import from GitHub" → pick this repo →
 set the build command to `npm run build` and the output directory to `dist`.
 On Cloudflare's Workers setup, keep the deploy command `npx wrangler deploy`: `wrangler.jsonc` tells it to upload `dist/`.
-Then add your domain (for example `guyszafman.com`) in the host's domain settings and point your DNS to it.
+Then add your domain (for example `guywithamic.com`) in the host's domain settings and point your DNS to it.
 Every push to the main branch redeploys the site automatically.
 
-Set the environment variable `SITE_URL` (for example `https://guyszafman.com`) so that canonical links and social-media previews use the right address.
+Set the environment variable `SITE_URL` (for example `https://guywithamic.com`) so that canonical links and social-media previews use the right address.
 If you host the site under a sub-path (for example GitHub Pages without a custom domain), also set `BASE_PATH=/website/`.
