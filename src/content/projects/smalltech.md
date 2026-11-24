@@ -7,7 +7,7 @@ format: podcast
 featured: false
 order: 12
 award: false
-year: '2024'
+year: 2024-Present
 role:
   en: Editor
   he: עורך
