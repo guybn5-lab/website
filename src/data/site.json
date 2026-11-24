@@ -29,14 +29,7 @@
   },
   "portrait": "/images/portrait.webp",
   "contact": {
-    "formAccessKey": "d78c560e-0423-465a-87a0-975c5a66e702",
-    "email": "",
-    "phone": "",
-    "whatsapp": "",
-    "location": {
-      "en": "",
-      "he": ""
-    }
+    "formAccessKey": "d78c560e-0423-465a-87a0-975c5a66e702"
   },
   "social": [
     {
@@ -52,14 +45,6 @@
       "url": "https://www.facebook.com/guy.binnoun"
     }
   ],
-  "showreel": {
-    "loop": "",
-    "poster": "",
-    "full": {
-      "provider": "",
-      "id": ""
-    }
-  },
   "clients": {
     "en": [
       "The Guardian",
@@ -90,19 +75,18 @@
       "רדיקל"
     ]
   },
-  "courses": [],
   "nameStory": {
     "badge": {
-      "en": "2 names?",
-      "he": "שני שמות?"
+      "en": "Fun Fact",
+      "he": "הידעת?"
     },
     "title": {
       "en": "Why two surnames?",
       "he": "למה שני שמות משפחה?"
     },
     "body": {
-      "en": "In Hebrew I’m Bin Nun; in English I’m Szafman. Same guy, I promise.\n\nMy Parisian grandpa was born Szafman. Years after marrying my grandma, he took her surname, Bin Nun. His birth certificate never got the memo, and my French passport goes by it.\n\nWhen I moved to London I did all the paperwork on that French passport, so here I’m Szafman. Back in Israel I’m Bin Nun. Airport staff usually get the full version of this story.",
-      "he": "בעברית אני בן נון, באנגלית אני Szafman. אותו גיא, מבטיח.\n\nסבא שלי, פריזאי, נולד בשם Szafman. שנים אחרי שהתחתן עם סבתא שלי, הוא אימץ את שם המשפחה שלה — בן נון. אבל תעודת הלידה שלו לא שמעה על זה, והדרכון הצרפתי שלי הולך לפיה.\n\nכשעברתי ללונדון עשיתי את כל הניירת עם הדרכון הצרפתי, אז שם אני Szafman. בישראל אני בן נון. בשדות תעופה אני מספר את הסיפור הזה לא מעט."
+      "en": "If you happened to switch between the Hebrew and English versions of the website, you've probably noticed that in Hebrew I’m Bin Nun; in English I’m Szafman. Same guy, I promise. and not a Mossad agent.\n\nThe root of this weird glitch is that my Parisian grandpa, who was born Szafman. Years after marrying my grandma, he took her surname, Bin Nun. His French birth certificate never got the memo, and my French passport goes by it.\n\nWhen I moved to London I did all the paperwork on that French passport, so here I’m Szafman. Back in Israel I’m Bin Nun. Airport staff usually get the full version of this story.",
+      "he": "אם החלפתם בין הגרסה בעברית של האתר לזו באנגלית, אז בטח שמתם לב שבעברית אני בן נון, ובאנגלית אני Szafman. אבל זה אותו בן אדם, אני מבטיח. ואני לא סוכן מוסד עם זהות כפולה.\n\nהמקור של הגליץ׳ המוזר הזה הוא סבא שלי, פריזאי במקור, שנולד בשם Szafman. שנים אחרי שהתחתן עם סבתא שלי, הוא אימץ את שם המשפחה שלה - בן נון. הבעיה היא שתעודת הלידה שלו כמובן נושאת את השם המקורי, והשם שלי בדרכון הצרפתי שלי נקבע לפיה.\n\nכשעברתי ללונדון עשיתי את כל הניירת עם הדרכון הצרפתי, אז שם אני Szafman. בישראל אני בן נון. \n\nועכשיו קראתם את מה שאני צריך להסביר בשדה תעופה באופן די קבוע."
     }
   }
 }
