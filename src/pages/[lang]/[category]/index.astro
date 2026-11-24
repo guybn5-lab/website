@@ -30,22 +30,7 @@ const showStory = isTeaching && story.body[lang].trim() !== '';
     <p class="eyebrow">
       {String(categories.indexOf(category) + 1).padStart(2, '0')} / {String(categories.length).padStart(2, '0')}
     </p>
-    <div class="head-row">
-      <h1>{label}</h1>
-      {
-        showStory && (
-          <button
-            type="button"
-            class="stamp"
-            data-names-open
-            aria-haspopup="dialog"
-            aria-label={`${t(lang, 'names.eyebrow')}: ${story.title[lang]}`}
-          >
-            <span aria-hidden="true">{story.badge[lang] || '?'}</span>
-          </button>
-        )
-      }
-    </div>
+    <h1>{label}</h1>
     <p class="intro">{categoryIntros[category][lang]}</p>
   </header>
 
@@ -86,6 +71,19 @@ const showStory = isTeaching && story.body[lang].trim() !== '';
             <ProjectCard project={p} lang={lang} showCategory={false} eager={i < 2} />
           ))}
         </div>
+        {showStory && (
+          <div class="stamp-row">
+            <button
+              type="button"
+              class="stamp"
+              data-names-open
+              aria-haspopup="dialog"
+              aria-label={`${t(lang, 'names.eyebrow')}: ${story.title[lang]}`}
+            >
+              <span aria-hidden="true">{story.badge[lang] || '?'}</span>
+            </button>
+          </div>
+        )}
       </section>
     )
   }
@@ -190,10 +188,13 @@ const showStory = isTeaching && story.body[lang].trim() !== '';
     }
   }
   /* Hidden "why two names?" stamp (knowledge-sharing page only) */
-  .head-row {
+  .stamp-row {
+    position: relative;
+    z-index: 1;
     display: flex;
-    align-items: flex-start;
-    gap: clamp(12px, 2vw, 28px);
+    justify-content: flex-end;
+    margin-top: 16px;
+    padding-inline-end: clamp(8px, 2vw, 24px);
   }
   .stamp {
     flex: none;
@@ -201,7 +202,7 @@ const showStory = isTeaching && story.body[lang].trim() !== '';
     place-items: center;
     width: 64px;
     height: 64px;
-    margin-top: clamp(24px, 3vw, 40px);
+    background: var(--bg);
     border: 1.5px dashed var(--accent);
     border-radius: 50%;
     outline: 1.5px solid var(--accent);
