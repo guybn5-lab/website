@@ -39,11 +39,9 @@ credits:
   - role: { en: Host, he: הגשה }
     name: { en: Shifra Kornfeld, he: שפרה קורנפלד }
   - role: { en: Sound design, he: עיצוב סאונד }
-    name: { en: Ben-Or Herbary, he: בן־אור הרברי }
+    name: { en: Ben-Or Habari, he: בן־אור הרברי }
 embeds:
-  - https://open.spotify.com/episode/6c50F7S1pkYW3JYRqrD71C
   - https://www.instagram.com/p/Cv4QQK-M25F/
-  - https://open.spotify.com/episode/7jzz5AnSMqtadZVj89WbcL
   - https://www.instagram.com/reel/CuMpP68sceQ/
   - https://www.instagram.com/p/CvpHl7DN7DQ/
 ---
