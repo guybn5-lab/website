@@ -4,6 +4,7 @@ format: podcast
 order: 11
 title: { en: "When the Grush Had a Hole", he: "כשבגרוש היה חור" }
 client: { en: "with Roi Gron · Osim Historia network", he: "עם רועי גרון · רשת עושים היסטוריה" }
+role: { en: "Editor & producer", he: "עורך ומפיק" }
 year: 2018–2025
 summary:
   en: The podcast that explores history through money — stories in which economics takes the lead.
