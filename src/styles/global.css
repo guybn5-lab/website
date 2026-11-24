@@ -14,6 +14,7 @@
   --line: rgb(23 22 20 / 0.13);
   --accent: #dc3f2a; /* "on air" red — use sparingly */
   --on-accent: #fff;
+  --brass: #b8892b; /* award trophy */
 
   --font-display: 'Frank Ruhl Libre', Georgia, serif;
   --font-body: 'Inter Variable', 'Heebo', system-ui, sans-serif;
@@ -177,8 +178,10 @@ p {
   gap: 6px;
   padding: 4px 10px 4px 8px;
   border-radius: 999px;
-  background: var(--accent);
-  color: var(--on-accent);
+  background: rgb(245 242 236 / 0.92);
+  -webkit-backdrop-filter: blur(6px);
+  backdrop-filter: blur(6px);
+  color: var(--fg);
   font-size: 12px;
   font-weight: 500;
   line-height: 1.3;
@@ -189,6 +192,11 @@ p {
 }
 .award svg {
   flex: none;
+  color: var(--brass);
+}
+/* On a project page the badge sits on the page, not on a cover. */
+.badges .award {
+  background: var(--bg-raised);
 }
 
 .sr-only {
