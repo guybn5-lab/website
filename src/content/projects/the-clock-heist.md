@@ -32,7 +32,7 @@ cover: /images/projects/the-clock-heist.webp
 spotify: { type: episode, id: 28OrBgOqmwWJXvlBzuhtSk }
 links:
   - label: { en: "Spotify", he: "Spotify" }
-    url: https://open.spotify.com/show/00XeZtXvboICEFbEOBOgO0
+    url: https://open.spotify.com/show/37Xw0Fnlnso7Z05YJ3DzQB
   - label: { en: "Apple Podcasts", he: "Apple Podcasts" }
     url: https://podcasts.apple.com/il/podcast/id1692327437
 credits:
