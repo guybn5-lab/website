@@ -1,47 +1,67 @@
 ---
+title:
+  en: The Clock Heist
+  he: שוד השעונים הגדול
 category: journalism
 format: podcast-series
 featured: true
 order: 2
 award: true
-title: { en: "The Clock Heist", he: "שוד השעונים הגדול" }
-year: 2023
-client: { en: "PI Media", he: "PI Media" }
-role: { en: "Writer & director", he: "תסריט ובימוי" }
-duration: "7 episodes"
 highlight:
-  en: "#1 on Apple Podcasts in Israel."
-  he: "מקום ראשון בדירוג Apple Podcasts בישראל."
+  en: '#1 on Apple Podcasts in Israel.'
+  he: מקום ראשון בדירוג Apple Podcasts בישראל.
+year: '2023'
+duration: 7 episodes
+client:
+  en: PI Media
+  he: PI Media
+role:
+  en: Writer & Executive Producer
+  he: כותב ומפיק
 summary:
   en: The story of the largest art heist in Israel’s history.
   he: הסיפור של שוד האמנות הגדול בתולדות ישראל.
 description:
-  en: |
+  en: |-
     In April 1983, 106 valuable watches vanished from a small, remote museum in Jerusalem. The loot’s value: nearly a quarter of a billion dollars. It was the largest art heist in Israel’s history.
 
     The crime scene stood out: empty drink cans and leftover sandwiches indicated the burglars had spent hours inside. But despite abundant evidence, the investigation grew increasingly complex and took years to unravel. Who was behind the clock heist?
 
     The show is one of the most popular podcasts ever published in Israel and reached #1 on the Apple Podcasts Top Shows chart.
-  he: |
+  he: |-
     באפריל 1983 נעלמו 106 שעונים יקרי ערך ממוזיאון קטן ומרוחק בירושלים. שווי השלל: כמעט רבע מיליארד דולר. זה היה שוד האמנות הגדול בתולדות ישראל.
 
     זירת הפשע הייתה יוצאת דופן: פחיות שתייה ריקות ושאריות כריכים העידו שהפורצים בילו שעות בפנים. אבל למרות שפע הראיות, החקירה הלכה והסתבכה ולקח שנים לפענח אותה. מי עמד מאחורי שוד השעונים?
 
     הסדרה היא אחד הפודקאסטים המצליחים ביותר שיצאו בישראל, והגיעה למקום הראשון בדירוג התוכניות של Apple Podcasts.
 cover: /images/projects/the-clock-heist.webp
-spotify: { type: episode, id: 28OrBgOqmwWJXvlBzuhtSk }
+spotify:
+  type: episode
+  id: 28OrBgOqmwWJXvlBzuhtSk
 links:
-  - label: { en: "Spotify", he: "Spotify" }
+  - label:
+      en: Spotify
+      he: Spotify
     url: https://open.spotify.com/show/37Xw0Fnlnso7Z05YJ3DzQB
-  - label: { en: "Apple Podcasts", he: "Apple Podcasts" }
+  - label:
+      en: Apple Podcasts
+      he: Apple Podcasts
     url: https://podcasts.apple.com/il/podcast/id1692327437
-credits:
-  - role: { en: Host, he: הגשה }
-    name: { en: Shifra Kornfeld, he: שפרה קורנפלד }
-  - role: { en: Sound design, he: עיצוב סאונד }
-    name: { en: Ben-Or Habari, he: בן-אור הברי }
 embeds:
   - https://www.instagram.com/p/Cv4QQK-M25F/
   - https://www.instagram.com/reel/CuMpP68sceQ/
   - https://www.instagram.com/p/CvpHl7DN7DQ/
+credits:
+  - role:
+      en: Host
+      he: הגשה
+    name:
+      en: Shifra Kornfeld
+      he: שפרה קורנפלד
+  - role:
+      en: Sound design
+      he: עיצוב סאונד
+    name:
+      en: Ben-Or Habari
+      he: בן-אור הברי
 ---
