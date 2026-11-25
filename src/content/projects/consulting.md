@@ -5,7 +5,7 @@ cover: /images/projects/consulting.webp
 title: { en: "Consulting", he: "ייעוץ" }
 client: { en: "Organisations, creators & educators", he: "ארגונים, יוצרים ואנשי חינוך" }
 summary:
-  en: Consulting for anyone looking to launch a podcast, improve an existing one, or harness podcasts as an educational tool.
+  en: Consulting for anyone looking to launch a podcast, improve an existing one, or use podcasts as an educational tool.
   he: ייעוץ למי שרוצים להקים פודקאסט, לשפר פודקאסט קיים או להשתמש בפודקאסט ככלי חינוכי.
 description:
   en: |
