@@ -6,8 +6,8 @@ cover: /images/projects/consulting.webp
 title: { en: "Podcast Consulting", he: "ייעוץ לפודקאסטים" }
 client: { en: "Organisations, brands & creators", he: "ארגונים, מותגים ויוצרים" }
 summary:
-  en: Consulting for organisations and creators who want to launch a podcast or make an existing one better — from the idea to the published episode.
-  he: ייעוץ לארגונים וליוצרים שרוצים להשיק פודקאסט או לשפר פודקאסט קיים — מהרעיון ועד הפרק שעולה לאוויר.
+  en: Consulting for anyone looking to launch a podcast, improve an existing one, or harness podcasts as an educational tool.
+  he: ייעוץ למי שרוצים להקים פודקאסט, לשפר פודקאסט קיים או להשתמש בפודקאסט ככלי חינוכי.
 description:
   en: |
     Built on years of producing documentary series, daily news shows and branded podcasts, the consulting covers the whole process: finding the concept and format, shaping the editorial line, structuring episodes and interviews, and setting up a production workflow the team can sustain.
