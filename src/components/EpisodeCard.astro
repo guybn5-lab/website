@@ -1,6 +1,10 @@
 ---
-/** A single podcast episode with its own audio player — no third-party embed needed. */
-import type { Lang } from '../i18n/ui';
+/**
+ * A single podcast episode as a row in a track list: artwork, date · duration, title, one-line
+ * description and a round play button. Uses a hidden <audio> with a minimal custom control so
+ * every row lines up the same regardless of the browser's native player.
+ */
+import { t, type Lang } from '../i18n/ui';
 
 interface Props {
   episode: {
@@ -24,12 +28,21 @@ const date = e.date
 const duration = e.duration && lang === 'he' ? e.duration.replace('min', 'דק׳') : e.duration;
 ---
 
-<article class="episode">
-  {e.image && <img class="thumb" src={e.image} alt="" loading="lazy" decoding="async" />}
+<article class="episode" data-episode>
+  <div class="thumb" aria-hidden="true">
+    {e.image && <img src={e.image} alt="" loading="lazy" decoding="async" />}
+  </div>
   <div class="body">
     <p class="meta">
       {date && <time datetime={e.date}>{date}</time>}
-      {duration && <span>{duration}</span>}
+      {duration && <span class="dur" data-time>{duration}</span>}
+      {
+        e.url && source && (
+          <a class="source" href={e.url} target="_blank" rel="noopener">
+            {source} <span aria-hidden="true">↗</span>
+          </a>
+        )
+      }
     </p>
     <h3 lang="en" dir="ltr">
       {
@@ -43,50 +56,86 @@ const duration = e.duration && lang === 'he' ? e.duration.replace('min', 'דק׳
       }
     </h3>
     {e.description && <p class="desc" lang="en" dir="ltr">{e.description}</p>}
-    {e.audio && <audio controls preload="none" src={e.audio} aria-label={e.title} />}
-    {
-      e.url && source && (
-        <a class="source" href={e.url} target="_blank" rel="noopener">
-          {source} <span aria-hidden="true">↗</span>
-        </a>
-      )
-    }
   </div>
+  {
+    e.audio && (
+      <>
+        <button
+          type="button"
+          class="play"
+          data-play
+          aria-label={`${t(lang, 'project.play')}: ${e.title}`}
+          data-label-play={`${t(lang, 'project.play')}: ${e.title}`}
+          data-label-pause={`${t(lang, 'project.pause')}: ${e.title}`}
+        >
+          <svg class="i-play" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M8 5.5v13l11-6.5z" />
+          </svg>
+          <svg class="i-pause" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M7 5h3.5v14H7zM13.5 5H17v14h-3.5z" />
+          </svg>
+        </button>
+        <div class="progress" data-progress aria-hidden="true">
+          <span data-bar />
+        </div>
+        <audio preload="none" src={e.audio} />
+      </>
+    )
+  }
 </article>
 
 <style>
   .episode {
+    position: relative;
     display: grid;
-    grid-template-columns: 132px minmax(0, 1fr);
+    grid-template-columns: 76px minmax(0, 1fr) auto;
     gap: 18px;
-    align-items: start;
-    padding: 18px;
-    background: rgb(255 255 255 / 0.5);
-    border: 1px solid var(--line);
-    border-radius: var(--radius);
+    align-items: center;
+    height: 100%;
+    padding: 20px 0;
+    border-bottom: 1px solid var(--line);
   }
   .thumb {
-    width: 100%;
-    aspect-ratio: 5 / 4;
-    object-fit: cover;
+    width: 76px;
+    aspect-ratio: 1;
     border-radius: 8px;
+    overflow: hidden;
     background: var(--bg-raised);
+    align-self: start;
+  }
+  .thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
   }
   .meta {
     display: flex;
-    gap: 10px;
-    margin: 0 0 6px;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 0 10px;
+    margin: 0 0 4px;
     font-size: 12px;
     color: var(--muted);
+    font-variant-numeric: tabular-nums;
   }
-  .meta span::before {
+  .meta > * + *::before {
     content: '·';
     margin-inline-end: 10px;
   }
+  .source {
+    color: var(--muted);
+  }
+  .source:hover {
+    color: var(--fg);
+  }
   h3 {
-    font-size: 20px;
-    line-height: 1.25;
+    font-size: 19px;
+    line-height: 1.3;
     text-align: start;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
   }
   :global([dir='rtl']) h3,
   :global([dir='rtl']) .desc {
@@ -96,36 +145,139 @@ const duration = e.duration && lang === 'he' ? e.duration.replace('min', 'דק׳
     color: var(--accent);
   }
   .desc {
-    margin: 8px 0 0;
+    margin: 4px 0 0;
     font-size: 14px;
     line-height: 1.5;
-    color: var(--fg-soft);
-    display: -webkit-box;
-    -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-  }
-  audio {
-    width: 100%;
-    height: 36px;
-    margin-top: 12px;
-    accent-color: var(--accent);
-  }
-  .source {
-    display: inline-block;
-    margin-top: 8px;
-    font-size: 13px;
     color: var(--muted);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
-  .source:hover {
+
+  .play {
+    display: grid;
+    place-items: center;
+    width: 44px;
+    height: 44px;
+    padding: 0;
+    border: 1px solid var(--fg);
+    border-radius: 50%;
+    background: transparent;
     color: var(--fg);
+    cursor: pointer;
+    transition: background 0.2s var(--ease), color 0.2s var(--ease), border-color 0.2s var(--ease);
   }
+  .play:hover,
+  .is-playing .play {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: var(--on-accent);
+  }
+  .play svg {
+    width: 18px;
+    height: 18px;
+    fill: currentColor;
+  }
+  .i-pause,
+  .is-playing .i-play {
+    display: none;
+  }
+  .is-playing .i-pause {
+    display: block;
+  }
+
+  /* Thin progress line along the row's bottom edge; click to seek. */
+  .progress {
+    position: absolute;
+    inset-inline: 0;
+    bottom: -1px;
+    height: 9px;
+    margin-bottom: -4px;
+    cursor: pointer;
+    opacity: 0;
+    transition: opacity 0.2s;
+  }
+  .is-started .progress {
+    opacity: 1;
+  }
+  .progress span {
+    position: absolute;
+    inset-inline-start: 0;
+    top: 3px;
+    height: 3px;
+    width: 0;
+    background: var(--accent);
+    border-radius: 2px;
+  }
+  :global([dir='rtl']) .progress {
+    direction: rtl;
+  }
+
   @media (max-width: 520px) {
     .episode {
-      grid-template-columns: 1fr;
+      grid-template-columns: 56px minmax(0, 1fr) auto;
+      gap: 14px;
     }
     .thumb {
-      aspect-ratio: 16 / 9;
+      width: 56px;
+    }
+    /* The title already links out; keep the meta on one line */
+    .source {
+      display: none;
+    }
+    h3 {
+      font-size: 17px;
     }
   }
 </style>
+
+<script>
+  const fmt = (s: number) => {
+    const m = Math.floor(s / 60);
+    return `${m}:${String(Math.floor(s % 60)).padStart(2, '0')}`;
+  };
+  const rows = [...document.querySelectorAll<HTMLElement>('[data-episode]')];
+  rows.forEach((row) => {
+    const audio = row.querySelector('audio');
+    const btn = row.querySelector<HTMLButtonElement>('[data-play]');
+    const bar = row.querySelector<HTMLElement>('[data-bar]');
+    const track = row.querySelector<HTMLElement>('[data-progress]');
+    const time = row.querySelector<HTMLElement>('[data-time]');
+    if (!audio || !btn) return;
+    const originalTime = time?.textContent ?? '';
+
+    btn.addEventListener('click', () => {
+      if (audio.paused) {
+        // Only one episode plays at a time.
+        rows.forEach((r) => r !== row && r.querySelector('audio')?.pause());
+        audio.play();
+      } else {
+        audio.pause();
+      }
+    });
+    audio.addEventListener('play', () => {
+      row.classList.add('is-playing', 'is-started');
+      btn.setAttribute('aria-label', btn.dataset.labelPause!);
+    });
+    audio.addEventListener('pause', () => {
+      row.classList.remove('is-playing');
+      btn.setAttribute('aria-label', btn.dataset.labelPlay!);
+    });
+    audio.addEventListener('timeupdate', () => {
+      if (!audio.duration) return;
+      if (bar) bar.style.width = `${(audio.currentTime / audio.duration) * 100}%`;
+      if (time) time.textContent = `${fmt(audio.currentTime)} / ${fmt(audio.duration)}`;
+    });
+    audio.addEventListener('ended', () => {
+      row.classList.remove('is-started');
+      if (time) time.textContent = originalTime;
+    });
+    track?.addEventListener('click', (ev) => {
+      if (!audio.duration) return;
+      const r = track.getBoundingClientRect();
+      const rtl = getComputedStyle(track).direction === 'rtl';
+      const x = rtl ? r.right - ev.clientX : ev.clientX - r.left;
+      audio.currentTime = (x / r.width) * audio.duration;
+    });
+  });
+</script>

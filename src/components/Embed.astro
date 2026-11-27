@@ -61,12 +61,11 @@ const { src, kind } = embedKind(url);
     height: 351px;
   }
   .embed--tiktok {
-    max-width: 340px;
-    margin-inline: auto;
-    background: #fff;
+    background: #000;
   }
   .embed--tiktok iframe {
-    height: 740px;
+    aspect-ratio: 9 / 16;
+    height: auto;
   }
   .embed--instagram {
     overflow: visible;
@@ -78,6 +77,8 @@ const { src, kind } = embedKind(url);
     width: 100% !important;
     max-width: 420px !important;
     border-radius: 12px !important;
+    border: 0 !important;
+    box-shadow: none !important;
   }
   .embed--audio iframe {
     height: 152px;

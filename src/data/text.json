@@ -183,6 +183,18 @@
     "format": {
       "en": "Format",
       "he": "פורמט"
+    },
+    "pause": {
+      "en": "Pause",
+      "he": "השהיה"
+    },
+    "prev": {
+      "en": "Previous",
+      "he": "הקודם"
+    },
+    "forward": {
+      "en": "Next",
+      "he": "הבא"
     }
   },
   "teaching": {

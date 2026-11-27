@@ -15,7 +15,7 @@ export function embedKind(u: string): { src: string; kind: EmbedKind } {
   if ((m = u.match(/vimeo\.com\/(?:video\/)?(\d+)/))) return { src: `https://player.vimeo.com/video/${m[1]}?dnt=1`, kind: 'video' };
   if ((m = u.match(/instagram\.com\/(?:[\w.]+\/)?(p|reel|tv)\/([\w-]+)/)))
     return { src: `https://www.instagram.com/${m[1]}/${m[2]}/`, kind: 'instagram' };
-  if ((m = u.match(/tiktok\.com\/@[\w.-]+\/video\/(\d+)/))) return { src: `https://www.tiktok.com/embed/v2/${m[1]}`, kind: 'tiktok' };
+  if ((m = u.match(/tiktok\.com\/@[\w.-]+\/video\/(\d+)/))) return { src: `https://www.tiktok.com/player/v1/${m[1]}?description=0&music_info=0&rel=0`, kind: 'tiktok' };
   if ((m = u.match(/open\.spotify\.com\/episode\/(\w+)\/video/)))
     return { src: `https://open.spotify.com/embed/episode/${m[1]}/video`, kind: 'spotify-video' };
   if ((m = u.match(/open\.spotify\.com\/(episode|show)\/(\w+)/)))

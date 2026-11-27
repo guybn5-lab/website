@@ -44,7 +44,7 @@ const episodeSource = (url?: string) =>
 const socialEmbeds = embeds.filter((e) => isSocial(e.url));
 const hasInstagram = socialEmbeds.some((e) => embedKind(e.url).kind === 'instagram');
 // Long lists start collapsed with a "Show all" button.
-const PREVIEW = { episodes: 6, social: 6 };
+const PREVIEW = { episodes: 8 };
 // Episodes list: skip the one already shown as the main video.
 const episodes = (p.videos ?? []).filter((v) => v.id !== p.video?.id);
 
@@ -198,18 +198,24 @@ const facts = [
             <h2 class="eyebrow">{t(lang, 'project.episodes')}</h2>
             <span class="eyebrow">{episodeCount}</span>
           </div>
-          <div class="episodes-grid">
-            {audioEpisodes.map((ep, i) => (
-              <div class="item" data-extra={i >= PREVIEW.episodes ? '' : undefined}>
-                <EpisodeCard episode={ep} lang={lang} source={episodeSource(ep.url)} />
-              </div>
-            ))}
-            {episodeEmbeds.map((e, i) => (
-              <div class="item" data-extra={audioEpisodes.length + i >= PREVIEW.episodes ? '' : undefined}>
-                <Embed url={e.url} title={e.title || title} />
-              </div>
-            ))}
-          </div>
+          {audioEpisodes.length > 0 && (
+            <div class="episode-list">
+              {audioEpisodes.map((ep, i) => (
+                <div class="item" data-extra={i >= PREVIEW.episodes ? '' : undefined}>
+                  <EpisodeCard episode={ep} lang={lang} source={episodeSource(ep.url)} />
+                </div>
+              ))}
+            </div>
+          )}
+          {episodeEmbeds.length > 0 && (
+            <div class="episode-embeds">
+              {episodeEmbeds.map((e, i) => (
+                <div class="item" data-extra={audioEpisodes.length + i >= PREVIEW.episodes ? '' : undefined}>
+                  <Embed url={e.url} title={e.title || title} />
+                </div>
+              ))}
+            </div>
+          )}
           {episodeCount > PREVIEW.episodes && (
             <button type="button" class="btn show-all" data-show-all>
               {t(lang, 'project.showAll')} ({episodeCount})
@@ -221,23 +227,30 @@ const facts = [
 
     {
       socialEmbeds.length > 0 && (
-        <section class="more wrap" data-collapsible>
+        <section class="more wrap" data-rail>
           <div class="section-head">
             <h2 class="eyebrow">{t(lang, 'project.social')}</h2>
-            <span class="eyebrow">{socialEmbeds.length}</span>
+            <div class="head-end">
+              <span class="eyebrow">{socialEmbeds.length}</span>
+              {socialEmbeds.length > 1 && (
+                <div class="rail-nav">
+                  <button type="button" class="rail-btn" data-dir="-1" aria-label={t(lang, 'project.prev')}>
+                    <span aria-hidden="true">←</span>
+                  </button>
+                  <button type="button" class="rail-btn" data-dir="1" aria-label={t(lang, 'project.forward')}>
+                    <span aria-hidden="true">→</span>
+                  </button>
+                </div>
+              )}
+            </div>
           </div>
-          <div class="social-grid">
-            {socialEmbeds.map((e, i) => (
-              <div class="item" data-extra={i >= PREVIEW.social ? '' : undefined}>
+          <div class="rail" data-rail-track tabindex="0" aria-label={t(lang, 'project.social')}>
+            {socialEmbeds.map((e) => (
+              <div class="post">
                 <Embed url={e.url} title={e.title || title} />
               </div>
             ))}
           </div>
-          {socialEmbeds.length > PREVIEW.social && (
-            <button type="button" class="btn show-all" data-show-all>
-              {t(lang, 'project.showAll')} ({socialEmbeds.length})
-            </button>
-          )}
         </section>
       )
     }
@@ -334,18 +347,107 @@ const facts = [
   .more {
     padding-top: clamp(72px, 9vw, 130px);
   }
-  .episodes-grid {
+  /* Episodes: a two-column track list with aligned rows */
+  .episode-list {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(min(100%, 420px), 1fr));
-    gap: 16px clamp(16px, 2vw, 28px);
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: clamp(24px, 4vw, 64px);
+    margin-top: -20px;
+  }
+  .episode-embeds {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: clamp(16px, 2vw, 28px);
     align-items: start;
   }
-  .social-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(min(100%, 320px), 1fr));
-    gap: clamp(20px, 2.5vw, 32px);
-    align-items: start;
+  .episode-list + .episode-embeds {
+    margin-top: 40px;
   }
+
+  /* Social: one row of equal-width cards that scrolls sideways */
+  .head-end {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+  .rail-nav {
+    display: flex;
+    gap: 8px;
+  }
+  .rail-nav.is-hidden {
+    display: none;
+  }
+  .rail-btn {
+    display: grid;
+    place-items: center;
+    width: 40px;
+    height: 40px;
+    padding: 0;
+    border: 1px solid var(--line);
+    border-radius: 50%;
+    background: transparent;
+    color: var(--fg);
+    font-size: 16px;
+    cursor: pointer;
+    transition: border-color 0.2s, background 0.2s, color 0.2s, opacity 0.2s;
+  }
+  .rail-btn:hover:not(:disabled) {
+    background: var(--fg);
+    border-color: var(--fg);
+    color: var(--bg);
+  }
+  .rail-btn:disabled {
+    opacity: 0.35;
+    cursor: default;
+  }
+  :global([dir='rtl']) .rail-btn span {
+    display: inline-block;
+    transform: scaleX(-1);
+  }
+  .rail {
+    display: grid;
+    grid-auto-flow: column;
+    --card-w: clamp(260px, 24vw, 340px);
+    grid-auto-columns: var(--card-w);
+    gap: clamp(14px, 1.6vw, 22px);
+    align-items: stretch;
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+    scroll-snap-type: x mandatory;
+    scroll-padding-inline: var(--gutter);
+    scrollbar-width: none;
+    /* Let the row run to the screen edge while staying aligned with the page */
+    margin-inline: calc(-1 * var(--gutter));
+    padding-inline: var(--gutter);
+    padding-bottom: 4px;
+  }
+  .rail::-webkit-scrollbar {
+    display: none;
+  }
+  .rail:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 4px;
+  }
+  .post {
+    scroll-snap-align: start;
+    /* Hold a 9:16 card shape while posts load, so the row doesn't jump */
+    min-height: calc(var(--card-w) * 16 / 9);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    overflow: hidden;
+    background: #fff;
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+  }
+  .post :global(.embed) {
+    border-radius: 0;
+  }
+  .post :global(.instagram-media) {
+    border-radius: 0 !important;
+    max-width: none !important;
+  }
+
   [data-collapsible]:not(.is-open) [data-extra] {
     display: none;
   }
@@ -480,6 +582,10 @@ const facts = [
     .episodes ul {
       grid-template-columns: 1fr 1fr;
     }
+    .episode-list,
+    .episode-embeds {
+      grid-template-columns: 1fr;
+    }
   }
   @media (max-width: 560px) {
     .episodes ul,
@@ -494,8 +600,31 @@ const facts = [
     section.querySelector('[data-show-all]')?.addEventListener('click', (e) => {
       section.classList.add('is-open');
       (e.currentTarget as HTMLElement).remove();
-      // Instagram posts that were hidden need to be processed now that they're visible.
-      (window as any).instgrm?.Embeds?.process();
     });
+  });
+
+  // Social row: arrow buttons scroll by roughly one screen of cards.
+  document.querySelectorAll<HTMLElement>('[data-rail]').forEach((section) => {
+    const track = section.querySelector<HTMLElement>('[data-rail-track]');
+    const btns = [...section.querySelectorAll<HTMLButtonElement>('[data-dir]')];
+    if (!track) return;
+    const rtl = getComputedStyle(track).direction === 'rtl';
+    const update = () => {
+      const max = track.scrollWidth - track.clientWidth;
+      const pos = Math.abs(track.scrollLeft);
+      btns.forEach((b) => {
+        b.disabled = Number(b.dataset.dir) < 0 ? pos <= 2 : pos >= max - 2;
+      });
+      section.querySelector('.rail-nav')?.classList.toggle('is-hidden', max <= 2);
+    };
+    btns.forEach((b) =>
+      b.addEventListener('click', () => {
+        const step = Math.max(track.clientWidth * 0.8, 260) * Number(b.dataset.dir) * (rtl ? -1 : 1);
+        track.scrollBy({ left: step, behavior: 'smooth' });
+      }),
+    );
+    track.addEventListener('scroll', update, { passive: true });
+    new ResizeObserver(update).observe(track);
+    update();
   });
 </script>
